@@ -11,10 +11,13 @@ import resource
 import statistics
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
+import torch
+
 from src.config import load_params
-from src.model import generate, load_model
+from src.model import generate_tokens, load_model, prepare_inputs
 
 
 def peak_rss_mb() -> float:
@@ -26,34 +29,68 @@ def peak_rss_mb() -> float:
     return peak / (1024 ** 2) if sys.platform == "darwin" else peak / 1024
 
 
-def main() -> None:
-    params = load_params()
+def synchronize(device) -> None:
+    """Дождаться завершения асинхронной работы ускорителя."""
+    if device.type == "cuda":
+        torch.cuda.synchronize(device)
+    elif device.type == "mps":
+        torch.mps.synchronize()
+
+
+def run_benchmark(params: dict) -> dict:
+    """Раздельно измерить загрузку, прогретую генерацию и пик RSS."""
     prompt = params["bench"]["prompt"]
+    warmup_runs = params["bench"]["warmup_runs"]
+    measure_runs = params["bench"]["measure_runs"]
+    if warmup_runs < 1 or measure_runs < 1:
+        raise ValueError("warmup_runs и measure_runs должны быть не меньше 1")
 
-    # TODO: разделить замеры. Сейчас в одном таймере и загрузка, и генерация.
-    t0 = time.perf_counter()
+    load_started = time.perf_counter()
     tokenizer, model = load_model(params)
+    synchronize(model.device)
+    load_time = time.perf_counter() - load_started
+    inputs = prepare_inputs(tokenizer, model, params, prompt)
 
-    # TODO: добавить прогрев перед измерением.
+    for _ in range(warmup_runs):
+        generate_tokens(model, params, inputs)
+        synchronize(model.device)
+
     speeds = []
-    for _ in range(params["bench"]["measure_runs"]):
-        _, n_tokens = generate(tokenizer, model, params, prompt)
-        elapsed = time.perf_counter() - t0
+    durations = []
+    token_counts = []
+    for _ in range(measure_runs):
+        synchronize(model.device)
+        started = time.perf_counter()
+        new_tokens = generate_tokens(model, params, inputs)
+        synchronize(model.device)
+        elapsed = time.perf_counter() - started
+        n_tokens = len(new_tokens)
         speeds.append(n_tokens / elapsed)
+        durations.append(elapsed)
+        token_counts.append(n_tokens)
 
-    load_time = 0.0
-
-    # Медиана устойчивее среднего к одиночному выбросу.
-    report = {
-        "model": "Qwen/Qwen3-0.6B",
+    return {
+        "measured_at": datetime.now(timezone.utc).isoformat(),
+        "model": params["model"]["name"],
+        "model_revision": getattr(model.config, "_commit_hash", None),
         "device": str(model.device),
-        "dtype": params["model"]["dtype"],
-        "load_time_sec": round(load_time, 2),
+        "dtype": str(model.dtype).removeprefix("torch."),
+        "prompt": prompt,
+        "generate": dict(params["generate"]),
+        "warmup_runs": warmup_runs,
+        "measure_runs": measure_runs,
+        "input_tokens": inputs["input_ids"].shape[1],
+        "load_time_sec": round(load_time, 4),
         "tokens_per_sec": round(statistics.median(speeds), 2),
-        "tokens_per_sec_all": [round(s, 2) for s in speeds],
+        "tokens_per_sec_all": [round(speed, 2) for speed in speeds],
+        "generation_time_sec_all": [round(duration, 4) for duration in durations],
+        "generated_tokens_all": token_counts,
         "peak_rss_mb": round(peak_rss_mb(), 1),
     }
 
+
+def main() -> None:
+    report = run_benchmark(load_params())
     Path("docs").mkdir(exist_ok=True)
     Path("docs/bench.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"

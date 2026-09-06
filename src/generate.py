@@ -6,10 +6,8 @@ from src.model import generate, load_model
 
 def main() -> None:
     params = load_params()
-    # TODO: зафиксировать seed — сейчас прогоны не воспроизводятся
-
     tokenizer, model = load_model(params)
-    print(f"Модель: Qwen/Qwen3-0.6B")
+    print(f"Модель: {params['model']['name']}")
     text, n_tokens = generate(tokenizer, model, params, params["bench"]["prompt"])
 
     print(text)

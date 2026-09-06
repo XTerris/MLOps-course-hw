@@ -16,7 +16,8 @@ def set_seed(seed: int) -> None:
 
 def load_model(params: dict):
     """Загрузить токенизатор и модель по имени из конфига."""
-    name = "Qwen/Qwen3-0.6B"
+    set_seed(params["generate"]["seed"])
+    name = params["model"]["name"]
     tokenizer = AutoTokenizer.from_pretrained(name)
     model = AutoModelForCausalLM.from_pretrained(
         name,
@@ -44,19 +45,36 @@ def build_prompt(tokenizer, params: dict, text: str) -> str:
     )
 
 
-def generate(tokenizer, model, params: dict, text: str) -> tuple[str, int]:
-    """Сгенерировать ответ. Возвращает текст и число новых токенов."""
+def prepare_inputs(tokenizer, model, params: dict, text: str):
+    """Применить chat template и перенести вход на устройство модели."""
     prompt = build_prompt(tokenizer, params, text)
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+    return tokenizer(
+        prompt, return_tensors="pt", add_special_tokens=False
+    ).to(model.device)
+
+
+def generate_tokens(model, params: dict, inputs):
+    """Вернуть только новые токены, без токенизации и декодирования."""
     temperature = params["generate"]["temperature"]
+    sampling = (
+        {"temperature": temperature}
+        if temperature > 0
+        else {"temperature": None, "top_p": None, "top_k": None}
+    )
 
     with torch.inference_mode():
         output = model.generate(
             **inputs,
             max_new_tokens=params["generate"]["max_new_tokens"],
             do_sample=temperature > 0,
-            **({"temperature": temperature} if temperature > 0 else {}),
+            **sampling,
         )
 
-    new_tokens = output[0][inputs["input_ids"].shape[1]:]
+    return output[0][inputs["input_ids"].shape[1]:]
+
+
+def generate(tokenizer, model, params: dict, text: str) -> tuple[str, int]:
+    """Сгенерировать ответ. Возвращает текст и число новых токенов."""
+    inputs = prepare_inputs(tokenizer, model, params, text)
+    new_tokens = generate_tokens(model, params, inputs)
     return tokenizer.decode(new_tokens, skip_special_tokens=True), len(new_tokens)

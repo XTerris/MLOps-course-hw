@@ -1,13 +1,13 @@
 .PHONY: install generate bench check clean
 
 install:
-	uv sync
+	uv sync --locked
 
 generate:
-	uv run python -m src.generate
+	uv run --locked python -m src.generate
 
 bench:
-	uv run python -m src.bench
+	uv run --locked python -m src.bench
 
 check:
 	bash tests/check.sh

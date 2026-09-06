@@ -1,0 +1,35 @@
+{
+  "measured_at": "2026-09-06T09:39:59.511042+00:00",
+  "model": "Qwen/Qwen3-1.7B",
+  "model_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "device": "mps:0",
+  "dtype": "bfloat16",
+  "prompt": "Объясни, что такое MLOps, в трёх предложениях.",
+  "generate": {
+    "max_new_tokens": 200,
+    "temperature": 0.0,
+    "seed": 42,
+    "enable_thinking": false
+  },
+  "warmup_runs": 1,
+  "measure_runs": 3,
+  "input_tokens": 30,
+  "load_time_sec": 0.8443,
+  "tokens_per_sec": 44.17,
+  "tokens_per_sec_all": [
+    44.78,
+    44.17,
+    42.87
+  ],
+  "generation_time_sec_all": [
+    1.3624,
+    1.3809,
+    1.4229
+  ],
+  "generated_tokens_all": [
+    61,
+    61,
+    61
+  ],
+  "peak_rss_mb": 4441.1
+}

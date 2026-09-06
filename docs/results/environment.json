@@ -1,0 +1,21 @@
+{
+  "os": "15.7.9",
+  "architecture": "arm64",
+  "cpu": "Apple M4 Pro",
+  "physical_cores": 14,
+  "logical_cores": 14,
+  "ram_bytes": 51539607552,
+  "python": "3.12.12",
+  "uv": "uv 0.9.18 (0cee76417 2025-12-16)",
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.16.1",
+    "accelerate": "1.14.0",
+    "numpy": "2.5.2",
+    "pyyaml": "6.0.3",
+    "psutil": "7.2.2",
+    "huggingface-hub": "1.30.0"
+  },
+  "mps_available": true,
+  "cuda_available": false
+}

@@ -13,7 +13,7 @@ trap 'rm -f "$log" "$probe"' EXIT
 
 echo
 echo "1. Сумма параметров по таблице сходится с моделью"
-if uv run python - > "$log" 2>&1 <<'PY'
+if uv run --project .. --locked python - > "$log" 2>&1 <<'PY'
 from src.config import load_params
 from src.inspect_model import group_table, parameter_rows, resolve_device
 from src.model import load_model
@@ -39,7 +39,7 @@ fi
 
 echo
 echo "2. Расчётное число LoRA-параметров совпадает с peft"
-if uv run python - > "$log" 2>&1 <<'PY'
+if uv run --project .. --locked python - > "$log" 2>&1 <<'PY'
 from src.config import load_params
 from src.inspect_model import lora_report, resolve_device
 from src.model import load_model
@@ -64,7 +64,7 @@ fi
 
 echo
 echo "3. Хуки снимаются: повторный прогон не копит их на модулях"
-if uv run python - > "$log" 2>&1 <<'PY'
+if uv run --project .. --locked python - > "$log" 2>&1 <<'PY'
 from src.config import load_params
 from src.inspect_model import activation_norms, resolve_device
 from src.model import load_model
@@ -98,7 +98,7 @@ fi
 
 echo
 echo "4. Три режима памяти дают разные числа (full FT > LoRA > инференс)"
-if uv run python - > "$log" 2>&1 <<'PY'
+if uv run --project .. --locked python - > "$log" 2>&1 <<'PY'
 from src.config import load_params
 from src.inspect_model import memory_profile
 
@@ -125,7 +125,7 @@ echo "5. Проект запускается модулем: python -m src.inspe
 # Проверяется поведение, а не текст: код возврата и непустой вывод.
 # Плоские импорты (from config import ... вместо from src.config import ...)
 # живут при запуске файлом и падают при запуске модулем — здесь они и видны.
-uv run python -m src.inspect_model --probe inference > "$probe" 2> "$log"; rc=$?
+uv run --project .. --locked python -m src.inspect_model --probe inference > "$probe" 2> "$log"; rc=$?
 if [ "$rc" -ne 0 ]; then
   fail "запуск модулем завершился с кодом $rc — проверьте импорты (from src.… ) и entry point"
   grep -E "Error|error:" "$log" | tail -3 | sed 's/^/      /'
@@ -139,7 +139,7 @@ echo
 echo "6. В замере названа метрика памяти (и на ускорителе это не RSS)"
 if [ ! -s "$probe" ]; then
   fail "нет вывода замера из проверки 5 — разбирать нечего"
-elif uv run python - "$probe" > "$log" 2>&1 <<'PY'
+elif uv run --project .. --locked python - "$probe" > "$log" 2>&1 <<'PY'
 import json
 import sys
 
@@ -169,7 +169,7 @@ fi
 
 echo
 echo "7. В docs/anatomy.md записаны условия замера"
-if uv run python - > "$log" 2>&1 <<'PY'
+if uv run --project .. --locked python - > "$log" 2>&1 <<'PY'
 import re
 from pathlib import Path
 

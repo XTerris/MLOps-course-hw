@@ -32,7 +32,7 @@ echo "2. Смена модели в params.yaml не требует правок
 sed 's|^  name: .*|  name: "HuggingFaceTB/SmolLM2-135M-Instruct"|' "$work_dir/params.yaml" > params.yaml
 # Мало убедиться, что не упало: проверяем, что загрузилась именно та модель,
 # которая указана в конфиге. Иначе захардкоженное имя проходит незамеченным.
-if uv run --locked python -c "
+if uv run --project .. --locked python -c "
 from src.config import load_params
 from src.model import load_model
 p = load_params()
@@ -49,7 +49,7 @@ cp "$work_dir/params.yaml" params.yaml
 
 echo
 echo "3. Генерация воспроизводима при temperature = 0"
-if ! uv run --locked python -c "from src.config import load_params; assert load_params()['generate']['temperature'] == 0"; then
+if ! uv run --project .. --locked python -c "from src.config import load_params; assert load_params()['generate']['temperature'] == 0"; then
   fail "для этой проверки требуется temperature = 0"
 elif ! make --no-print-directory generate > "$work_dir/out1.txt" 2> "$work_dir/generate1.log"; then
   fail "первый запуск генерации завершился с ошибкой"
@@ -68,12 +68,12 @@ fi
 
 echo
 echo "4. Зависимости зафиксированы"
-if [ -f uv.lock ] && uv lock --check; then
+if [ -f ../uv.lock ] && uv lock --project .. --check; then
   ok "uv.lock на месте и соответствует pyproject.toml"
 else
   fail "нет uv.lock — выполните uv sync и закоммитьте файл"
 fi
-if grep -qE '^ *"(torch|transformers|accelerate|numpy|pyyaml|psutil)" *,' pyproject.toml 2>/dev/null; then
+if grep -qE '^ *"(torch|transformers|accelerate|numpy|pyyaml|psutil)" *,' ../pyproject.toml 2>/dev/null; then
   fail "зависимости без версий в pyproject.toml"
 else
   ok "версии зависимостей указаны"
@@ -81,7 +81,7 @@ fi
 
 echo
 echo "5. Замеры разделены и есть прогрев"
-if uv run --locked python -m unittest discover -s tests -v; then
+if uv run --project .. --locked python -m unittest discover -s tests -v; then
   ok "таймеры, прогрев, медиана, RSS и генерация проверены тестами"
 else
   fail "unit-тесты обнаружили ошибку"

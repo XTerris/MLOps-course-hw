@@ -1,10 +1,10 @@
 .PHONY: install inspect check clean
 
 install:
-	uv sync
+	uv sync --project .. --locked
 
 inspect:
-	uv run python -m src.inspect_model
+	uv run --project .. --locked python -m src.inspect_model
 
 check:
 	bash tests/check.sh

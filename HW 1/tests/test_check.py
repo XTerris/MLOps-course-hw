@@ -9,15 +9,17 @@ from pathlib import Path
 class CheckScriptTests(unittest.TestCase):
     def run_check(self, generation_exit_code):
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            project = Path(directory)
+            root = project / "HW 1"
+            root.mkdir()
             (root / "tests").mkdir()
             (root / "src").mkdir()
             (root / "bin").mkdir()
             shutil.copy(Path(__file__).with_name("check.sh"), root / "tests/check.sh")
             original = 'model:\n  name: "test/original"\n'
             (root / "params.yaml").write_text(original)
-            (root / "pyproject.toml").write_text('[project]\ndependencies = []\n')
-            (root / "uv.lock").touch()
+            (project / "pyproject.toml").write_text('[project]\ndependencies = []\n')
+            (project / "uv.lock").touch()
             for command, body in {
                 "uv": "exit 0",
                 "make": f"echo answer; exit {generation_exit_code}",

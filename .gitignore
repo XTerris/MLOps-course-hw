@@ -1,8 +1,7 @@
-__pycache__/
-.DS_Store
 .venv/
-docs/bench.json
-out1.txt
-out2.txt
-params.yaml.bak
-params.yaml.orig
+**/.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+*.bak
+*.mp4

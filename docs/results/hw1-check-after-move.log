@@ -2,18 +2,18 @@
 bash tests/check.sh
 
 1. Имя модели не захардкожено в коде
-  [32m✓[0m в src/ имён моделей нет
+  ✓ в src/ имён моделей нет
 
 2. Смена модели в params.yaml не требует правок в коде
-  [32m✓[0m загружается именно та модель, что указана в params.yaml
+  ✓ загружается именно та модель, что указана в params.yaml
 
 3. Генерация воспроизводима при temperature = 0
-  [32m✓[0m два прогона дали идентичный вывод
+  ✓ два прогона дали идентичный вывод
 
 4. Зависимости зафиксированы
 Resolved 67 packages in 3ms
-  [32m✓[0m uv.lock на месте и соответствует pyproject.toml
-  [32m✓[0m версии зависимостей указаны
+  ✓ uv.lock на месте и соответствует pyproject.toml
+  ✓ версии зависимостей указаны
 
 5. Замеры разделены и есть прогрев
 test_accelerators_are_synchronized_and_cpu_is_not (test_bench.BenchmarkTests.test_accelerators_are_synchronized_and_cpu_is_not) ... ok
@@ -35,7 +35,6 @@ test_thinking_flag_is_optional (test_model.ModelTests.test_thinking_flag_is_opti
 Ran 14 tests in 0.709s
 
 OK
-  [32m✓[0m таймеры, прогрев, медиана, RSS и генерация проверены тестами
+  ✓ таймеры, прогрев, медиана, RSS и генерация проверены тестами
 
-[32mВсе проверки пройдены.[0m Не забудьте docs/hardware.md с разбором дефектов.
-
+Все проверки пройдены. Не забудьте docs/hardware.md с разбором дефектов.

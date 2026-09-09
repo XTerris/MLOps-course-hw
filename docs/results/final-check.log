@@ -1,0 +1,68 @@
+/Library/Developer/CommandLineTools/usr/bin/make hw1-check
+/Library/Developer/CommandLineTools/usr/bin/make -C "HW 1" check
+bash tests/check.sh
+
+1. Имя модели не захардкожено в коде
+  ✓ в src/ имён моделей нет
+
+2. Смена модели в params.yaml не требует правок в коде
+  ✓ загружается именно та модель, что указана в params.yaml
+
+3. Генерация воспроизводима при temperature = 0
+  ✓ два прогона дали идентичный вывод
+
+4. Зависимости зафиксированы
+Resolved 67 packages in 3ms
+  ✓ uv.lock на месте и соответствует pyproject.toml
+  ✓ версии зависимостей указаны
+
+5. Замеры разделены и есть прогрев
+test_accelerators_are_synchronized_and_cpu_is_not (test_bench.BenchmarkTests.test_accelerators_are_synchronized_and_cpu_is_not) ... ok
+test_empty_measurement_or_missing_warmup_is_rejected (test_bench.BenchmarkTests.test_empty_measurement_or_missing_warmup_is_rejected) ... ok
+test_load_warmup_and_generation_are_separate (test_bench.BenchmarkTests.test_load_warmup_and_generation_are_separate) ... ok
+test_peak_rss_linux_kibibytes (test_bench.BenchmarkTests.test_peak_rss_linux_kibibytes) ... ok
+test_peak_rss_macos_bytes (test_bench.BenchmarkTests.test_peak_rss_macos_bytes) ... ok
+test_generation_failure_cannot_pass_as_identical_output (test_check.CheckScriptTests.test_generation_failure_cannot_pass_as_identical_output) ... ok
+test_successful_checks_restore_original_config (test_check.CheckScriptTests.test_successful_checks_restore_original_config) ... ok
+test_chat_template_receives_thinking_flag (test_model.ModelTests.test_chat_template_receives_thinking_flag) ... ok
+test_generate_decodes_only_new_tokens (test_model.ModelTests.test_generate_decodes_only_new_tokens) ... ok
+test_greedy_generation_crops_prompt_and_disables_sampling (test_model.ModelTests.test_greedy_generation_crops_prompt_and_disables_sampling) ... ok
+test_loader_uses_config_and_sets_seed (test_model.ModelTests.test_loader_uses_config_and_sets_seed) ... ok
+test_positive_temperature_enables_sampling (test_model.ModelTests.test_positive_temperature_enables_sampling) ... ok
+test_seed_repeats_all_random_sources (test_model.ModelTests.test_seed_repeats_all_random_sources) ... ok
+test_thinking_flag_is_optional (test_model.ModelTests.test_thinking_flag_is_optional) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.668s
+
+OK
+  ✓ таймеры, прогрев, медиана, RSS и генерация проверены тестами
+
+Все проверки пройдены. Не забудьте docs/hardware.md с разбором дефектов.
+
+/Library/Developer/CommandLineTools/usr/bin/make hw2-check
+/Library/Developer/CommandLineTools/usr/bin/make -C "HW 2" check
+bash tests/check.sh
+
+1. Сумма параметров по таблице сходится с моделью
+  ✓ параметров: 596,049,920
+
+2. Расчётное число LoRA-параметров совпадает с peft
+  ✓ r=8, q_proj+v_proj: 1,146,880; r=16, все линейные: 10,092,544;
+
+3. Хуки снимаются: повторный прогон не копит их на модулях
+  ✓ после двух прогонов зарегистрированных хуков: 0
+
+4. Три режима памяти дают разные числа (full FT > LoRA > инференс)
+  ✓ inference=2222МБ full_ft=6108МБ lora=3604МБ
+
+5. Проект запускается модулем: python -m src.inspect_model --probe inference
+  ✓ код возврата 0, замер напечатал 1 строк(и)
+
+6. В замере названа метрика памяти (и на ускорителе это не RSS)
+  ✓ mps: torch.mps.driver_allocated_memory, пик 2222 МБ
+
+7. В docs/anatomy.md записаны условия замера
+  ✓ условия замера на месте (8 пунктов), отчёт совпадает с params.yaml
+
+Все проверки пройдены. Не забудьте docs/anatomy.md с таблицами и графиком.

@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "hooks_before": 0,
+    "hooks_after_first": 0,
+    "hooks_after_second": 0,
+    "max_abs_norm_difference": 0.0,
+    "training_flags_restored": true
+  },
+  "transient_allocation": {
+    "peak_mb": 1042.7,
+    "peak_device_mb": 1042.7,
+    "peak_rss_mb": 2023.7,
+    "metric": "память драйвера Metal",
+    "metric_source": "torch.mps.driver_allocated_memory",
+    "rss_source": "ru_maxrss",
+    "sampling_interval_ms": 10.0,
+    "samples": 7,
+    "stage_device_bytes": {
+      "weights_loaded": 19628032,
+      "temporary_64_mib": 1093369856,
+      "released": 19628032,
+      "end": 19628032
+    },
+    "last_bytes": 19628032
+  },
+  "shared_python": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python3"
+}

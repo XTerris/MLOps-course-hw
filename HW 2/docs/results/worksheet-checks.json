@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "params": "да, сходится",
+    "norm": "сходится",
+    "lora8": "да, совпало",
+    "lora16": "да, совпало",
+    "memory": [
+      "да",
+      "да",
+      "да"
+    ]
+  },
+  "error_scan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "negative_inputs_verified": true
+}

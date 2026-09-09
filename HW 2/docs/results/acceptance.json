@@ -1,0 +1,32 @@
+{
+  "assignment": "HW 2/2-zadanie-dz2.html",
+  "parameters_exact": 596049920,
+  "lora_exact": [
+    1146880,
+    10092544
+  ],
+  "hooks": "0 -> 0 -> 0; repeat difference 0; state restored; exception tests passed",
+  "memory_order_correct": true,
+  "memory_above_weights": true,
+  "separate_processes": true,
+  "four_defects_explained": true,
+  "required_environment_recorded": true,
+  "markdown_links_exist": true,
+  "report_regeneration_identical": true,
+  "markdown_visual_review": "9 tables and graph reviewed; no horizontal overflow",
+  "worksheet_original_formulas_preserved": 50,
+  "worksheet_recalculated_with": "@oai/artifact-tool",
+  "worksheet_negative_input_checks": true,
+  "worksheet_native_excel_session_tested": false,
+  "hw1_tests": 14,
+  "hw2_tests": 12,
+  "hw2_assignment_checks": 7,
+  "common_make_check": "passed",
+  "unchanged_hw1_source_reports_results_and_videos": 24,
+  "old_git_history_preserved": true,
+  "one_pyproject_one_environment": true,
+  "remaining_submission_steps": [
+    "video",
+    "repository publication"
+  ]
+}

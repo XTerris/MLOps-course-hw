@@ -133,7 +133,7 @@ attention sink: здесь измерены нормы скрытых состо
 ''']
     if diagnostics:
         h = diagnostics['hooks']
-        lines += [f"На реальной модели число хуков до и после двух вызовов: **{h['hooks_before']} → {h['hooks_after_first']} → {h['hooks_after_second']}**. Максимальная абсолютная разница норм между вызовами — **{h['max_abs_norm_difference']}**. Исходные train/eval-флаги восстановлены. [Численные результаты](results/diagnostics.json).",'']
+        lines += [f"На реальной модели число хуков до и после двух вызовов: **{h['hooks_before']} → {h['hooks_after_first']} → {h['hooks_after_second']}**. Максимальная абсолютная разница норм между вызовами — **{h['max_abs_norm_difference']}**. Исходные train/eval-флаги восстановлены. [Численные результаты](results/diagnostics.json) и [скрипт повторного опыта](../tests/diagnose_runtime.py).",'']
     lines += ['## 4. Условия замера','',table(['Условие','Значение'],[
         ('Дата UTC',report['measured_at']),('платформа',env['platform']),('ОС',env['system']),('Архитектура',env['machine']),('Модель',report['model']),('Ревизия модели',report.get('model_revision','—')),('Устройство',env['device']),('dtype базовых весов',env['dtype']),('seq_len × batch',f"{env['seq_len']} × {env['batch_size']}"),('Прогонов на режим',env['repeats']),('Агрегация повторов','максимум пиков'),('Метрика памяти',env['memory_metric']),('Дополнительная метрика RSS',env['rss_metric']),('Python',env['python']),('torch',env['torch']),('transformers',env['transformers']),('peft',env['peft']),('Seed',params['generate']['seed']),('Оптимизатор','AdamW'),('Learning rate',params['memory']['lr']),('LoRA для памяти',params['lora']['configs'][0]['name']),('KV-cache',str(inf['use_cache']))]),'',
         '''Каждый режим запускается отдельным дочерним процессом с Python из общего
@@ -329,6 +329,10 @@ make check
 ```
 
 После исправлений [все семь проверок ДЗ 2 прошли](results/after-check.log).
+Итоговый общий `make check` также завершился успешно для обоих ДЗ:
+[полный вывод](../../docs/results/final-check.log).
+Итоговый общий `make check` также завершился успешно для обоих ДЗ:
+[полный вывод](../../docs/results/final-check.log).
 [Адресные тесты](results/unit-tests.log) проверяют подсчёт общих весов,
 повторные и аварийные вызовы хуков, выбор метрики, сохранение промежуточного
 пика и обработку ответов дочерних процессов.

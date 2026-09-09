@@ -1,0 +1,12 @@
+uv run --project .. --locked python -m src.inspect_model
+Matplotlib is building the font cache; this may take a moment.
+trainable params: 1,146,880 || all params: 597,196,800 || trainable%: 0.1920
+trainable params: 10,092,544 || all params: 606,142,464 || trainable%: 1.6650
+
+Параметров: 751 632 384 (по таблице) / 596 049 920 (напрямую)
+Условия: macOS-15.7.9-arm64-arm-64bit, device mps, dtype bfloat16, seq_len 256, прогонов на режим 1, torch 2.14.0, transformers 5.16.1
+  inference  пик   3331.5 МБ  (аллокатор mps: ru_maxrss)
+  full_ft    пик   4487.8 МБ  (аллокатор mps: ru_maxrss)
+  lora       пик   4487.8 МБ  (аллокатор mps: ru_maxrss)
+
+Отчёт: docs/anatomy.md, график: docs/activations.png

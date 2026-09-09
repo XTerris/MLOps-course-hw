@@ -2,7 +2,7 @@
 model:
   name: "Qwen/Qwen3-0.6B"
   dtype: "bfloat16"
-  device: "auto"            # auto | cpu | cuda | mps
+  device: "mps"            # auto | cpu | cuda | mps
 
 generate:
   seed: 42

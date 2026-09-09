@@ -15,6 +15,10 @@ import os
 import platform
 import sys
 import time
+import subprocess
+import threading
+from contextlib import contextmanager
+from datetime import datetime, timezone
 from pathlib import Path
 
 import peft
@@ -99,13 +103,15 @@ def parameter_rows(model) -> list[dict]:
     remove_duplicate=False — иначе в таблицу не попадёт lm_head.
     """
     rows = []
+    seen = set()
     for name, param in model.named_parameters(remove_duplicate=False):
         rows.append({
             "name": name,
             "shape": tuple(param.shape),
             "numel": param.numel(),
-            "tied": False,
+            "tied": id(param) in seen,
         })
+        seen.add(id(param))
     return rows
 
 
@@ -156,32 +162,42 @@ def hook_targets(model) -> dict[str, int]:
     return {"первый": 0, "средний": n_layers // 2, "последний": n_layers - 1}
 
 
-def forward_hooks(modules: dict) -> dict:
-    """Навесить forward-hooks на модули и вернуть словарь, куда они пишут."""
-    store: dict[str, list[float]] = {}
+@contextmanager
+def forward_hooks(modules: dict):
+    """Снять только свои хуки, даже при ошибке регистрации или forward."""
+    store = {}
+    handles = []
 
-    def make_hook(label: str):
+    def make_hook(label):
         def hook(module, args, output):
             hidden = output[0] if isinstance(output, tuple) else output
-            store[label] = hidden[0].float().norm(dim=-1).detach().cpu().tolist()
+            store[label] = hidden[0].detach().float().norm(dim=-1).cpu().tolist()
         return hook
 
-    for label, module in modules.items():
-        module.register_forward_hook(make_hook(label))
-    return store
+    try:
+        for label, module in modules.items():
+            handles.append(module.register_forward_hook(make_hook(label)))
+        yield store
+    finally:
+        for handle in handles:
+            handle.remove()
 
 
 def activation_norms(tokenizer, model, params: dict) -> dict:
-    """L2-нормы скрытых состояний на выходе трёх блоков, по позициям токена."""
+    """L2-нормы по токенам без изменения исходных train/eval-флагов."""
     layers = decoder_layers(model)
     targets = hook_targets(model)
     prompt = build_prompt(tokenizer, params, params["hooks"]["prompt"])
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-
-    store = forward_hooks({label: layers[i] for label, i in targets.items()})
-    with torch.inference_mode():
-        model(**inputs)
-
+    training = [(module, module.training) for module in model.modules()]
+    try:
+        model.eval()
+        with forward_hooks({label: layers[i] for label, i in targets.items()}) as store:
+            with torch.inference_mode():
+                model(**inputs)
+    finally:
+        for module, was_training in training:
+            module.training = was_training
     return {
         "layers": targets,
         "norms": {label: store[label] for label in targets},
@@ -252,16 +268,27 @@ def lora_report(model, params: dict) -> list[dict]:
 # 4. Память в трёх режимах
 # --------------------------------------------------------------------------
 
+def synchronize(device):
+    if device.type == "mps":
+        torch.mps.synchronize()
+    elif device.type == "cuda":
+        torch.cuda.synchronize(device)
+
+
 def device_allocated_bytes(device: torch.device) -> int:
-    """Сколько памяти занято прямо сейчас."""
-    used, _ = peak_rss()
-    return used
+    if device.type == "mps":
+        return torch.mps.driver_allocated_memory()
+    if device.type == "cuda":
+        return torch.cuda.memory_allocated(device)
+    return peak_rss()[0]
 
 
 def device_metric_source(device: torch.device) -> str:
-    """Имя функции, которой снята память."""
-    _, source = peak_rss()
-    return source
+    if device.type == "mps":
+        return "torch.mps.driver_allocated_memory"
+    if device.type == "cuda":
+        return "torch.cuda.max_memory_allocated"
+    return peak_rss()[1]
 
 
 def peak_rss() -> tuple[int, str]:
@@ -294,63 +321,117 @@ def peak_rss() -> tuple[int, str]:
 
 
 class PeakMemory:
-    """Сколько памяти занято к концу прогона."""
+    """MPS: максимум выборок; CUDA: пик аллокатора; CPU: high-water RSS."""
 
     def __init__(self, device: torch.device, interval: float = 0.01):
         self.device = device
+        self.interval = interval
         self.used = 0
+        self.samples = 0
+        self.stages = {}
+        self.stop = threading.Event()
+        self.thread = None
+        self.error = None
+        self.lock = threading.Lock()
 
-    def __enter__(self) -> "PeakMemory":
+    def sample(self):
+        value = device_allocated_bytes(self.device)
+        with self.lock:
+            self.used = max(self.used, value)
+            self.samples += 1
+        return value
+
+    def poll(self):
+        try:
+            while not self.stop.wait(self.interval):
+                self.sample()
+        except Exception as exc:
+            self.error = exc
+            self.stop.set()
+
+    def checkpoint(self, name):
+        synchronize(self.device)
+        self.stages[name] = self.sample()
+
+    def __enter__(self):
+        synchronize(self.device)
+        if self.device.type == "cuda":
+            torch.cuda.reset_peak_memory_stats(self.device)
+        self.checkpoint("weights_loaded")
+        if self.device.type == "mps":
+            self.thread = threading.Thread(target=self.poll, daemon=True)
+            self.thread.start()
         return self
 
-    def __exit__(self, *exc) -> bool:
-        # TODO: это расход режима — или то, что осталось занято после него,
-        # когда всё уже посчитано и мусор собран?
-        gc.collect()
-        self.used = device_allocated_bytes(self.device)
+    def __exit__(self, exc_type, exc, tb):
+        try:
+            self.checkpoint("end")
+            if self.device.type == "cuda":
+                self.used = max(self.used, torch.cuda.max_memory_allocated(self.device))
+        finally:
+            self.stop.set()
+            if self.thread is not None:
+                self.thread.join()
+        if exc_type is None and self.error is not None:
+            raise RuntimeError("Ошибка опроса памяти MPS") from self.error
         return False
 
-    def result(self) -> dict:
-        """Числа замера вместе с именем метрики, которой они сняты."""
+    def result(self):
         rss, rss_source = peak_rss()
         accelerator = self.device.type in ("mps", "cuda")
         return {
-            "peak_mb": round((self.used if accelerator else rss) / 1024 ** 2, 1),
-            "peak_device_mb": round(self.used / 1024 ** 2, 1),
-            "peak_rss_mb": round(rss / 1024 ** 2, 1),
-            "metric": (f"аллокатор {self.device.type}" if accelerator
-                       else "RSS процесса"),
-            "metric_source": (device_metric_source(self.device) if accelerator
-                              else rss_source),
+            "peak_mb": round((self.used if accelerator else rss) / 1024**2, 1),
+            "peak_device_mb": round(self.used / 1024**2, 1) if accelerator else None,
+            "peak_rss_mb": round(rss / 1024**2, 1),
+            "metric": "память драйвера Metal" if self.device.type == "mps" else (
+                "выделенная память CUDA" if accelerator else "RSS процесса"),
+            "metric_source": device_metric_source(self.device),
             "rss_source": rss_source,
+            "sampling_interval_ms": self.interval * 1000 if self.device.type == "mps" else None,
+            "samples": self.samples,
+            "stage_device_bytes": dict(self.stages),
         }
 
 
+def tensor_inventory(tensors):
+    """Реальные байты и dtype; shared тензоры учитываются один раз."""
+    seen = set()
+    result = {"bytes": 0, "numel": 0, "by_dtype": {}}
+    for tensor in tensors:
+        if tensor is None or id(tensor) in seen:
+            continue
+        seen.add(id(tensor))
+        size = tensor.numel() * tensor.element_size()
+        result["bytes"] += size
+        result["numel"] += tensor.numel()
+        dtype = str(tensor.dtype)
+        result["by_dtype"][dtype] = result["by_dtype"].get(dtype, 0) + size
+    return result
+
+
 def measure_mode(mode: str, params: dict) -> dict:
-    """Один режим: инференс / full fine-tune / LoRA.
-
-    Обучение — ровно один шаг forward + backward + optimizer.step():
-    пик памяти достигается уже на нём, гонять эпоху незачем.
-    """
+    if mode not in MODES:
+        raise ValueError(f"Неизвестный режим: {mode}")
     device = resolve_device(params)
-    params["model"]["device"] = str(device)
+    params = {**params, "model": {**params["model"], "device": str(device)}}
     set_seed(params["generate"]["seed"])
-
     started = time.perf_counter()
     loss = None
-
     _, model = load_model(params)
-
+    base_weights = tensor_inventory(model.parameters())
+    components = {"base_weights": base_weights}
     with PeakMemory(device) as peak:
-        ids = torch.randint(
-            0, model.config.vocab_size,
-            (params["memory"]["batch_size"], params["memory"]["seq_len"]),
-            device=model.device,
-        )
+        ids = torch.randint(0, model.config.vocab_size,
+                            (params["memory"]["batch_size"], params["memory"]["seq_len"]),
+                            device=model.device)
         if mode == "inference":
             model.eval()
             with torch.inference_mode():
-                model(input_ids=ids)
+                output = model(input_ids=ids)
+            peak.checkpoint("forward")
+            components["weights"] = tensor_inventory(model.parameters())
+            components["gradients"] = tensor_inventory([])
+            components["optimizer"] = tensor_inventory([])
         else:
             if mode == "lora":
                 model = get_peft_model(model, lora_config(params, params["lora"]["configs"][0]))
@@ -359,38 +440,66 @@ def measure_mode(mode: str, params: dict) -> dict:
                 [p for p in model.parameters() if p.requires_grad],
                 lr=float(params["memory"]["lr"]),
             )
+            peak.checkpoint("training_setup")
             output = model(input_ids=ids, labels=ids)
+            peak.checkpoint("forward")
             output.loss.backward()
+            peak.checkpoint("backward")
+            components["gradients"] = tensor_inventory(p.grad for p in model.parameters())
             optimizer.step()
-            optimizer.zero_grad(set_to_none=True)
+            peak.checkpoint("optimizer_step")
+            components["weights"] = tensor_inventory(model.parameters())
+            components["optimizer"] = tensor_inventory(
+                value for state in optimizer.state.values() for value in state.values()
+                if torch.is_tensor(value)
+            )
             loss = round(output.loss.detach().item(), 4)
-
+        components["trainable"] = tensor_inventory(p for p in model.parameters() if p.requires_grad)
     result = peak.result()
     result.update(
-        mode=mode,
-        device=str(device),
-        seq_len=params["memory"]["seq_len"],
+        mode=mode, device=str(device), seq_len=params["memory"]["seq_len"],
         batch_size=params["memory"]["batch_size"],
-        seconds=round(time.perf_counter() - started, 1),
-        loss=loss,
+        seconds=round(time.perf_counter() - started, 1), loss=loss,
+        pid=os.getpid(), components=components,
+        model=params["model"]["name"], dtype=params["model"]["dtype"],
+        model_revision=getattr(model.config, "_commit_hash", None),
+        use_cache=getattr(model.config, "use_cache", None),
+        measured_at=datetime.now(timezone.utc).isoformat(),
     )
+    if result["peak_mb"] + 0.1 < base_weights["bytes"] / 1024**2:
+        raise RuntimeError("Измеренный пик меньше веса параметров модели")
     return result
 
 
-def memory_profile(params: dict) -> list[dict]:
-    """Профиль памяти в трёх режимах.
+def probe_mode(mode, params):
+    """Каждый замер получает конфиг в stdin и собственный процесс/аллокатор."""
+    command = [sys.executable, "-m", "src.inspect_model", "--probe", mode, "--params-stdin"]
+    completed = subprocess.run(
+        command, cwd=Path(__file__).resolve().parents[1],
+        input=json.dumps(params), capture_output=True, text=True, timeout=600,
+    )
+    if completed.returncode:
+        raise RuntimeError(f"Замер {mode} завершился с кодом {completed.returncode}:\n"
+                           f"{completed.stderr[-6000:]}\n{completed.stdout[-2000:]}")
+    try:
+        data = json.loads(completed.stdout.strip().splitlines()[-1])
+        if data["mode"] != mode or data["peak_mb"] <= 0:
+            raise ValueError("Неверный режим или неположительный пик")
+    except (ValueError, KeyError, IndexError, TypeError) as exc:
+        raise RuntimeError(f"Некорректный ответ замера {mode}: {completed.stdout[-2000:]}") from exc
+    return data
 
-    memory.repeats задаёт число прогонов на режим; берётся худший (максимум).
-    """
+
+def memory_profile(params: dict) -> list[dict]:
     repeats = max(1, int(params["memory"].get("repeats", 1)))
     results = []
     for mode in MODES:
-        runs = [measure_mode(mode, params) for _ in range(repeats)]
-        worst = max(runs, key=lambda item: item["peak_mb"])
+        runs = [probe_mode(mode, params) for _ in range(repeats)]
+        worst = dict(max(runs, key=lambda item: item["peak_mb"]))
         worst["repeats"] = repeats
         worst["peak_mb_runs"] = [item["peak_mb"] for item in runs]
+        worst["runs"] = runs
         results.append(worst)
-        gc.collect()
     return results
 
 
@@ -433,9 +542,10 @@ def environment(params: dict, memory: list[dict]) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Разбор модели: параметры, активации, память")
     parser.add_argument("--probe", choices=MODES, help="служебный режим: замерить память и выйти")
+    parser.add_argument("--params-stdin", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
 
-    params = load_params()
+    params = json.load(sys.stdin) if args.params_stdin else load_params()
     set_seed(params["generate"]["seed"])
     params["model"]["device"] = str(resolve_device(params))
 
@@ -451,13 +561,13 @@ def main() -> None:
     rows = parameter_rows(model)
     table = group_table(rows)
     total = sum(item["params"] for item in table)
-    memory = memory_profile(params)
+    activations = activation_norms(tokenizer, model, params)
+    lora = lora_report(model, params)
 
     report = {
         "model": params["model"]["name"],
         "dtype": params["model"]["dtype"],
         "device": params["model"]["device"],
-        "environment": environment(params, memory),
         "config": {
             key: getattr(model.config, key)
             for key in ("num_hidden_layers", "hidden_size", "intermediate_size",
@@ -467,10 +577,22 @@ def main() -> None:
         "params_total": total,
         "params_direct": sum(p.numel() for p in model.parameters()),
         "params_by_group": table,
-        "activations": activation_norms(tokenizer, model, params),
-        "lora": lora_report(model, params),
-        "memory": memory,
+        "activations": activations,
+        "lora": lora,
     }
+
+    report["parameter_rows"] = rows
+    report["model_revision"] = getattr(model.config, "_commit_hash", None)
+    del model, tokenizer
+    gc.collect()
+    if resolve_device(params).type == "mps":
+        torch.mps.empty_cache()
+    elif resolve_device(params).type == "cuda":
+        torch.cuda.empty_cache()
+    memory = memory_profile(params)
+    report["memory"] = memory
+    report["environment"] = environment(params, memory)
+    report["measured_at"] = datetime.now(timezone.utc).isoformat()
 
     Path(params["report"]["json"]).parent.mkdir(exist_ok=True)
     Path(params["report"]["json"]).write_text(

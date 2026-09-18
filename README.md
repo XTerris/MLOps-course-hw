@@ -7,26 +7,30 @@
 
 ```bash
 uv sync --locked
-make hw1-check
-make hw2-inspect
-make hw2-check
-make check
+make -C "HW 1" check
+make -C "HW 2" inspect
+make -C "HW 2" check
+make -C "HW 3" check
 ```
 
-`make check` последовательно проверяет обе работы. Внутри `HW 1` и `HW 2`
-также доступны локальные команды `make check`; для второй работы — `make inspect`.
-Они используют корневой проект через `uv run --project .. --locked`,
-сохраняя текущей папку соответствующего ДЗ. Поэтому локальные `src`,
-`params.yaml`, тесты и отчёты не смешиваются.
+У каждой работы свой `Makefile` в её папке; общего корневого Makefile нет.
+Можно перейти в `HW 1`, `HW 2` или `HW 3` и запускать локальные цели обычной
+командой `make`. Все три Makefile используют общий корневой проект через
+`uv run --project .. --locked`, поэтому сохраняются единые `pyproject.toml`,
+`uv.lock` и `.venv`, а локальные `src`, `params.yaml`, тесты и отчёты не
+смешиваются.
 
-Для ДЗ 1 доступны `make hw1-generate`, `make hw1-bench`, `make hw1-test`;
-для ДЗ 2 — `make hw2-test`.
+Для ДЗ 1 доступны `make generate`, `make bench`, `make test`, `make check`;
+для ДЗ 2 — `make inspect`, `make test`, `make check`; для ДЗ 3 — `make repro`,
+`make test`, `make check`, `make v1` и `make v2`.
 
 ## Материалы
 
 - [ДЗ 1: отчёт](HW%201/docs/hardware.md), [условие](HW%201/homework1.html).
 - [ДЗ 2: отчёт](HW%202/docs/anatomy.md), [условие](HW%202/2-zadanie-dz2.html).
 - [ДЗ 2: сводная таблица](HW%202/docs/anatomy-worksheet.xlsx).
+- [ДЗ 3: datasheet](HW%203/docs/datasheet.md), [разбор дефектов](HW%203/docs/defects.md),
+  [условие](HW%203/2-zadanie-dz3.html).
 - [Перенос и проверка общего окружения](docs/migration.md).
 - Лекции находятся в `Лекции/`. Видео ДЗ 1 остаются в `HW 1/` и исключены из Git.
 
@@ -39,7 +43,8 @@ make check
 
 Зависимости общие; модели и настройки раздельные и находятся в `params.yaml`
 каждой работы. Веса моделей хранятся в стандартном кэше Hugging Face,
-окружение и веса не добавляются в Git. `make install` восстанавливает среду
-по закоммиченному lock-файлу.
+окружение и веса не добавляются в Git. Локальная цель `make install` в папке
+любой работы восстанавливает среду по закоммиченному lock-файлу.
 
-Видео ДЗ 2 и публикация репозитория выполняются следующим этапом.
+Данные ДЗ 3 хранятся через DVC в локальном remote `dvc_remote/` и не
+попадают в Git. Видео для ДЗ 3 в текущий этап не входит.

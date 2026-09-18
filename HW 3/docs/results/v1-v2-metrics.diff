@@ -1,0 +1,13 @@
+Path                         Metric                         v1       v2       Change
+metrics/collect.json         rows_written                  1800     2800     +1000
+metrics/collect.json         repositories                 100      145      +45
+metrics/clean.json           rows_out                      1767     2747     +980
+metrics/clean.json           dropped_length               25       43       +18
+metrics/clean.json           dropped_near_dup             8        10       +2
+metrics/clean.json           pii_rows_masked              10       13       +3
+metrics/diversity.json       largest_group_share          0.0170   0.0109   -0.0061
+metrics/diversity.json       largest_label_share          0.2530   0.2526   -0.0004
+metrics/split.json           sizes.train                  1406     2188     +782
+metrics/split.json           sizes.val                    182      282      +100
+metrics/split.json           sizes.test                   179      277      +98
+metrics/split.json           contamination.near_dup_pairs 0        0        0

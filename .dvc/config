@@ -1,0 +1,5 @@
+[core]
+    remote = local
+    autostage = false
+['remote "local"']
+    url = ../dvc_remote

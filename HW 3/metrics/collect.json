@@ -1,0 +1,44 @@
+{
+  "version": "v1",
+  "complete": true,
+  "authenticated": false,
+  "date_windows": [
+    "2024-01-01..2025-12-31"
+  ],
+  "target_per_class": 450,
+  "rows_scanned": 14501,
+  "rows_written": 1800,
+  "class_counts": {
+    "bug": 450,
+    "documentation": 450,
+    "feature": 450,
+    "question": 450
+  },
+  "repositories": 100,
+  "largest_repository": "Aider-AI/aider",
+  "largest_repository_count": 30,
+  "largest_repository_share": 0.0167,
+  "license_counts": {
+    "Apache-2.0": 576,
+    "BSD-2-Clause": 251,
+    "BSD-3-Clause": 408,
+    "ISC": 105,
+    "MIT": 460
+  },
+  "system_prompt_variants": 5,
+  "drop_reasons": {
+    "ambiguous_or_mismatched_label": 420,
+    "empty_title_or_body": 141,
+    "not_english": 797,
+    "repository_cap": 11343
+  },
+  "scanned_by_class": {
+    "bug": 7340,
+    "documentation": 1101,
+    "feature": 3461,
+    "question": 2599
+  },
+  "api_requests": 0,
+  "api_cache_hits": 246,
+  "seconds": 26.16
+}

@@ -12,6 +12,13 @@ dependencies = [
     "psutil==7.2.2",
     "peft==0.20.0",
     "matplotlib==3.11.1",
+    "datasketch>=1.6",
+    "dvc>=3.55",
+    "httpx>=0.27",
+    "langdetect>=1.0.9",
+    "pandas>=2.2",
+    "pyarrow>=17.0",
+    "pydantic>=2.9",
 ]
 
 [tool.uv]

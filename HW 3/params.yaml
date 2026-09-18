@@ -1,0 +1,100 @@
+# Единственная точка конфигурации ДЗ 3.
+# Секреты здесь запрещены: GitHub token читается только из GITHUB_TOKEN.
+
+collect:
+  version: "v1"
+  api_url: "https://api.github.com"
+  api_version: "2026-03-10"
+  repository_language: "Python"
+  date_windows:
+    - "2024-01-01..2025-12-31"
+  per_page: 100
+  max_pages_per_window: 10
+  repository_base_per_license: 60
+  repositories_per_license: 100
+  repositories_per_query: 6
+  max_per_repository: 30
+  english_min_probability: 0.85
+
+  # Используем стандартные GitHub labels как слабую разметку. Issue с метками
+  # из нескольких классов одновременно отбрасывается как неоднозначный.
+  label_mapping:
+    bug:
+      - "bug"
+    documentation:
+      - "documentation"
+      - "docs"
+    feature:
+      - "enhancement"
+      - "feature"
+      - "feature request"
+    question:
+      - "question"
+
+  allowed_licenses:
+    - "MIT"
+    - "Apache-2.0"
+    - "BSD-2-Clause"
+    - "BSD-3-Clause"
+    - "ISC"
+
+  versions:
+    v1:
+      examples_per_class: 450
+    v2:
+      examples_per_class: 700
+
+  system_prompts:
+    - "Classify the GitHub issue into exactly one category: bug, documentation, feature, or question. Reply with the category only."
+    - "You route GitHub issues. Choose one label from bug, documentation, feature, question and output only that label."
+    - "Read the issue and identify its type: bug, documentation, feature, or question. Return just the type."
+    - "Assign one of four categories to this GitHub issue: bug, documentation, feature, question. Do not explain your choice."
+    - "Determine the intent of the GitHub issue. Answer with exactly one of: bug, documentation, feature, question."
+
+clean:
+  min_user_chars: 30
+  max_user_chars: 12000
+  min_assistant_chars: 3
+  near_dup:
+    enabled: true
+    shingle_words: 4
+    num_perm: 64
+    threshold: 0.85
+  pii:
+    enabled: true
+
+diversity:
+  min_examples: 1000
+  min_system_prompts: 3
+  min_groups: 50
+  max_group_share: 0.10
+  min_labels: 4
+  max_label_share: 0.35
+  min_answer_len_ratio: 1.6
+  max_same_length_share: 0.35
+  # Для задачи классификации ответы намеренно принадлежат четырём значениям.
+  # Поэтому повтор ответа не является вырождением; баланс меток проверяется выше.
+  max_duplicate_answer_share: 1.0
+
+split:
+  group_key: "topic"
+  ratios:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+  seed: 42
+
+contamination:
+  threshold: 0.85
+
+paths:
+  raw: "data/raw.jsonl"
+  clean: "data/clean.jsonl"
+  train: "data/train.jsonl"
+  val: "data/val.jsonl"
+  test: "data/test.jsonl"
+  metrics_collect: "metrics/collect.json"
+  metrics_clean: "metrics/clean.json"
+  metrics_split: "metrics/split.json"
+  metrics_diversity: "metrics/diversity.json"
+  datasheet: "docs/datasheet.md"

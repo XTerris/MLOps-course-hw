@@ -1,0 +1,253 @@
+schema: '2.0'
+stages:
+  collect:
+    cmd: python -m src.collect
+    deps:
+    - path: src/collect.py
+      hash: md5
+      md5: c938b21912283b42e6d21920a9aab404
+      size: 19184
+    - path: src/config.py
+      hash: md5
+      md5: 34377b518ef162c94770b7a9e30c05c8
+      size: 1027
+    params:
+      params.yaml:
+        collect:
+          version: v1
+          api_url: https://api.github.com
+          api_version: '2026-03-10'
+          repository_language: Python
+          date_windows:
+          - 2024-01-01..2025-12-31
+          per_page: 100
+          max_pages_per_window: 10
+          repository_base_per_license: 60
+          repositories_per_license: 100
+          repositories_per_query: 6
+          max_per_repository: 30
+          english_min_probability: 0.85
+          label_mapping:
+            bug:
+            - bug
+            documentation:
+            - documentation
+            - docs
+            feature:
+            - enhancement
+            - feature
+            - feature request
+            question:
+            - question
+          allowed_licenses:
+          - MIT
+          - Apache-2.0
+          - BSD-2-Clause
+          - BSD-3-Clause
+          - ISC
+          versions:
+            v1:
+              examples_per_class: 450
+            v2:
+              examples_per_class: 700
+          system_prompts:
+          - 'Classify the GitHub issue into exactly one category: bug, documentation,
+            feature, or question. Reply with the category only.'
+          - You route GitHub issues. Choose one label from bug, documentation,
+            feature, question and output only that label.
+          - 'Read the issue and identify its type: bug, documentation, feature, or
+            question. Return just the type.'
+          - 'Assign one of four categories to this GitHub issue: bug, documentation,
+            feature, question. Do not explain your choice.'
+          - 'Determine the intent of the GitHub issue. Answer with exactly one of:
+            bug, documentation, feature, question.'
+        paths.metrics_collect: metrics/collect.json
+        paths.raw: data/raw.jsonl
+    outs:
+    - path: data/raw.jsonl
+      hash: md5
+      md5: 98c7abf8e1c8aaaa9223764944def8d4
+      size: 3681734
+    - path: metrics/collect.json
+      hash: md5
+      md5: 4667d01cb0b5cfd9cdb7246feeb1c51c
+      size: 936
+  clean:
+    cmd: python -m src.clean
+    deps:
+    - path: data/raw.jsonl
+      hash: md5
+      md5: 98c7abf8e1c8aaaa9223764944def8d4
+      size: 3681734
+    - path: src/clean.py
+      hash: md5
+      md5: 17e41c2df0219c4f309b75b955011ba6
+      size: 4796
+    - path: src/config.py
+      hash: md5
+      md5: 34377b518ef162c94770b7a9e30c05c8
+      size: 1027
+    - path: src/dedup.py
+      hash: md5
+      md5: 0da1899111af04e907393b3288b1fb17
+      size: 3576
+    - path: src/pii.py
+      hash: md5
+      md5: 54de6f3690578d83cfc17094d2d2aa7a
+      size: 2397
+    - path: src/schema.py
+      hash: md5
+      md5: a4bbfee890f087d41fbec4df075f6a7f
+      size: 3140
+    - path: src/stats.py
+      hash: md5
+      md5: a54925032eff4769647b5775d72dd423
+      size: 2222
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        clean:
+          min_user_chars: 30
+          max_user_chars: 12000
+          min_assistant_chars: 3
+          near_dup:
+            enabled: true
+            shingle_words: 4
+            num_perm: 64
+            threshold: 0.85
+          pii:
+            enabled: true
+        collect.version: v1
+        paths.clean: data/clean.jsonl
+        paths.metrics_clean: metrics/clean.json
+        paths.raw: data/raw.jsonl
+    outs:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: 7df7ef0b375e5ab30e2b5b736a414fea
+      size: 3093803
+    - path: metrics/clean.json
+      hash: md5
+      md5: 8c6b3ca7f29adacb66e170ae0f411798
+      size: 554
+  diversity:
+    cmd: python -m src.diversity
+    deps:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: 7df7ef0b375e5ab30e2b5b736a414fea
+      size: 3093803
+    - path: src/config.py
+      hash: md5
+      md5: 34377b518ef162c94770b7a9e30c05c8
+      size: 1027
+    - path: src/diversity.py
+      hash: md5
+      md5: 15e7bb75a29e2b7deb902155e0845ac0
+      size: 7216
+    - path: src/schema.py
+      hash: md5
+      md5: a4bbfee890f087d41fbec4df075f6a7f
+      size: 3140
+    - path: src/stats.py
+      hash: md5
+      md5: a54925032eff4769647b5775d72dd423
+      size: 2222
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        collect.version: v1
+        diversity:
+          min_examples: 1000
+          min_system_prompts: 3
+          min_groups: 50
+          max_group_share: 0.1
+          min_labels: 4
+          max_label_share: 0.35
+          min_answer_len_ratio: 1.6
+          max_same_length_share: 0.35
+          max_duplicate_answer_share: 1.0
+        paths.clean: data/clean.jsonl
+        paths.metrics_diversity: metrics/diversity.json
+        split.group_key: topic
+    outs:
+    - path: metrics/diversity.json
+      hash: md5
+      md5: 4775e544b0e409af745d557bfff35ec6
+      size: 881
+  split:
+    cmd: python -m src.split
+    deps:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: 7df7ef0b375e5ab30e2b5b736a414fea
+      size: 3093803
+    - path: src/config.py
+      hash: md5
+      md5: 34377b518ef162c94770b7a9e30c05c8
+      size: 1027
+    - path: src/contamination.py
+      hash: md5
+      md5: 9293919fc5964067833313514c6f9f2b
+      size: 2249
+    - path: src/dedup.py
+      hash: md5
+      md5: 0da1899111af04e907393b3288b1fb17
+      size: 3576
+    - path: src/schema.py
+      hash: md5
+      md5: a4bbfee890f087d41fbec4df075f6a7f
+      size: 3140
+    - path: src/split.py
+      hash: md5
+      md5: fa47f5a785b9c159fb8f339c62d9e5b5
+      size: 5850
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        clean.near_dup:
+          enabled: true
+          shingle_words: 4
+          num_perm: 64
+          threshold: 0.85
+        collect.version: v1
+        contamination:
+          threshold: 0.85
+        paths.clean: data/clean.jsonl
+        paths.metrics_split: metrics/split.json
+        paths.test: data/test.jsonl
+        paths.train: data/train.jsonl
+        paths.val: data/val.jsonl
+        split:
+          group_key: topic
+          ratios:
+            train: 0.8
+            val: 0.1
+            test: 0.1
+          seed: 42
+    outs:
+    - path: data/test.jsonl
+      hash: md5
+      md5: a9b11fb326a74b061ad914fb04932c9d
+      size: 285690
+    - path: data/train.jsonl
+      hash: md5
+      md5: 204befe439f9bb2997ed89c8d765bbf5
+      size: 2535543
+    - path: data/val.jsonl
+      hash: md5
+      md5: 9d23ff523e22a699fe5a23732d630337
+      size: 272570
+    - path: metrics/split.json
+      hash: md5
+      md5: ee06c74a8e6c3b727dc58527eeffa948
+      size: 867

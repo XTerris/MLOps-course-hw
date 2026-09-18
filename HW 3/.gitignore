@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+dvc_remote/
+data/
+params.yaml.bak
+params.yaml.orig
+metrics/_check/

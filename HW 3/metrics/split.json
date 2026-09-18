@@ -1,42 +1,42 @@
 {
-  "version": "v1",
+  "version": "v2",
   "seed": 42,
   "group_key": "topic",
-  "groups_total": 100,
+  "groups_total": 145,
   "sizes": {
-    "train": 1406,
-    "val": 182,
-    "test": 179
+    "train": 2188,
+    "val": 282,
+    "test": 277
   },
   "groups": {
-    "train": 84,
-    "val": 8,
-    "test": 8
+    "train": 120,
+    "val": 13,
+    "test": 12
   },
   "class_counts": {
     "train": {
-      "bug": 349,
-      "documentation": 354,
-      "feature": 347,
-      "question": 356
+      "bug": 541,
+      "documentation": 555,
+      "feature": 555,
+      "question": 537
     },
     "val": {
-      "bug": 43,
-      "documentation": 45,
-      "feature": 51,
-      "question": 43
+      "bug": 67,
+      "documentation": 69,
+      "feature": 68,
+      "question": 78
     },
     "test": {
-      "bug": 43,
-      "documentation": 48,
-      "feature": 44,
-      "question": 44
+      "bug": 69,
+      "documentation": 70,
+      "feature": 69,
+      "question": 69
     }
   },
   "ratios_actual": {
-    "train": 0.7957,
-    "val": 0.103,
-    "test": 0.1013
+    "train": 0.7965,
+    "val": 0.1027,
+    "test": 0.1008
   },
   "contamination": {
     "id_overlap": 0,
@@ -49,5 +49,5 @@
       "near_dup": []
     }
   },
-  "seconds": 0.45
+  "seconds": 0.73
 }

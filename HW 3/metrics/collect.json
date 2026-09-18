@@ -1,44 +1,44 @@
 {
-  "version": "v1",
+  "version": "v2",
   "complete": true,
   "authenticated": false,
   "date_windows": [
     "2024-01-01..2025-12-31"
   ],
-  "target_per_class": 450,
-  "rows_scanned": 14501,
-  "rows_written": 1800,
+  "target_per_class": 700,
+  "rows_scanned": 24588,
+  "rows_written": 2800,
   "class_counts": {
-    "bug": 450,
-    "documentation": 450,
-    "feature": 450,
-    "question": 450
+    "bug": 700,
+    "documentation": 700,
+    "feature": 700,
+    "question": 700
   },
-  "repositories": 100,
+  "repositories": 145,
   "largest_repository": "Aider-AI/aider",
   "largest_repository_count": 30,
-  "largest_repository_share": 0.0167,
+  "largest_repository_share": 0.0107,
   "license_counts": {
-    "Apache-2.0": 576,
-    "BSD-2-Clause": 251,
-    "BSD-3-Clause": 408,
-    "ISC": 105,
-    "MIT": 460
+    "Apache-2.0": 896,
+    "BSD-2-Clause": 384,
+    "BSD-3-Clause": 614,
+    "ISC": 189,
+    "MIT": 717
   },
   "system_prompt_variants": 5,
   "drop_reasons": {
-    "ambiguous_or_mismatched_label": 420,
-    "empty_title_or_body": 141,
-    "not_english": 797,
-    "repository_cap": 11343
+    "ambiguous_or_mismatched_label": 835,
+    "empty_title_or_body": 187,
+    "not_english": 946,
+    "repository_cap": 19820
   },
   "scanned_by_class": {
-    "bug": 7340,
-    "documentation": 1101,
-    "feature": 3461,
-    "question": 2599
+    "bug": 12828,
+    "documentation": 1691,
+    "feature": 5852,
+    "question": 4217
   },
-  "api_requests": 0,
-  "api_cache_hits": 246,
-  "seconds": 26.16
+  "api_requests": 22,
+  "api_cache_hits": 371,
+  "seconds": 112.58
 }

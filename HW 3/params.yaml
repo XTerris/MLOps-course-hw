@@ -2,7 +2,7 @@
 # Секреты здесь запрещены: GitHub token читается только из GITHUB_TOKEN.
 
 collect:
-  version: "v1"
+  version: "v2"
   api_url: "https://api.github.com"
   api_version: "2026-03-10"
   repository_language: "Python"

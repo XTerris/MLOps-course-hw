@@ -1,19 +1,19 @@
 {
-  "version": "v1",
-  "examples": 1767,
+  "version": "v2",
+  "examples": 2747,
   "system_prompts": 5,
-  "groups": 100,
+  "groups": 145,
   "largest_group": "3b1b/manim",
-  "largest_group_share": 0.017,
+  "largest_group_share": 0.0109,
   "labels": {
-    "bug": 435,
-    "documentation": 447,
-    "feature": 442,
-    "question": 443
+    "bug": 677,
+    "documentation": 694,
+    "feature": 692,
+    "question": 684
   },
   "label_count": 4,
   "largest_label": "documentation",
-  "largest_label_share": 0.253,
+  "largest_label_share": 0.2526,
   "answer_len": {
     "p10": 3,
     "p50": 8,
@@ -23,8 +23,8 @@
     "min": 3,
     "max": 13
   },
-  "same_length_share": 0.253,
-  "duplicate_answer_share": 0.9977,
+  "same_length_share": 0.2526,
+  "duplicate_answer_share": 0.9985,
   "thresholds": {
     "min_examples": 1000,
     "min_system_prompts": 3,
@@ -38,5 +38,5 @@
   },
   "violations": [],
   "passed": true,
-  "seconds": 0.02
+  "seconds": 0.04
 }

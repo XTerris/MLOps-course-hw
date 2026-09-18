@@ -1,13 +1,80 @@
-Path                         Metric                         v1       v2       Change
-metrics/collect.json         rows_written                  1800     2800     +1000
-metrics/collect.json         repositories                 100      145      +45
-metrics/clean.json           rows_out                      1767     2747     +980
-metrics/clean.json           dropped_length               25       43       +18
-metrics/clean.json           dropped_near_dup             8        10       +2
-metrics/clean.json           pii_rows_masked              10       13       +3
-metrics/diversity.json       largest_group_share          0.0170   0.0109   -0.0061
-metrics/diversity.json       largest_label_share          0.2530   0.2526   -0.0004
-metrics/split.json           sizes.train                  1406     2188     +782
-metrics/split.json           sizes.val                    182      282      +100
-metrics/split.json           sizes.test                   179      277      +98
-metrics/split.json           contamination.near_dup_pairs 0        0        0
+Path                         Metric                                      hw3-data-v1    hw3-data-v2    Change
+HW 3/metrics/split.json      class_counts.test.bug                       43             69             26
+HW 3/metrics/split.json      class_counts.test.documentation             48             70             22
+HW 3/metrics/split.json      class_counts.test.feature                   44             69             25
+HW 3/metrics/split.json      class_counts.test.question                  44             69             25
+HW 3/metrics/split.json      class_counts.train.bug                      349            541            192
+HW 3/metrics/split.json      class_counts.train.documentation            354            555            201
+HW 3/metrics/split.json      class_counts.train.feature                  347            555            208
+HW 3/metrics/split.json      class_counts.train.question                 356            537            181
+HW 3/metrics/split.json      class_counts.val.bug                        43             67             24
+HW 3/metrics/split.json      class_counts.val.documentation              45             69             24
+HW 3/metrics/split.json      class_counts.val.feature                    51             68             17
+HW 3/metrics/split.json      class_counts.val.question                   43             78             35
+HW 3/metrics/split.json      groups.test                                 8              12             4
+HW 3/metrics/split.json      groups.train                                84             120            36
+HW 3/metrics/split.json      groups.val                                  8              13             5
+HW 3/metrics/split.json      groups_total                                100            145            45
+HW 3/metrics/split.json      ratios_actual.test                          0.1013         0.1008         -0.0005
+HW 3/metrics/split.json      ratios_actual.train                         0.7957         0.7965         0.0008
+HW 3/metrics/split.json      ratios_actual.val                           0.103          0.1027         -0.0003
+HW 3/metrics/split.json      seconds                                     0.45           0.73           0.28
+HW 3/metrics/split.json      sizes.test                                  179            277            98
+HW 3/metrics/split.json      sizes.train                                 1406           2188           782
+HW 3/metrics/split.json      sizes.val                                   182            282            100
+HW 3/metrics/split.json      version                                     v1             v2             -
+HW 3/metrics/diversity.json  duplicate_answer_share                      0.9977         0.9985         0.0008
+HW 3/metrics/diversity.json  examples                                    1767           2747           980
+HW 3/metrics/diversity.json  groups                                      100            145            45
+HW 3/metrics/diversity.json  labels.bug                                  435            677            242
+HW 3/metrics/diversity.json  labels.documentation                        447            694            247
+HW 3/metrics/diversity.json  labels.feature                              442            692            250
+HW 3/metrics/diversity.json  labels.question                             443            684            241
+HW 3/metrics/diversity.json  largest_group_share                         0.017          0.0109         -0.0061
+HW 3/metrics/diversity.json  largest_label_share                         0.253          0.2526         -0.0004
+HW 3/metrics/diversity.json  same_length_share                           0.253          0.2526         -0.0004
+HW 3/metrics/diversity.json  seconds                                     0.02           0.04           0.02
+HW 3/metrics/diversity.json  version                                     v1             v2             -
+HW 3/metrics/clean.json      class_counts.bug                            435            677            242
+HW 3/metrics/clean.json      class_counts.documentation                  447            694            247
+HW 3/metrics/clean.json      class_counts.feature                        442            692            250
+HW 3/metrics/clean.json      class_counts.question                       443            684            241
+HW 3/metrics/clean.json      dropped_length                              25             43             18
+HW 3/metrics/clean.json      dropped_near_dup                            8              10             2
+HW 3/metrics/clean.json      groups                                      100            145            45
+HW 3/metrics/clean.json      pii_hits.email                              21             24             3
+HW 3/metrics/clean.json      pii_rows_masked                             10             13             3
+HW 3/metrics/clean.json      rows_in                                     1800           2800           1000
+HW 3/metrics/clean.json      rows_out                                    1767           2747           980
+HW 3/metrics/clean.json      seconds                                     0.69           1.13           0.44
+HW 3/metrics/clean.json      user_chars.max                              11550          11928          378
+HW 3/metrics/clean.json      user_chars.p50                              770            807            37
+HW 3/metrics/clean.json      user_chars.p90                              3265           3428           163
+HW 3/metrics/clean.json      user_chars.p99                              8125           8724           599
+HW 3/metrics/clean.json      version                                     v1             v2             -
+HW 3/metrics/collect.json    api_cache_hits                              246            371            125
+HW 3/metrics/collect.json    api_requests                                0              22             22
+HW 3/metrics/collect.json    class_counts.bug                            450            700            250
+HW 3/metrics/collect.json    class_counts.documentation                  450            700            250
+HW 3/metrics/collect.json    class_counts.feature                        450            700            250
+HW 3/metrics/collect.json    class_counts.question                       450            700            250
+HW 3/metrics/collect.json    drop_reasons.ambiguous_or_mismatched_label  420            835            415
+HW 3/metrics/collect.json    drop_reasons.empty_title_or_body            141            187            46
+HW 3/metrics/collect.json    drop_reasons.not_english                    797            946            149
+HW 3/metrics/collect.json    drop_reasons.repository_cap                 11343          19820          8477
+HW 3/metrics/collect.json    largest_repository_share                    0.0167         0.0107         -0.006
+HW 3/metrics/collect.json    license_counts.Apache-2.0                   576            896            320
+HW 3/metrics/collect.json    license_counts.BSD-2-Clause                 251            384            133
+HW 3/metrics/collect.json    license_counts.BSD-3-Clause                 408            614            206
+HW 3/metrics/collect.json    license_counts.ISC                          105            189            84
+HW 3/metrics/collect.json    license_counts.MIT                          460            717            257
+HW 3/metrics/collect.json    repositories                                100            145            45
+HW 3/metrics/collect.json    rows_scanned                                14501          24588          10087
+HW 3/metrics/collect.json    rows_written                                1800           2800           1000
+HW 3/metrics/collect.json    scanned_by_class.bug                        7340           12828          5488
+HW 3/metrics/collect.json    scanned_by_class.documentation              1101           1691           590
+HW 3/metrics/collect.json    scanned_by_class.feature                    3461           5852           2391
+HW 3/metrics/collect.json    scanned_by_class.question                   2599           4217           1618
+HW 3/metrics/collect.json    seconds                                     26.16          112.58         86.42
+HW 3/metrics/collect.json    target_per_class                            450            700            250
+HW 3/metrics/collect.json    version                                     v1             v2             -

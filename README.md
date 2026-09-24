@@ -11,18 +11,20 @@ make -C "HW 1" check
 make -C "HW 2" inspect
 make -C "HW 2" check
 make -C "HW 3" check
+make -C "HW 4" check
 ```
 
 У каждой работы свой `Makefile` в её папке; общего корневого Makefile нет.
-Можно перейти в `HW 1`, `HW 2` или `HW 3` и запускать локальные цели обычной
-командой `make`. Все три Makefile используют общий корневой проект через
+Можно перейти в папку любой домашней работы и запускать локальные цели обычной
+командой `make`. Все Makefile используют общий корневой проект через
 `uv run --project .. --locked`, поэтому сохраняются единые `pyproject.toml`,
 `uv.lock` и `.venv`, а локальные `src`, `params.yaml`, тесты и отчёты не
 смешиваются.
 
 Для ДЗ 1 доступны `make generate`, `make bench`, `make test`, `make check`;
 для ДЗ 2 — `make inspect`, `make test`, `make check`; для ДЗ 3 — `make repro`,
-`make test`, `make check`, `make v1` и `make v2`.
+`make test`, `make check`, `make v1` и `make v2`; для ДЗ 4 — `make tokenize`,
+`make repro` и `make check`.
 
 ## Материалы
 
@@ -31,6 +33,8 @@ make -C "HW 3" check
 - [ДЗ 2: сводная таблица](HW%202/docs/anatomy-worksheet.xlsx).
 - [ДЗ 3: datasheet](HW%203/docs/datasheet.md), [разбор дефектов](HW%203/docs/defects.md),
   [условие](HW%203/2-zadanie-dz3.html).
+- [ДЗ 4: отчёт токенизации](HW%204/docs/tokenize_report.md),
+  [разбор дефектов](HW%204/docs/defects.md), [условие](HW%204/2-zadanie-dz4.html).
 - [Перенос и проверка общего окружения](docs/migration.md).
 - Лекции находятся в `Лекции/`. Видео ДЗ 1 остаются в `HW 1/` и исключены из Git.
 

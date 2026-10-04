@@ -38,6 +38,10 @@ def set_seed(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.use_deterministic_algorithms(True)
+    torch.backends.cudnn.benchmark = False
     os.environ["PYTHONHASHSEED"] = str(seed)
 
 
@@ -56,3 +60,10 @@ def memory_metric(device: torch.device) -> str:
         "mps": "torch.mps.driver_allocated_memory",
         "cuda": "torch.cuda.memory_allocated",
     }.get(device.type, "RSS процесса")
+
+
+def synchronize(device: torch.device) -> None:
+    if device.type == "mps":
+        torch.mps.synchronize()
+    elif device.type == "cuda":
+        torch.cuda.synchronize(device)

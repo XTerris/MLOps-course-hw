@@ -22,9 +22,14 @@ def load_split(path: str) -> dict:
             "Вход стадии train — выход стадии tokenize из ДЗ 4 (data/tokenized/*.pt).\n"
             "Укажите пути к своим файлам в params.yaml, секция data."
         )
-    blob = torch.load(p, weights_only=False)
+    blob = torch.load(p, weights_only=True)
     if not blob.get("examples"):
         raise SystemExit(f"{p}: в файле нет примеров")
+    for example in blob["examples"]:
+        if len({len(example[k]) for k in ("input_ids", "attention_mask", "labels")}) != 1:
+            raise ValueError(f"{p}: длины input_ids, attention_mask и labels различаются")
+        if not any(x != LABEL_PAD_ID for x in example["labels"][1:]):
+            raise ValueError(f"{p}: пример {example.get('id')} не содержит ответа")
     return blob
 
 

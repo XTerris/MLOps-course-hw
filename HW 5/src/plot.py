@@ -20,7 +20,8 @@ def main() -> None:
     if not runs:
         raise SystemExit("нет metrics/train_*.json — сначала make train")
 
-    fig, (ax_t, ax_v) = plt.subplots(1, 2, figsize=(11, 4), sharey=True)
+    plt.rcParams.update({"font.size": 11})
+    fig, (ax_t, ax_v) = plt.subplots(1, 2, figsize=(12.5, 4.6), sharey=True)
     for r in runs:
         c = COLORS.get(r["variant"], "#444")
         label = f"{r['variant']} ({r['trainable_share']:.2%} параметров, {r['seconds']:.0f} с)"
@@ -32,11 +33,12 @@ def main() -> None:
         ax.set_xlabel("шаг")
         ax.grid(alpha=.3)
     ax_t.set_ylabel("loss на токен ответа")
-    ax_t.legend(fontsize=8)
+    ax_t.legend(fontsize=10)
+    ax_v.legend(fontsize=10)
     fig.tight_layout()
     out = Path(params["paths"]["curves"])
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out, dpi=130)
+    fig.savefig(out, dpi=160)
     print(f"-> {out}")
 
 

@@ -48,7 +48,7 @@ uv run --project .. --locked python -m src.train \
 
 ```
 params.yaml          единственная точка конфигурации
-dvc.yaml             стадии train_all, train_freeze, compare
+dvc.yaml             стадии train_all, train_freeze, plot, compare
 src/runtime.py       устройство, dtype, сид, память
 src/data.py          вход стадии — выход tokenize из ДЗ 4
 src/train.py         цикл обучения LoRA

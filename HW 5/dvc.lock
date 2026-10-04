@@ -1,0 +1,296 @@
+schema: '2.0'
+stages:
+  train_all:
+    cmd: uv run --project .. --locked python -m src.train --variant all_layers
+    deps:
+    - path: ../HW 4/data/tokenized/train.pt
+      hash: md5
+      md5: fd4e3be15350e8c2b93f893e0d8aec1f
+      size: 7767841
+    - path: ../HW 4/data/tokenized/val.pt
+      hash: md5
+      md5: 0de74152ab458870b790e4a5ed61f8c6
+      size: 1068437
+    - path: ../uv.lock
+      hash: md5
+      md5: 236c58b273a9a6a885716ea9378be999
+      size: 238079
+    - path: src/config.py
+      hash: md5
+      md5: d1af94455f9641952ff6c34f46ac6060
+      size: 336
+    - path: src/data.py
+      hash: md5
+      md5: d0534ab706f90b4299cf8f7e7259985d
+      size: 2396
+    - path: src/loss.py
+      hash: md5
+      md5: bfd763c01e0d38ea904d81b54798540f
+      size: 1364
+    - path: src/runtime.py
+      hash: md5
+      md5: 8ec4f3c5cc670071b83eaf2ab3d7a665
+      size: 2569
+    - path: src/train.py
+      hash: md5
+      md5: b2fc0a2409cfe7024d045a6ad1c8b1bf
+      size: 12830
+    params:
+      params.yaml:
+        data:
+          train: ../HW 4/data/tokenized/train.pt
+          val: ../HW 4/data/tokenized/val.pt
+        lora:
+          r: 8
+          alpha: 16
+          dropout: 0.05
+          target_modules:
+          - q_proj
+          - k_proj
+          - v_proj
+          - o_proj
+          - gate_proj
+          - up_proj
+          - down_proj
+        model:
+          name: Qwen/Qwen3-0.6B
+          device: auto
+          dtype: bfloat16
+          enable_thinking: false
+          revision: c1899de289a04d12100db370d81485cdf75e47ca
+        paths.metrics: metrics
+        paths.models: models
+        train:
+          seed: 42
+          epochs: 1
+          batch_size: 2
+          grad_accum: 4
+          lr: 0.0002
+          warmup_ratio: 0.03
+          weight_decay: 0.0
+          max_grad_norm: 1.0
+          eval_every: 10
+          eval_batch_size: 8
+          gradient_checkpointing: true
+          max_steps:
+        variants:
+        - name: all_layers
+          freeze_first: 0
+        - name: freeze14
+          freeze_first: 14
+    outs:
+    - path: metrics/train_all_layers.json
+      hash: md5
+      md5: a8c48a451c6d9eb097d2f14f2c12ecd7
+      size: 11981
+    - path: models/adapter_all_layers
+      hash: md5
+      md5: c8af94646215abd8dcdc2cb90cda9c0a.dir
+      size: 31673336
+      nfiles: 7
+  train_freeze:
+    cmd: uv run --project .. --locked python -m src.train --variant freeze14
+    deps:
+    - path: ../HW 4/data/tokenized/train.pt
+      hash: md5
+      md5: fd4e3be15350e8c2b93f893e0d8aec1f
+      size: 7767841
+    - path: ../HW 4/data/tokenized/val.pt
+      hash: md5
+      md5: 0de74152ab458870b790e4a5ed61f8c6
+      size: 1068437
+    - path: ../uv.lock
+      hash: md5
+      md5: 236c58b273a9a6a885716ea9378be999
+      size: 238079
+    - path: src/config.py
+      hash: md5
+      md5: d1af94455f9641952ff6c34f46ac6060
+      size: 336
+    - path: src/data.py
+      hash: md5
+      md5: d0534ab706f90b4299cf8f7e7259985d
+      size: 2396
+    - path: src/loss.py
+      hash: md5
+      md5: bfd763c01e0d38ea904d81b54798540f
+      size: 1364
+    - path: src/runtime.py
+      hash: md5
+      md5: 8ec4f3c5cc670071b83eaf2ab3d7a665
+      size: 2569
+    - path: src/train.py
+      hash: md5
+      md5: b2fc0a2409cfe7024d045a6ad1c8b1bf
+      size: 12830
+    params:
+      params.yaml:
+        data:
+          train: ../HW 4/data/tokenized/train.pt
+          val: ../HW 4/data/tokenized/val.pt
+        lora:
+          r: 8
+          alpha: 16
+          dropout: 0.05
+          target_modules:
+          - q_proj
+          - k_proj
+          - v_proj
+          - o_proj
+          - gate_proj
+          - up_proj
+          - down_proj
+        model:
+          name: Qwen/Qwen3-0.6B
+          device: auto
+          dtype: bfloat16
+          enable_thinking: false
+          revision: c1899de289a04d12100db370d81485cdf75e47ca
+        paths.metrics: metrics
+        paths.models: models
+        train:
+          seed: 42
+          epochs: 1
+          batch_size: 2
+          grad_accum: 4
+          lr: 0.0002
+          warmup_ratio: 0.03
+          weight_decay: 0.0
+          max_grad_norm: 1.0
+          eval_every: 10
+          eval_batch_size: 8
+          gradient_checkpointing: true
+          max_steps:
+        variants:
+        - name: all_layers
+          freeze_first: 0
+        - name: freeze14
+          freeze_first: 14
+    outs:
+    - path: metrics/train_freeze14.json
+      hash: md5
+      md5: b3be7bb72f8a0ceba47348c9d35371f4
+      size: 11979
+    - path: models/adapter_freeze14
+      hash: md5
+      md5: c1e5f1273298f07c6a64ada257fc53a1.dir
+      size: 21554874
+      nfiles: 7
+  plot:
+    cmd: uv run --project .. --locked python -m src.plot
+    deps:
+    - path: metrics/train_all_layers.json
+      hash: md5
+      md5: a8c48a451c6d9eb097d2f14f2c12ecd7
+      size: 11981
+    - path: metrics/train_freeze14.json
+      hash: md5
+      md5: b3be7bb72f8a0ceba47348c9d35371f4
+      size: 11979
+    - path: src/config.py
+      hash: md5
+      md5: d1af94455f9641952ff6c34f46ac6060
+      size: 336
+    - path: src/plot.py
+      hash: md5
+      md5: 201bfe9b30324fddb513830f78238c31
+      size: 1653
+    params:
+      params.yaml:
+        paths.curves: docs/curves.png
+        paths.metrics: metrics
+    outs:
+    - path: docs/curves.png
+      hash: md5
+      md5: bca0868e296d8755a61867c58cbf4e1c
+      size: 212952
+  compare:
+    cmd: uv run --project .. --locked python -m src.compare --variant all_layers
+    deps:
+    - path: ../uv.lock
+      hash: md5
+      md5: 236c58b273a9a6a885716ea9378be999
+      size: 238079
+    - path: models/adapter_all_layers
+      hash: md5
+      md5: c8af94646215abd8dcdc2cb90cda9c0a.dir
+      size: 31673336
+      nfiles: 7
+    - path: src/compare.py
+      hash: md5
+      md5: 5ee6d1398596e585a8776f201ee61a68
+      size: 5424
+    - path: src/config.py
+      hash: md5
+      md5: d1af94455f9641952ff6c34f46ac6060
+      size: 336
+    - path: src/prompt.py
+      hash: md5
+      md5: 3b33881cfa4b1d7256bcb12615b93d4e
+      size: 395
+    - path: src/runtime.py
+      hash: md5
+      md5: 8ec4f3c5cc670071b83eaf2ab3d7a665
+      size: 2569
+    params:
+      params.yaml:
+        compare:
+          max_new_tokens: 16
+          prompts:
+          - "Title: Unclear licensing for contrib/sparsity\n\nBody:\n**Describe the
+            Bug**\nThe https://github.com/NVIDIA/apex/tree/master/apex/contrib/sparsity
+            folder describes itself as All Rights Reserved.\n\nIs this covered by
+            the overall BSD-3-Clause license of apex, or is it proprietary NVIDIA
+            and not intended for others to use?"
+          - "Title: The documentation for CSS variables should clearly state the scope
+            of variables\n\nBody:\nThe [documentation for CSS variables](https://textual.textualize.io/guide/CSS/#css-variables)
+            doesn't appear to say what the scope of those variables is. For example,
+            it would seem that if you're using `CSS_PATH`, you can't define a series
+            of variables in one file earlier in the path, and then use those variables
+            in files later on in the path. If this is working as intended we should
+            document this."
+          - "Title: pls try qwen3(think version) and deepseek-r1-0528\n\nBody:\nAs
+            two excellent and inexpensive models, it would be nice to see the results
+            of testing these two models, perhaps to make this project more practicable!"
+          - "Title: pytorch-ada\n\nBody:\n### Description & Motivation\n\nHi,\nDo
+            you officially support pytorch-ada https://pytorch-ada.readthedocs.io/en/latest/getting_started.html
+            ?\nBest\n\n### Pitch\n\n_No response_\n\n### Alternatives\n\n_No response_\n\
+            \n### Additional context\n\n_No response_\n\ncc @borda"
+          - "Title: Not Able to install apex.\n\nBody:\nfrom pyramid.session import
+            UnencryptedCookieSessionFactoryConfig\nTraceback (most recent call last):\n\
+            \  File \"<stdin>\", line 1, in <module>\nImportError: cannot import name
+            'UnencryptedCookieSessionFactoryConfig' from 'pyramid.session' (unknown
+            location)\n\n\nplese help . need your suggestion .. Thanks in Advance
+            ."
+          system: 'Classify the GitHub issue into exactly one category: bug, documentation,
+            feature, or question. Reply with the category only.'
+          references:
+          - id: github:NVIDIA/apex#1789
+            expected: bug
+          - id: github:Textualize/textual#3951
+            expected: documentation
+          - id: github:TauricResearch/TradingAgents#12
+            expected: feature
+          - id: github:Lightning-AI/pytorch-lightning#19612
+            expected: question
+          - id: github:NVIDIA/apex#1800
+            expected: bug
+        model:
+          name: Qwen/Qwen3-0.6B
+          device: auto
+          dtype: bfloat16
+          enable_thinking: false
+          revision: c1899de289a04d12100db370d81485cdf75e47ca
+        paths.compare: docs/compare.md
+        paths.metrics: metrics
+        paths.models: models
+        train.seed: 42
+    outs:
+    - path: docs/compare.md
+      hash: md5
+      md5: e1ae00d6d41d5e0e3b2a586dcefba80d
+      size: 3674
+    - path: metrics/compare_all_layers.json
+      hash: md5
+      md5: 8d8a054298aa468ae4f7fb6274805cbd
+      size: 2508

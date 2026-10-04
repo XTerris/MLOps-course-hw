@@ -1,0 +1,112 @@
+uv run --project .. --locked dvc repro
+Stage '../HW 4/dvc.yaml:tokenize' didn't change, skipping
+Running stage 'train_all':
+> uv run --project .. --locked python -m src.train --variant all_layers
+
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 311/311 [00:00<00:00, 7128.45it/s]
+[all_layers] mps, обучаемых 5,046,272 из 601,096,192 (0.840%); train 2114, val 268
+  шаг 0: база; val 0.636233
+  шаг 10: train 0.3733; val 0.438297
+  шаг 20: train 0.5946; val 0.340696
+  шаг 30: train 0.7849; val 0.312646
+  шаг 40: train 0.6964; val 0.336665
+  шаг 50: train 0.5157; val 0.262019
+  шаг 60: train 0.3990; val 0.317396
+  шаг 70: train 0.2448; val 0.289598
+  шаг 80: train 0.1681; val 0.288468
+  шаг 90: train 0.2560; val 0.304531
+  шаг 100: train 0.1789; val 0.256322
+  шаг 110: train 0.2937; val 0.264779
+  шаг 120: train 0.0940; val 0.262475
+  шаг 130: train 0.2385; val 0.251285
+  шаг 140: train 0.2218; val 0.258367
+  шаг 150: train 0.2160; val 0.235576
+  шаг 160: train 0.3175; val 0.244288
+  шаг 170: train 0.3112; val 0.240320
+  шаг 180: train 0.2057; val 0.234407
+  шаг 190: train 0.1719; val 0.226405
+  шаг 200: train 0.1624; val 0.232520
+  шаг 210: train 0.3740; val 0.237181
+  шаг 220: train 0.2110; val 0.235820
+  шаг 230: train 0.1043; val 0.235226
+  шаг 240: train 0.3753; val 0.229334
+  шаг 250: train 0.1367; val 0.226942
+  шаг 260: train 0.1084; val 0.226853
+  шаг 265: train 0.5865; val 0.226786
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:438: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+[all_layers] 265 шагов, 2114 примеров; train 1849.4 с, val 1021.0 с; память 6427.7 МиБ; адаптер 30.21 МиБ
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+Running stage 'train_freeze':
+> uv run --project .. --locked python -m src.train --variant freeze14
+
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 311/311 [00:00<00:00, 6385.49it/s]
+[freeze14] mps, обучаемых 2,523,136 из 598,573,056 (0.422%); train 2114, val 268
+  шаг 0: база; val 0.636233
+  шаг 10: train 0.4775; val 0.454407
+  шаг 20: train 0.4367; val 0.371904
+  шаг 30: train 0.5097; val 0.331563
+  шаг 40: train 0.7103; val 0.290524
+  шаг 50: train 0.4907; val 0.291003
+  шаг 60: train 0.5058; val 0.377781
+  шаг 70: train 0.2751; val 0.315614
+  шаг 80: train 0.1618; val 0.288557
+  шаг 90: train 0.1772; val 0.290496
+  шаг 100: train 0.1317; val 0.269830
+  шаг 110: train 0.3721; val 0.308633
+  шаг 120: train 0.0794; val 0.285481
+  шаг 130: train 0.2876; val 0.265407
+  шаг 140: train 0.2610; val 0.279744
+  шаг 150: train 0.2294; val 0.245952
+  шаг 160: train 0.3274; val 0.258175
+  шаг 170: train 0.3290; val 0.248910
+  шаг 180: train 0.2718; val 0.243226
+  шаг 190: train 0.2259; val 0.234807
+  шаг 200: train 0.1202; val 0.233827
+  шаг 210: train 0.3872; val 0.246320
+  шаг 220: train 0.2701; val 0.250570
+  шаг 230: train 0.1376; val 0.251916
+  шаг 240: train 0.3990; val 0.243552
+  шаг 250: train 0.1336; val 0.239482
+  шаг 260: train 0.1002; val 0.239687
+  шаг 265: train 0.8893; val 0.238834
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:438: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+[freeze14] 265 шагов, 2114 примеров; train 1692.8 с, val 935.3 с; память 5427.7 МиБ; адаптер 20.56 МиБ
+Updating lock file 'dvc.lock'
+
+Running stage 'plot':
+> uv run --project .. --locked python -m src.plot
+-> docs/curves.png
+Updating lock file 'dvc.lock'
+
+Running stage 'compare':
+> uv run --project .. --locked python -m src.compare --variant all_layers
+
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 311/311 [00:00<00:00, 7879.98it/s]
+-> metrics/compare_all_layers.json, docs/compare.md
+  база:    'bug'
+  адаптер: 'bug'
+  база:    'feature'
+  адаптер: 'documentation'
+  база:    'feature'
+  адаптер: 'feature'
+  база:    'question'
+  адаптер: 'question'
+  база:    'question'
+  адаптер: 'question'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Use `dvc push` to send your updates to remote storage.

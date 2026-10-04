@@ -12,6 +12,9 @@ make -C "HW 2" inspect
 make -C "HW 2" check
 make -C "HW 3" check
 make -C "HW 4" check
+make -C "HW 5" test
+make -C "HW 5" repro
+make -C "HW 5" check
 ```
 
 У каждой работы свой `Makefile` в её папке; общего корневого Makefile нет.
@@ -24,7 +27,8 @@ make -C "HW 4" check
 Для ДЗ 1 доступны `make generate`, `make bench`, `make test`, `make check`;
 для ДЗ 2 — `make inspect`, `make test`, `make check`; для ДЗ 3 — `make repro`,
 `make test`, `make check`, `make v1` и `make v2`; для ДЗ 4 — `make tokenize`,
-`make repro` и `make check`.
+`make repro` и `make check`; для ДЗ 5 — `make train`,
+`make compare`, `make test`, `make repro` и `make check`.
 
 ## Материалы
 
@@ -35,6 +39,9 @@ make -C "HW 4" check
   [условие](HW%203/2-zadanie-dz3.html).
 - [ДЗ 4: отчёт токенизации](HW%204/docs/tokenize_report.md),
   [разбор дефектов](HW%204/docs/defects.md), [условие](HW%204/2-zadanie-dz4.html).
+- [ДЗ 5: отчёт обучения](HW%205/docs/training_report.md),
+  [разбор дефектов](HW%205/docs/defects.md), [кривые](HW%205/docs/curves.png),
+  [сравнение](HW%205/docs/compare.md), [условие](HW%205/2-zadanie-dz5.html).
 - [Перенос и проверка общего окружения](docs/migration.md).
 - Лекции находятся в `Лекции/`. Видео ДЗ 1 остаются в `HW 1/` и исключены из Git.
 

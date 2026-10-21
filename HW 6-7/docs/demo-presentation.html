@@ -1,0 +1,260 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Отчёт ДЗ 6–7 · разделы</title><style>*{box-sizing:border-box}html,body{margin:0;overflow:hidden;background:#f3f6fa;font-family:Arial,sans-serif;color:#192b42}#stage{position:absolute;width:1920px;height:1080px;transform-origin:0 0;background:#f3f6fa}.slide{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity 900ms ease-in-out,transform 900ms ease-in-out;padding:60px 88px 80px;pointer-events:none}.slide.active{opacity:1;transform:translateY(0);pointer-events:auto}.slide.past{transform:translateY(-14px)}h1{font-size:48px;line-height:1.1;color:#173d69;margin:0 0 28px;padding-bottom:22px;border-bottom:2px solid #d6e2ef}.body{font-size:25px;line-height:1.38;max-height:850px}p{margin:0 0 .65em}h3{font-size:1.05em;color:#173d69;margin:.6em 0}table{border-collapse:collapse;width:100%;font-size:.88em;margin:15px 0}th,td{border:1px solid #cbd6e4;padding:10px 12px;text-align:left}th{background:#e5edf6}pre{font-family:Menlo,monospace;font-size:.82em;line-height:1.2;white-space:pre-wrap;overflow-wrap:anywhere;background:#10243e;color:#f0f4fa;padding:12px 16px;margin:8px 0}code{font-family:Menlo,monospace;font-size:.88em;overflow-wrap:anywhere}a{color:#17649a}.pairs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.pairs article{border-top:2px solid #b4c9df;padding-top:8px}.pairs p{margin-bottom:8px}.pairs h3{font-size:.98em;overflow-wrap:anywhere}.pairs pre{font-size:.78em}ul{padding-left:28px}li{margin:10px 0}footer{position:absolute;bottom:0;left:0;right:0;height:58px;background:#173d69;color:white;padding:14px 30px;font-size:20px;display:flex;justify-content:space-between;z-index:100}button{border:0;background:transparent;color:white;font-size:21px;cursor:pointer}</style><div id="stage"><section class="slide active"><h1>Результат</h1><div class="body"><p>Выбран <strong>qv-r8-low</strong>, run <code>93842900641d4cca87da85158f95b855</code>. Validation loss: <strong>0.794752 → 0.496835</strong>, отношение <strong>0.625144 ≤ 1.0</strong>. Кандидат зарегистрирован: <code>models:/my-qwen-adapter/1</code>; alias <code>candidate</code> указывает на эту версию.</p>
+<p>Оценка ответов: baseline — <strong>38/52 (73.08%); format 47/52 (90.38%); errors 0</strong>; кандидат — <strong>38/52 (73.08%); format 47/52 (90.38%); errors 0</strong>.</p>
+<p>Quality gate: <strong>REFUSE</strong> — Регрессия критического среза bug. Выпуск <strong>не принят</strong>; <code>champion</code> отсутствует. Порог не ослаблялся, baseline не заменялся. Это допустимый итог по условию работы.</p></div></section><section class="slide"><h1>Условия, данные и воспроизводимость</h1><div class="body"><p>Машина — Apple M4 Pro, 48 ГиБ общей памяти, macOS; PyTorch использует MPS, bfloat16. Python 3.12, PyTorch 2.14.0, Transformers 5.17.0, PEFT 0.21.0, pandas 2.3.3, MLflow 2.22.2. Окружение общее с прошлыми ДЗ, зависимости закреплены корневым <code>uv.lock</code>. Обучающий код сохранён коммитом <code>e3231d800cea9974609dc3c4d570a39daf99a825</code>; SHA-256 кода: <code>a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044</code>. Тег git_dirty может учитывать документы и посторонний журнал; исходники и конфиг закоммичены до sweep, снимок src и lock-файл сохранены в каждом run.</p>
+<p>База: <code>Qwen/Qwen3-0.6B</code>, ревизия <code>c1899de289a04d12100db370d81485cdf75e47ca</code>. Тензоры ДЗ 4 побайтово сохранены: 2114 train и 268 val. Полный индекс включает <strong>2188</strong> исходных train-вопросов; <strong>74</strong> записи не вошли в supervised-тензоры после обрезки. ID всех тензоров сопоставлены с исходным JSONL. В экспортируемом индексе две похожие на API-ключи строки заменены маркером; для каждого исходного вопроса сохранён SHA-256, проверки совпадений дополнительно выполнены на оригиналах.</p>
+<p>SHA-256 train: <code>433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714</code>; val: <code>c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633</code>. Полная связь исходников и тензоров — <a href="data-lineage.json">data-lineage.json</a>.</p></div></section><section class="slide"><h1>Короткий поиск и исправление подвыборки</h1><div class="body"><p>В исходной заготовке выбор первых строк оказался смещённым: 32 train содержали 22 feature, 9 bug, 1 question и ни одной documentation; все 8 val относились к question. Первый sweep честно завершился отказом регистрации: лучший val/base = 1.0487 &gt; 1.0. Его результаты сохранены в <code>metrics/initial-sweep.json</code>, <code>docs/initial-comparison.csv</code> и MLflow.</p>
+<p>До оценки ответов исправлен способ формирования подвыборок: seed 42, восемь train и два val каждого класса. Индексы закреплены в params.yaml, ID и метки — <a href="pool-selection.json">pool-selection.json</a>. Обучающие тензоры, порог и бюджет не менялись. После изменения кода и конфига выполнен новый полный sweep; результаты двух протоколов не смешиваются. Оценка ответов выполнена только для одного кандидата из исправленного sweep.</p>
+<p>Шесть исходных комбинаций меняют r, lr и target_modules. У всех seed 42, alpha/r=2, dropout 0.05, batch 1 × grad_accum 2, четыре обновления, train-пул 32 и общий val 8. Validation считается до обучения и на шагах 2 и 4. Это короткая учебная проба, не обучение полной эпохи и не доказательство устойчивого превосходства. Test не используется для выбора по loss.</p>
+<table>
+<thead>
+<tr>
+<th>Конфигурация</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">lr</th>
+<th style="text-align: right;">base val</th>
+<th style="text-align: right;">final val</th>
+<th style="text-align: right;">Время, с</th>
+<th style="text-align: right;">Память, МиБ</th>
+<th style="text-align: right;">Пакет, МиБ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qv-r8-low</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">0.794752</td>
+<td style="text-align: right;">0.496835</td>
+<td style="text-align: right;">17.33</td>
+<td style="text-align: right;">8810.0</td>
+<td style="text-align: right;">15.29</td>
+</tr>
+<tr>
+<td>qv-r4-low</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">0.794752</td>
+<td style="text-align: right;">0.541458</td>
+<td style="text-align: right;">16.84</td>
+<td style="text-align: right;">8606.0</td>
+<td style="text-align: right;">13.11</td>
+</tr>
+<tr>
+<td>qv-r4-high</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.794752</td>
+<td style="text-align: right;">0.629122</td>
+<td style="text-align: right;">17.34</td>
+<td style="text-align: right;">9754.0</td>
+<td style="text-align: right;">13.11</td>
+</tr>
+<tr>
+<td>all-r8-low</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">0.794752</td>
+<td style="text-align: right;">0.663989</td>
+<td style="text-align: right;">19.57</td>
+<td style="text-align: right;">8680.0</td>
+<td style="text-align: right;">30.20</td>
+</tr>
+<tr>
+<td>qv-r8-high</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.794752</td>
+<td style="text-align: right;">0.731470</td>
+<td style="text-align: right;">17.15</td>
+<td style="text-align: right;">9770.0</td>
+<td style="text-align: right;">15.29</td>
+</tr>
+<tr>
+<td>all-r8-high</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.0003</td>
+<td style="text-align: right;">0.794752</td>
+<td style="text-align: right;">0.941810</td>
+<td style="text-align: right;">17.79</td>
+<td style="text-align: right;">7970.0</td>
+<td style="text-align: right;">30.20</td>
+</tr>
+</tbody>
+</table>
+<p>Источник таблицы — MLflow, <a href="comparison.csv">comparison.csv</a>. Время относится к короткому обучению с validation; упаковка и загрузка модели в него не входят. Память — выборочный максимум <code>torch.mps.driver_allocated_memory</code>, включая кеш; размер пакета включает токенизатор. Для конфигурации выполнен один запуск, интервалы неопределённости не оценивались.</p></div></section><section class="slide"><h1>Golden set и протокол до генерации</h1><div class="body"><p>Golden содержит <strong>52 вопроса, по 13 на класс</strong>. Вопросы взяты из ранее отделённых test-проектов ДЗ 3; источник и обоснование каждой метки сохранены. Отбор и содержательную проверку выполнил агент Codex. Проверка человеком не заявляется. Неоднозначные, ошибочно размеченные и дублирующие вопросы исключены до оценки; примеры причин есть в data-lineage.json.</p>
+<p>Четыре среза соответствуют классам. Критические срезы закреплены до генерации: <strong>bug</strong> — потеря сообщения о неисправности мешает маршрутизации ошибок; <strong>documentation</strong> — запросы документации легко спутать с новой функциональностью. Допуск регрессии общей accuracy, format_rate и accuracy обоих критических срезов равен нулю.</p>
+<p>Контроль утечки: 0 точных нормализованных совпадений и 0 пересечений group_id с train. Группа — исходный GitHub-проект; разбиение выполнено до токенизации. Дополнительно разобраны пять лексически ближайших пар train/golden; максимальный Jaccard множеств слов — 0.3617. Это дополнительная проверка, а не доказательство отсутствия всех смысловых перефразов. Golden служит регрессионным контрактом, а не независимым финальным аудитом.</p>
+<p>Для обеих версий общая system-инструкция, <code>do_sample=False</code>, seed 42, <code>enable_thinking=False</code>, максимум 32 новых токена. Вопрос содержит choices, но expected модели не передаётся. JSON должен содержать только строковое поле answer с допустимой меткой. Пустые, неправильные и аварийные ответы остаются в знаменателе; accuracy и format_rate считаются отдельно. Ошибки контракта ID вызывают ValueError, а плохой ответ получает нулевой результат.</p>
+<p>Протокол: <code>292ecab5a624a620af433080cca5a1521b43f4d4c3312e6f0989e8ce676ee294</code>; golden: <code>6f6a04503c8b174f95cf1c553786b2fcb9e51121da17cb8eb10bd7561482a6ba</code>; baseline spec: <code>f71269b95f6b4e1e160fa25e9af6c973517cfebad15880b75b56c8184680b163</code>. Конфигурация — <code>evaluation/params.json</code>, исходная точка отсчёта — <code>evaluation/baseline.json</code>. Наборы версионированы DVC; локальный remote не доступен из Git clone, поэтому к сдаче приложен сам data/eval и инструкция восстановления.</p></div></section><section class="slide"><h1>Общие результаты и срезы</h1><div class="body"><table>
+<thead>
+<tr>
+<th>Срез</th>
+<th style="text-align: right;">n</th>
+<th>Baseline: correct / valid / errors</th>
+<th>Accuracy / format</th>
+<th>Candidate: correct / valid / errors</th>
+<th>Accuracy / format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>overall</td>
+<td style="text-align: right;">52</td>
+<td>38 / 47 / 0</td>
+<td>73.08% / 90.38%</td>
+<td>38 / 47 / 0</td>
+<td>73.08% / 90.38%</td>
+</tr>
+<tr>
+<td>bug</td>
+<td style="text-align: right;">13</td>
+<td>8 / 11 / 0</td>
+<td>61.54% / 84.62%</td>
+<td>7 / 10 / 0</td>
+<td>53.85% / 76.92%</td>
+</tr>
+<tr>
+<td>documentation</td>
+<td style="text-align: right;">13</td>
+<td>6 / 12 / 0</td>
+<td>46.15% / 92.31%</td>
+<td>7 / 13 / 0</td>
+<td>53.85% / 100.00%</td>
+</tr>
+<tr>
+<td>feature</td>
+<td style="text-align: right;">13</td>
+<td>12 / 12 / 0</td>
+<td>92.31% / 92.31%</td>
+<td>12 / 12 / 0</td>
+<td>92.31% / 92.31%</td>
+</tr>
+<tr>
+<td>question</td>
+<td style="text-align: right;">13</td>
+<td>12 / 12 / 0</td>
+<td>92.31% / 92.31%</td>
+<td>12 / 12 / 0</td>
+<td>92.31% / 92.31%</td>
+</tr>
+</tbody>
+</table>
+<p>Counts относятся к строгому end-to-end контракту; корректная по смыслу метка вне JSON не засчитывается. В данном наборе классовые срезы не пересекаются; scorer также поддерживает пересекающиеся срезы и не увеличивает общий n. На срезе из 13 вопросов одна ошибка меняет accuracy на 7.69 п.п.; результат не доказывает статистически устойчивого преимущества.</p>
+<p>Исправлены (1): <code>github:alteryx/featuretools#2736</code>.</p>
+<p>Потеряны (1): <code>github:3b1b/manim#2145</code>.</p></div></section><section class="slide"><h1>Пять пар реальных ответов</h1><div class="body"><div class="pairs"><article><h3>github:alteryx/featuretools#2736</h3>
+<p>Эталон: <code>documentation</code>. В API-справочнике отсутствуют существующие примитивы.</p>
+<p>Baseline — не засчитано:</p>
+<pre><code class="language-text">{&quot;answer&quot;: &quot;bug&quot;}
+</code></pre>
+<p>Candidate — верно:</p>
+<pre><code class="language-text">{&quot;answer&quot;: &quot;documentation&quot;}
+</code></pre>
+<p>Оба ответа валидны по формату; различие результата определяется совпадением метки с эталоном.</p>
+</article><article><h3>github:3b1b/manim#2145</h3>
+<p>Эталон: <code>bug</code>. ImageMobject получает изображение другого объекта.</p>
+<p>Baseline — верно:</p>
+<pre><code class="language-text">{&quot;answer&quot;: &quot;bug&quot;}
+</code></pre>
+<p>Candidate — не засчитано:</p>
+<pre><code class="language-text">```json
+{&quot;answer&quot;: &quot;bug&quot;}
+```
+</code></pre>
+<p>Хотя по тексту можно пытаться угадать намерение модели, нарушение JSON-контракта не исправляется scorer автоматически.</p>
+</article><article><h3>github:3b1b/manim#2154</h3>
+<p>Эталон: <code>bug</code>. У прямоугольника с нулевой шириной не работает последующее изменение размера.</p>
+<p>Baseline — не засчитано:</p>
+<pre><code class="language-text">```json
+{&quot;answer&quot;: &quot;bug&quot;}
+```
+</code></pre>
+<p>Candidate — не засчитано:</p>
+<pre><code class="language-text">```json
+{&quot;answer&quot;: &quot;bug&quot;}
+```
+</code></pre>
+<p>Хотя по тексту можно пытаться угадать намерение модели, нарушение JSON-контракта не исправляется scorer автоматически.</p>
+</article><article><h3>github:docling-project/docling#724</h3>
+<p>Эталон: <code>documentation</code>. Пример документации содержит пропущенные импорты и неверное имя класса.</p>
+<p>Baseline — не засчитано:</p>
+<pre><code class="language-text">```json
+{
+  &quot;answer&quot;: &quot;bug&quot;
+}
+```
+</code></pre>
+<p>Candidate — не засчитано:</p>
+<pre><code class="language-text">{&quot;answer&quot;: &quot;bug&quot;}
+</code></pre>
+<p>Хотя по тексту можно пытаться угадать намерение модели, нарушение JSON-контракта не исправляется scorer автоматически.</p>
+</article><article><h3>github:gradio-app/gradio#6973</h3>
+<p>Эталон: <code>feature</code>. Предлагается поддержка Polars в DataFrame.</p>
+<p>Baseline — верно:</p>
+<pre><code class="language-text">{&quot;answer&quot;: &quot;feature&quot;}
+</code></pre>
+<p>Candidate — верно:</p>
+<pre><code class="language-text">{&quot;answer&quot;: &quot;feature&quot;}
+</code></pre>
+<p>Оба ответа валидны по формату; различие результата определяется совпадением метки с эталоном.</p></article></div></div></section><section class="slide"><h1>Behavioral, гейт и выпуск</h1><div class="body"><table>
+<thead>
+<tr>
+<th>Кейс</th>
+<th>Эталон</th>
+<th>Baseline raw</th>
+<th>Candidate raw</th>
+<th>Candidate passed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>format</td>
+<td>bug</td>
+<td>&#96;&#96;&#96;json<br>{&quot;answer&quot;: &quot;bug&quot;}<br>&#96;&#96;&#96;</td>
+<td>&#96;&#96;&#96;json<br>{&quot;answer&quot;: &quot;bug&quot;}<br>&#96;&#96;&#96;</td>
+<td>False</td>
+</tr>
+<tr>
+<td>paraphrase</td>
+<td>bug</td>
+<td>{&quot;answer&quot;: &quot;bug&quot;}</td>
+<td>{&quot;answer&quot;: &quot;bug&quot;}</td>
+<td>True</td>
+</tr>
+<tr>
+<td>refusal</td>
+<td>REFUSE</td>
+<td>{&quot;answer&quot;: &quot;REFUSE&quot;}</td>
+<td>{&quot;answer&quot;: &quot;REFUSE&quot;}</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Format использует отдельный ID базового golden-кейса; paraphrase связан с ним через group_id и сохраняет смысл задачи. Refusal проверяет вопрос о столице Франции вне темы классификации issue. Behavioral считается отдельно и не увеличивает n golden.</p>
+<p>Отрицательная проверка: rejected=True; причина: Некорректный count: correct. Испорчена копия сохранённых ответов, веса и aliases не менялись. Эта проверка доказывает отказ гейта на испорченных данных, а не качество генерации.</p>
+<p>Фактическое решение: <strong>не принят</strong>. Причина: Регрессия критического среза bug. Следующий шаг — в отдельном эксперименте обучать и проверять JSON-формат и обязательное поведение. Текущий протокол и baseline ради PASS не менялись.</p>
+<p>Дополнительно кандидат не прошёл format-кейс: он добавил Markdown-ограждение вокруг JSON. Behavioral: 2/3. Перефраз и отказ прошли; форматный кейс не прошёл и у baseline. Для допуска кандидата обязательны все три кейса независимо от результатов baseline.</p>
+<p>Дополнительная проверка tools/check_raw_negative.py меняет только копию raw-ответов и пересчитывает согласованные counts/per_item без подмены behavioral. Она получила отказ «Регрессия общей accuracy»; исходные ответы и aliases остались прежними. Доказательство сохранено в metrics/negative-raw-proof.json.</p></div></section><section class="slide"><h1>Почему сходство текста и judge недостаточны</h1><div class="body"><p>Метки bug и feature имеют одинаково короткую форму, но означают разные намерения. ROUGE/BLEU оценивают совпадения слов, а не правильность маршрутизации; пояснение с правильным словом внутри тоже не выполняет строгий JSON-контракт. Здесь правильность проверяет программный scorer по заранее заданным меткам.</p>
+<p>Модель-судья могла бы помочь разбирать неоднозначные issue и открытые объяснения. Для этого нужны явная рубрика, скрытые названия моделей, перестановка A/B и B/A, сохранение вердиктов и сверка спорных случаев человеком. Судья может предпочитать длинный или уверенный ответ, зависеть от порядка и повторять собственные ошибки. В обязательной оценке judge и платный API не использовались.</p></div></section><section class="slide"><h1>Хранение и приёмка</h1><div class="body"><p>Probe-файл run <code>fcaaf415cd634191ab90a1930ab8f5cf</code> пережил <code>--force-recreate</code> MLflow; SHA-256 <code>2a8a0fbb932dca993f193ab0382b4c1209ba0242713ba0079b0802a52eb90fb9</code> совпал после скачивания. Postgres и <code>/mlartifacts</code> используют разные именованные volumes. Удаление volumes в проверке не выполнялось.</p>
+<p>Приёмка: <strong>9/9 проверок MLflow/загрузки и 24/24 исходных теста оценки прошли</strong>. Загрузка candidate проверена в новом изолированном процессе, без локального конфига и с HF_HUB_OFFLINE=1. Эти 24 теста используют синтетические фикстуры и не измеряют качество Qwen; измерения выше получены отдельным make evaluate. Дополнительно прошли 7 проверок границ scorer/gate. Исходные tests/ сохранены побайтово, отпечаток <strong>c42ac7788026</strong>.</p>
+<p>После обновления общего окружения прошли тесты прежних ДЗ 1, 2, 3 и 5; для ДЗ 4 на 20 распределённых примерах каждого split сверены input_ids, attention_mask и labels — совпадают побайтово. Старые полные обучения не повторялись. Проверки совместимости не подменяют повторное измерение прежних экспериментов в новом окружении.</p>
+<p>Все сырые ответы, per-item результаты, diff, quality-gate, negative-gate, storage-check и идентификаторы версий находятся в metrics/. Логи команд сохранены в docs/. Веса, тензоры, .venv и volumes в Git и архив сдачи не включаются.</p></div></section><section class="slide"><h1>Runs в MLflow</h1><div class="body"><ul>
+<li>
+<p><a href="http://127.0.0.1:5006/#/experiments/1/runs/dd4a1e2bb03d44fb89b16f7438eda44f">Исправленный sweep</a></p>
+</li>
+<li>
+<p><a href="http://127.0.0.1:5006/#/experiments/1/runs/7a2e4c507d7a4dbca0e62f7e495be720">Первый отклонённый sweep</a></p>
+</li>
+<li>
+<p><a href="http://127.0.0.1:5006/#/experiments/1/runs/93842900641d4cca87da85158f95b855">Кандидат</a></p>
+</li>
+<li>
+<p><a href="http://127.0.0.1:5006/#/experiments/2/runs/a1fa5fbdbde44a988b925014026bdb17">Оценка baseline/candidate</a></p>
+</li>
+<li>
+<p><a href="http://127.0.0.1:5006/#/experiments/1/runs/fcaaf415cd634191ab90a1930ab8f5cf">Проверка хранения</a></p>
+</li>
+<li>
+<p><a href="https://github.com/XTerris/MLOps-course-hw">GitHub-репозиторий</a></p>
+</li>
+</ul>
+<p>Ссылки MLflow работают на машине с сохранёнными учебными volumes. Для проверки без этого сервера в приложение включены сырые ответы, метрики, таблица сравнения, протокол и журналы приёмки.</p></div></section><footer><span>ДЗ 6–7 · Шуликов М. В. · единый отчёт</span><span><button onclick="deck.go(index-1)">‹</button> <span id="counter"></span> <button onclick="deck.next()">›</button></span></footer></div><script>const pages=[...document.querySelectorAll('.slide')];let index=0;function resize(){let z=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(${(innerWidth-z*1920)/2}px,${(innerHeight-z*1080)/2}px) scale(${z})`}function fit(){for(const s of pages){const b=s.querySelector('.body');let z=25;b.style.fontSize=z+'px';const avail=994-(b.offsetTop);while(b.scrollHeight>avail&&z>17){z-=.25;b.style.fontSize=z+'px'}}}function go(i){index=Math.max(0,Math.min(pages.length-1,i));pages.forEach((s,j)=>{s.classList.toggle('active',index===j);s.classList.toggle('past',j<index)});counter.textContent=(index+1)+' / '+pages.length}window.deck={go,next:()=>go(index+1),count:pages.length};addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(index-1)}});addEventListener('resize',resize);fit();resize();go(0);</script></html>

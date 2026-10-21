@@ -1,106 +1,103 @@
 {
-  "file": "HW67-demo.mp4",
-  "duration_seconds": 374.0,
+  "file": "HW67-demo-v2.mp4",
+  "duration_seconds": 408.52,
   "width": 1920,
   "height": 1080,
   "fps": 25,
   "codec": "h264",
-  "bytes": 17426297,
-  "sha256": "ea3681a920ac4bf46df2cc6aeff363b79c5e90ad6d07908c4a0fd3bd165a1d4f",
+  "bytes": 24075177,
+  "sha256": "bf887530e20f7624e9ad2d59985ab2787bfc82b3648312cabd3c1c20f0645817",
   "full_decode_returncode": 0,
+  "report_sections": 10,
+  "report_section_seconds": 5,
+  "transition_ms": 900,
+  "interactive_mlflow": true,
   "chapters": [
     {
       "scene": 1,
-      "title": "Единый отчёт: кандидат выбран, выпуск отклонён"
+      "title": "MLflow: фильтр одного sweep и шесть дочерних runs"
     },
     {
       "scene": 2,
-      "title": "Условия и происхождение тензоров ДЗ 4"
+      "title": "Открываем выбранный run qv-r8-low"
     },
     {
       "scene": 3,
-      "title": "Первый поиск сохранён; перекос подвыборки исправлен до оценки"
+      "title": "Параметры: бюджет, LoRA и закреплённые индексы"
     },
     {
       "scene": 4,
-      "title": "Настоящий MLflow: шесть завершённых дочерних runs"
+      "title": "Model metrics: реальные измерения кандидата"
     },
     {
       "scene": 5,
-      "title": "Победитель: Git SHA, код, данные и точная ревизия базы"
+      "title": "Кривые train_loss и val_loss по шагам"
     },
     {
       "scene": 6,
-      "title": "Измерения кандидата и история loss в MLflow"
+      "title": "Artifacts: модель, signature и пример входа"
     },
     {
       "scene": 7,
-      "title": "Реестр: версия 1 с alias candidate; champion не назначен"
+      "title": "MLmodel: описание переносимого модельного пакета"
     },
     {
       "scene": 8,
-      "title": "52 вопроса, четыре среза и заранее закреплённый протокол"
+      "title": "Реальный адаптер и tokenizer в artifact store"
     },
     {
       "scene": 9,
-      "title": "Результаты: 38/52 у обеих версий; bug ухудшился"
+      "title": "Manifest: точная база, конфигурация и генерация"
     },
     {
       "scene": 10,
-      "title": "Исправленный ответ: отсутствующие API-примитивы"
+      "title": "Samples: сохранённые реальные ответы"
     },
     {
       "scene": 11,
-      "title": "Потерянный ответ: неверное изображение ImageMobject"
+      "title": "Реестр: candidate есть, champion не назначен"
     },
     {
       "scene": 12,
-      "title": "Строгий формат: Markdown-ограждение не является валидным JSON"
+      "title": "Открываем конкретную версию реестра"
     },
     {
       "scene": 13,
-      "title": "Три behavioral-кейса; выпуск отклонён без изменения baseline"
+      "title": "Оценка baseline/candidate в отдельном MLflow run"
     },
     {
       "scene": 14,
-      "title": "Четыре дефекта: причины, исправления и доказательства"
+      "title": "Отчёт оценки кандидата: counts и срезы"
     },
     {
       "scene": 15,
-      "title": "Код: отдельный run на конфигурацию и полные версии входов"
+      "title": "Сырые ответы: исходный материал для scorer"
     },
     {
       "scene": 16,
-      "title": "Код scorer: строгий JSON, ошибки остаются в знаменателе"
+      "title": "Код и журналы: исходные файлы выполненной работы"
     },
     {
       "scene": 17,
-      "title": "Код gate: совместимость, counts, критические срезы и behavior"
+      "title": "Отрицательная проверка: сохранённый журнал"
     },
     {
       "scene": 18,
-      "title": "Сохранённый журнал: отрицательная проверка успешно отклонила копию"
+      "title": "Проверка сохранности после force-recreate"
     },
     {
       "scene": 19,
-      "title": "Сохранённый журнал: артефакт пережил force-recreate"
-    },
-    {
-      "scene": 20,
-      "title": "Сохранённый журнал: 9/9, 24 теста и исходный отпечаток tests/"
-    },
-    {
-      "scene": 21,
-      "title": "Итог: проверки зелёные, candidate сохранён, champion отсутствует"
+      "title": "Итоговая приёмка: 9/9, 24 теста, неизменённый tests/"
     }
   ],
   "visual_review_timestamps_seconds": [
-    15,
+    12,
     75,
-    145,
+    135,
     205,
-    265,
-    325
+    275,
+    345,
+    395
   ],
   "tests_fingerprint": "c42ac7788026"
 }

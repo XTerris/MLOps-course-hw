@@ -1,0 +1,1308 @@
+{
+  "runs": [
+    {
+      "run_id": "dd4a1e2bb03d44fb89b16f7438eda44f",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/dd4a1e2bb03d44fb89b16f7438eda44f/artifacts",
+      "start_time": 1792613916297,
+      "end_time": 1792614066063,
+      "params": {},
+      "metrics": {},
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "kind": "sweep",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "mlflow.runName": "sweep"
+      }
+    },
+    {
+      "run_id": "24b55612e67b457685c99f6016104d7f",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/24b55612e67b457685c99f6016104d7f/artifacts",
+      "start_time": 1792613916309,
+      "end_time": 1792613943036,
+      "params": {
+        "r": "4",
+        "lr": "0.0001",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "train.train_indices": "[1156, 173, 36, 1345, 404, 276, 261, 189, 563, 410, 1962, 233, 231, 526, 1095, 1124, 1781, 55, 673, 1328, 699, 1490, 849, 6, 718, 1908, 1689, 1543, 711, 984, 1685, 500]",
+        "train.val_indices": "[130, 30, 58, 176, 115, 112, 17, 13]",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.18133890733588487,
+        "val_loss": 0.5414581280201674,
+        "base_val_loss": 0.7947523756884038,
+        "final_val_loss": 0.5414581280201674,
+        "seconds": 16.842498583020642,
+        "steps": 4.0,
+        "peak_memory_mb": 8605.984375,
+        "trainable_params": 573440.0,
+        "adapter_mb": 13.106332778930664
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.parentRunId": "dd4a1e2bb03d44fb89b16f7438eda44f",
+        "mlflow.runName": "qv-r4-low",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "kind": "candidate",
+        "candidate": "qv-r4-low",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"24b55612e67b457685c99f6016104d7f\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:18:58.924062\", \"model_uuid\": \"13ba5398ac074bad8cceaf221d38b8e6\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-ak0uqqw5/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 0.7947523756884038,
+            "timestamp": 1792613923376
+          },
+          {
+            "step": 2,
+            "value": 0.6892010187730193,
+            "timestamp": 1792613930848
+          },
+          {
+            "step": 4,
+            "value": 0.5414581280201674,
+            "timestamp": 1792613937458
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 0.5750107280910015,
+            "timestamp": 1792613925782
+          },
+          {
+            "step": 2,
+            "value": 2.443273365497589,
+            "timestamp": 1792613930848
+          },
+          {
+            "step": 3,
+            "value": 0.6252233386039734,
+            "timestamp": 1792613932954
+          },
+          {
+            "step": 4,
+            "value": 0.18133890733588487,
+            "timestamp": 1792613937458
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "f16f0c917d8f42c1a13f18d87c1e66f7",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/f16f0c917d8f42c1a13f18d87c1e66f7/artifacts",
+      "start_time": 1792613943060,
+      "end_time": 1792613966654,
+      "params": {
+        "r": "4",
+        "lr": "0.0003",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "train.train_indices": "[1156, 173, 36, 1345, 404, 276, 261, 189, 563, 410, 1962, 233, 231, 526, 1095, 1124, 1781, 55, 673, 1328, 699, 1490, 849, 6, 718, 1908, 1689, 1543, 711, 984, 1685, 500]",
+        "train.val_indices": "[130, 30, 58, 176, 115, 112, 17, 13]",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.28138844668865204,
+        "val_loss": 0.6291222581639886,
+        "base_val_loss": 0.7947523756884038,
+        "final_val_loss": 0.6291222581639886,
+        "seconds": 17.33872662507929,
+        "steps": 4.0,
+        "peak_memory_mb": 9754.03125,
+        "trainable_params": 573440.0,
+        "adapter_mb": 13.10633373260498
+      },
+      "tags": {
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.parentRunId": "dd4a1e2bb03d44fb89b16f7438eda44f",
+        "mlflow.runName": "qv-r4-high",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "kind": "candidate",
+        "candidate": "qv-r4-high",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.log-model.history": "[{\"run_id\": \"f16f0c917d8f42c1a13f18d87c1e66f7\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:19:23.589747\", \"model_uuid\": \"69dec58b12d64ce887fddc7eac48fd13\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-aht09lo2/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 0.7947523756884038,
+            "timestamp": 1792613948787
+          },
+          {
+            "step": 2,
+            "value": 0.5034987442195415,
+            "timestamp": 1792613955972
+          },
+          {
+            "step": 4,
+            "value": 0.6291222581639886,
+            "timestamp": 1792613962562
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 0.5750107280910015,
+            "timestamp": 1792613951165
+          },
+          {
+            "step": 2,
+            "value": 2.109393537044525,
+            "timestamp": 1792613955972
+          },
+          {
+            "step": 3,
+            "value": 0.17939344234764576,
+            "timestamp": 1792613958141
+          },
+          {
+            "step": 4,
+            "value": 0.28138844668865204,
+            "timestamp": 1792613962562
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "93842900641d4cca87da85158f95b855",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/93842900641d4cca87da85158f95b855/artifacts",
+      "start_time": 1792613966678,
+      "end_time": 1792613990245,
+      "params": {
+        "r": "8",
+        "lr": "0.0001",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "train.train_indices": "[1156, 173, 36, 1345, 404, 276, 261, 189, 563, 410, 1962, 233, 231, 526, 1095, 1124, 1781, 55, 673, 1328, 699, 1490, 849, 6, 718, 1908, 1689, 1543, 711, 984, 1685, 500]",
+        "train.val_indices": "[130, 30, 58, 176, 115, 112, 17, 13]",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.19772879360243678,
+        "base_val_loss": 0.7947523756884038,
+        "final_val_loss": 0.49683453142642975,
+        "val_loss": 0.49683453142642975,
+        "seconds": 17.333039874909446,
+        "steps": 4.0,
+        "peak_memory_mb": 8810.03125,
+        "trainable_params": 1146880.0,
+        "adapter_mb": 15.2938871383667
+      },
+      "tags": {
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.parentRunId": "dd4a1e2bb03d44fb89b16f7438eda44f",
+        "mlflow.runName": "qv-r8-low",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "kind": "candidate",
+        "candidate": "qv-r8-low",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.log-model.history": "[{\"run_id\": \"93842900641d4cca87da85158f95b855\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:19:47.170802\", \"model_uuid\": \"95a94b05bf1a4785abaac16fa3bf1a0b\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-oaidfgro/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 0.7947523756884038,
+            "timestamp": 1792613972567
+          },
+          {
+            "step": 2,
+            "value": 0.5402681212872267,
+            "timestamp": 1792613979828
+          },
+          {
+            "step": 4,
+            "value": 0.49683453142642975,
+            "timestamp": 1792613986230
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 0.5750107280910015,
+            "timestamp": 1792613974836
+          },
+          {
+            "step": 2,
+            "value": 2.3466827273368835,
+            "timestamp": 1792613979828
+          },
+          {
+            "step": 3,
+            "value": 0.3134952113032341,
+            "timestamp": 1792613981870
+          },
+          {
+            "step": 4,
+            "value": 0.19772879360243678,
+            "timestamp": 1792613986230
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "32b1645b6ad1431995f020ea953c4f09",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/32b1645b6ad1431995f020ea953c4f09/artifacts",
+      "start_time": 1792613990273,
+      "end_time": 1792614014211,
+      "params": {
+        "r": "8",
+        "lr": "0.0003",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "train.train_indices": "[1156, 173, 36, 1345, 404, 276, 261, 189, 563, 410, 1962, 233, 231, 526, 1095, 1124, 1781, 55, 673, 1328, 699, 1490, 849, 6, 718, 1908, 1689, 1543, 711, 984, 1685, 500]",
+        "train.val_indices": "[130, 30, 58, 176, 115, 112, 17, 13]",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "val_loss": 0.7314702179282904,
+        "train_loss": 0.5000328719615936,
+        "base_val_loss": 0.7947523756884038,
+        "final_val_loss": 0.7314702179282904,
+        "seconds": 17.148639834020287,
+        "steps": 4.0,
+        "peak_memory_mb": 9770.03125,
+        "trainable_params": 1146880.0,
+        "adapter_mb": 15.293888092041016
+      },
+      "tags": {
+        "candidate": "qv-r8-high",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.parentRunId": "dd4a1e2bb03d44fb89b16f7438eda44f",
+        "mlflow.runName": "qv-r8-high",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "kind": "candidate",
+        "mlflow.log-model.history": "[{\"run_id\": \"32b1645b6ad1431995f020ea953c4f09\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:20:10.829400\", \"model_uuid\": \"f7d4387b83de4d63ac834d1fea5c871f\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-4vt70z4m/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 0.7947523756884038,
+            "timestamp": 1792613996313
+          },
+          {
+            "step": 2,
+            "value": 0.5510776313021779,
+            "timestamp": 1792614003457
+          },
+          {
+            "step": 4,
+            "value": 0.7314702179282904,
+            "timestamp": 1792614009857
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 0.5750107280910015,
+            "timestamp": 1792613998553
+          },
+          {
+            "step": 2,
+            "value": 2.3043487668037415,
+            "timestamp": 1792614003457
+          },
+          {
+            "step": 3,
+            "value": 0.09574172832071781,
+            "timestamp": 1792614005449
+          },
+          {
+            "step": 4,
+            "value": 0.5000328719615936,
+            "timestamp": 1792614009857
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "73bea9f5c6dc40a6bcb66c618483b03d",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/73bea9f5c6dc40a6bcb66c618483b03d/artifacts",
+      "start_time": 1792614014235,
+      "end_time": 1792614040859,
+      "params": {
+        "r": "8",
+        "lr": "0.0001",
+        "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "train.train_indices": "[1156, 173, 36, 1345, 404, 276, 261, 189, 563, 410, 1962, 233, 231, 526, 1095, 1124, 1781, 55, 673, 1328, 699, 1490, 849, 6, 718, 1908, 1689, 1543, 711, 984, 1685, 500]",
+        "train.val_indices": "[130, 30, 58, 176, 115, 112, 17, 13]",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "val_loss": 0.6639890861697495,
+        "train_loss": 0.3100481852889061,
+        "base_val_loss": 0.7947523756884038,
+        "final_val_loss": 0.6639890861697495,
+        "seconds": 19.565518624847755,
+        "steps": 4.0,
+        "peak_memory_mb": 8680.03125,
+        "trainable_params": 5046272.0,
+        "adapter_mb": 30.204002380371094
+      },
+      "tags": {
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.parentRunId": "dd4a1e2bb03d44fb89b16f7438eda44f",
+        "mlflow.runName": "all-r8-low",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "kind": "candidate",
+        "candidate": "all-r8-low",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.log-model.history": "[{\"run_id\": \"73bea9f5c6dc40a6bcb66c618483b03d\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:20:37.262962\", \"model_uuid\": \"c64953cea35540929d3ee85d8ea39d53\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-5r97upir/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 0.7947523756884038,
+            "timestamp": 1792614020546
+          },
+          {
+            "step": 2,
+            "value": 0.5161433219909668,
+            "timestamp": 1792614028570
+          },
+          {
+            "step": 4,
+            "value": 0.6639890861697495,
+            "timestamp": 1792614036138
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 2,
+            "value": 2.0884020924568176,
+            "timestamp": 1792614028570
+          },
+          {
+            "step": 4,
+            "value": 0.3100481852889061,
+            "timestamp": 1792614036138
+          },
+          {
+            "step": 1,
+            "value": 0.5750107280910015,
+            "timestamp": 1792614023155
+          },
+          {
+            "step": 3,
+            "value": 0.1664122212678194,
+            "timestamp": 1792614030843
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "ca61d609ff68450dae4301f2d44c1a79",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/ca61d609ff68450dae4301f2d44c1a79/artifacts",
+      "start_time": 1792614040874,
+      "end_time": 1792614066037,
+      "params": {
+        "r": "8",
+        "lr": "0.0003",
+        "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "train.train_indices": "[1156, 173, 36, 1345, 404, 276, 261, 189, 563, 410, 1962, 233, 231, 526, 1095, 1124, 1781, 55, 673, 1328, 699, 1490, 849, 6, 718, 1908, 1689, 1543, 711, 984, 1685, 500]",
+        "train.val_indices": "[130, 30, 58, 176, 115, 112, 17, 13]",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "val_loss": 0.9418103601783514,
+        "train_loss": 1.4182093739509583,
+        "base_val_loss": 0.7947523756884038,
+        "final_val_loss": 0.9418103601783514,
+        "seconds": 17.78614291595295,
+        "steps": 4.0,
+        "peak_memory_mb": 7970.03125,
+        "trainable_params": 5046272.0,
+        "adapter_mb": 30.20400333404541
+      },
+      "tags": {
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.parentRunId": "dd4a1e2bb03d44fb89b16f7438eda44f",
+        "mlflow.runName": "all-r8-high",
+        "git_sha": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "git_dirty": "True",
+        "code_sha256": "a412caf2195a2524d1ddfcd9a13bfb4d0b0438a5ef5bc41fd6bbd3b8bd2bc044",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "0e5f5bb68e578e9885cfc37eabc6bf5bcbc2882fdc796765f1e5f82eb085cb51",
+        "kind": "candidate",
+        "candidate": "all-r8-high",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.log-model.history": "[{\"run_id\": \"ca61d609ff68450dae4301f2d44c1a79\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:21:02.394363\", \"model_uuid\": \"19e7e39305e6449dbed0d2a75c5e7ac3\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-11g4hr2g/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 0.7947523756884038,
+            "timestamp": 1792614046086
+          },
+          {
+            "step": 2,
+            "value": 0.7873993022367358,
+            "timestamp": 1792614053951
+          },
+          {
+            "step": 4,
+            "value": 0.9418103601783514,
+            "timestamp": 1792614061076
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 0.5750107280910015,
+            "timestamp": 1792614048719
+          },
+          {
+            "step": 2,
+            "value": 3.5235595703125,
+            "timestamp": 1792614053951
+          },
+          {
+            "step": 3,
+            "value": 0.05977041367441416,
+            "timestamp": 1792614056247
+          },
+          {
+            "step": 4,
+            "value": 1.4182093739509583,
+            "timestamp": 1792614061076
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "7a2e4c507d7a4dbca0e62f7e495be720",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/7a2e4c507d7a4dbca0e62f7e495be720/artifacts",
+      "start_time": 1792613680845,
+      "end_time": 1792613829102,
+      "params": {},
+      "metrics": {},
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "kind": "sweep",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "mlflow.runName": "sweep"
+      }
+    },
+    {
+      "run_id": "016429f0cb664b658039b70f6e71d7d0",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/016429f0cb664b658039b70f6e71d7d0/artifacts",
+      "start_time": 1792613680876,
+      "end_time": 1792613708547,
+      "params": {
+        "r": "4",
+        "lr": "0.0001",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.15700237825512886,
+        "val_loss": 1.8597435504198074,
+        "base_val_loss": 1.7733097337186337,
+        "final_val_loss": 1.8597435504198074,
+        "seconds": 19.43907087482512,
+        "steps": 4.0,
+        "peak_memory_mb": 6495.953125,
+        "trainable_params": 573440.0,
+        "adapter_mb": 13.106332778930664
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "mlflow.parentRunId": "7a2e4c507d7a4dbca0e62f7e495be720",
+        "mlflow.runName": "qv-r4-low",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "kind": "candidate",
+        "candidate": "qv-r4-low",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"016429f0cb664b658039b70f6e71d7d0\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:15:05.558551\", \"model_uuid\": \"3770db290d814a29ba28d53fda71a9b6\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-xppb9ei1/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 1.7733097337186337,
+            "timestamp": 1792613688891
+          },
+          {
+            "step": 2,
+            "value": 1.758776742964983,
+            "timestamp": 1792613697601
+          },
+          {
+            "step": 4,
+            "value": 1.8597435504198074,
+            "timestamp": 1792613704521
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 1.0187562108039856,
+            "timestamp": 1792613691546
+          },
+          {
+            "step": 2,
+            "value": 0.3142838701605797,
+            "timestamp": 1792613697601
+          },
+          {
+            "step": 3,
+            "value": 0.17915938049554825,
+            "timestamp": 1792613698887
+          },
+          {
+            "step": 4,
+            "value": 0.15700237825512886,
+            "timestamp": 1792613704521
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "c4aadbfc7cf847f78b538291cd189b28",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/c4aadbfc7cf847f78b538291cd189b28/artifacts",
+      "start_time": 1792613708564,
+      "end_time": 1792613732937,
+      "params": {
+        "r": "4",
+        "lr": "0.0003",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.1516769453883171,
+        "val_loss": 2.152291849255562,
+        "base_val_loss": 1.7733097337186337,
+        "final_val_loss": 2.152291849255562,
+        "seconds": 18.367411790881306,
+        "steps": 4.0,
+        "peak_memory_mb": 8708.125,
+        "trainable_params": 573440.0,
+        "adapter_mb": 13.10633373260498
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "mlflow.parentRunId": "7a2e4c507d7a4dbca0e62f7e495be720",
+        "mlflow.runName": "qv-r4-high",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "kind": "candidate",
+        "candidate": "qv-r4-high",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"c4aadbfc7cf847f78b538291cd189b28\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:15:29.929152\", \"model_uuid\": \"e8364eb9fb5d4eafa08a2154a8fc14ca\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-jseplbng/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 1.7733097337186337,
+            "timestamp": 1792613713963
+          },
+          {
+            "step": 2,
+            "value": 1.9422218166291714,
+            "timestamp": 1792613722387
+          },
+          {
+            "step": 4,
+            "value": 2.152291849255562,
+            "timestamp": 1792613729009
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 1.0187562108039856,
+            "timestamp": 1792613715979
+          },
+          {
+            "step": 2,
+            "value": 0.1687648519873619,
+            "timestamp": 1792613722387
+          },
+          {
+            "step": 3,
+            "value": 0.2780891992151737,
+            "timestamp": 1792613723845
+          },
+          {
+            "step": 4,
+            "value": 0.1516769453883171,
+            "timestamp": 1792613729009
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "2e84c95c0e0b455cb53ee402751fa1be",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/2e84c95c0e0b455cb53ee402751fa1be/artifacts",
+      "start_time": 1792613732954,
+      "end_time": 1792613756686,
+      "params": {
+        "r": "8",
+        "lr": "0.0001",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.14826661720871925,
+        "val_loss": 1.9863214418292046,
+        "base_val_loss": 1.7733097337186337,
+        "final_val_loss": 1.9863214418292046,
+        "seconds": 17.718357166973874,
+        "steps": 4.0,
+        "peak_memory_mb": 8460.125,
+        "trainable_params": 1146880.0,
+        "adapter_mb": 15.2938871383667
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "mlflow.parentRunId": "7a2e4c507d7a4dbca0e62f7e495be720",
+        "mlflow.runName": "qv-r8-low",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "kind": "candidate",
+        "candidate": "qv-r8-low",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"2e84c95c0e0b455cb53ee402751fa1be\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:15:53.794675\", \"model_uuid\": \"efdd188d0f724e84b57d67a7ad4c66f8\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-lzqq8dn4/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 1.7733097337186337,
+            "timestamp": 1792613738519
+          },
+          {
+            "step": 2,
+            "value": 1.7896208949387074,
+            "timestamp": 1792613746134
+          },
+          {
+            "step": 4,
+            "value": 1.9863214418292046,
+            "timestamp": 1792613752733
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 1.0187562108039856,
+            "timestamp": 1792613740364
+          },
+          {
+            "step": 2,
+            "value": 0.24696329981088638,
+            "timestamp": 1792613746134
+          },
+          {
+            "step": 3,
+            "value": 0.19283361732959747,
+            "timestamp": 1792613747393
+          },
+          {
+            "step": 4,
+            "value": 0.14826661720871925,
+            "timestamp": 1792613752733
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "cb8d31423a5447e0a9d8c360b085c6ad",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/cb8d31423a5447e0a9d8c360b085c6ad/artifacts",
+      "start_time": 1792613756702,
+      "end_time": 1792613777766,
+      "params": {
+        "r": "8",
+        "lr": "0.0003",
+        "target_modules": "q_proj,v_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.46723494678735733,
+        "val_loss": 2.1929168105125427,
+        "base_val_loss": 1.7733097337186337,
+        "final_val_loss": 2.1929168105125427,
+        "seconds": 16.08181883301586,
+        "steps": 4.0,
+        "peak_memory_mb": 7756.125,
+        "trainable_params": 1146880.0,
+        "adapter_mb": 15.293888092041016
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "mlflow.parentRunId": "7a2e4c507d7a4dbca0e62f7e495be720",
+        "mlflow.runName": "qv-r8-high",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "kind": "candidate",
+        "candidate": "qv-r8-high",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"cb8d31423a5447e0a9d8c360b085c6ad\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:16:15.630560\", \"model_uuid\": \"bd083051755e4e9ea74993fbe251827d\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-mg33ips5/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 1.7733097337186337,
+            "timestamp": 1792613761677
+          },
+          {
+            "step": 2,
+            "value": 2.1226980090141296,
+            "timestamp": 1792613768819
+          },
+          {
+            "step": 4,
+            "value": 2.1929168105125427,
+            "timestamp": 1792613774857
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 1.0187562108039856,
+            "timestamp": 1792613763381
+          },
+          {
+            "step": 2,
+            "value": 0.10748082771897316,
+            "timestamp": 1792613768819
+          },
+          {
+            "step": 3,
+            "value": 0.8080731006339192,
+            "timestamp": 1792613770043
+          },
+          {
+            "step": 4,
+            "value": 0.46723494678735733,
+            "timestamp": 1792613774857
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "2226dba1397d43fcbb238a46d109ca0d",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/2226dba1397d43fcbb238a46d109ca0d/artifacts",
+      "start_time": 1792613777781,
+      "end_time": 1792613803027,
+      "params": {
+        "r": "8",
+        "lr": "0.0001",
+        "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.25125347077846527,
+        "val_loss": 2.0147985219955444,
+        "base_val_loss": 1.7733097337186337,
+        "final_val_loss": 2.0147985219955444,
+        "seconds": 19.16869862494059,
+        "steps": 4.0,
+        "peak_memory_mb": 8090.09375,
+        "trainable_params": 5046272.0,
+        "adapter_mb": 30.204002380371094
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "mlflow.parentRunId": "7a2e4c507d7a4dbca0e62f7e495be720",
+        "mlflow.runName": "all-r8-low",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "kind": "candidate",
+        "candidate": "all-r8-low",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"2226dba1397d43fcbb238a46d109ca0d\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:16:40.175866\", \"model_uuid\": \"54d9070d7b064e579b199d204f88cc8a\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-4l026a0r/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 1.7733097337186337,
+            "timestamp": 1792613783345
+          },
+          {
+            "step": 2,
+            "value": 1.8464854806661606,
+            "timestamp": 1792613791704
+          },
+          {
+            "step": 4,
+            "value": 2.0147985219955444,
+            "timestamp": 1792613799119
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 1.0187562108039856,
+            "timestamp": 1792613785289
+          },
+          {
+            "step": 2,
+            "value": 0.14694498106837273,
+            "timestamp": 1792613791704
+          },
+          {
+            "step": 3,
+            "value": 0.4067035838961601,
+            "timestamp": 1792613793500
+          },
+          {
+            "step": 4,
+            "value": 0.25125347077846527,
+            "timestamp": 1792613799119
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "b50df9884dda47799f922e8dfc8f3080",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/b50df9884dda47799f922e8dfc8f3080/artifacts",
+      "start_time": 1792613803043,
+      "end_time": 1792613829076,
+      "params": {
+        "r": "8",
+        "lr": "0.0003",
+        "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+        "train.seed": "42",
+        "train.max_steps": "4",
+        "train.train_limit": "32",
+        "train.val_limit": "8",
+        "train.batch_size": "1",
+        "train.grad_accum": "2",
+        "train.eval_every": "2",
+        "train.gradient_checkpointing": "True",
+        "model": "Qwen/Qwen3-0.6B",
+        "dtype": "bfloat16",
+        "alpha_over_r": "2",
+        "dropout": "0.05"
+      },
+      "metrics": {
+        "train_loss": 0.303311868570745,
+        "val_loss": 3.821093648672104,
+        "base_val_loss": 1.7733097337186337,
+        "final_val_loss": 3.821093648672104,
+        "seconds": 19.39976912480779,
+        "steps": 4.0,
+        "peak_memory_mb": 7980.125,
+        "trainable_params": 5046272.0,
+        "adapter_mb": 30.20400333404541
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/src/sweep.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "mlflow.parentRunId": "7a2e4c507d7a4dbca0e62f7e495be720",
+        "mlflow.runName": "all-r8-high",
+        "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+        "git_dirty": "True",
+        "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+        "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+        "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+        "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83",
+        "kind": "candidate",
+        "candidate": "all-r8-high",
+        "base_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "device": "mps",
+        "memory_metric": "torch.mps.driver_allocated_memory",
+        "train_rows": "32",
+        "val_rows": "8",
+        "mlflow.loggedArtifacts": "[{\"path\": \"samples.json\", \"type\": \"table\"}]",
+        "mlflow.log-model.history": "[{\"run_id\": \"b50df9884dda47799f922e8dfc8f3080\", \"artifact_path\": \"model\", \"utc_time_created\": \"2026-10-21 20:17:05.868899\", \"model_uuid\": \"756583ea9a774ed79ca2cccf7c38c4f8\", \"flavors\": {\"python_function\": {\"streamable\": false, \"cloudpickle_version\": \"3.1.2\", \"artifacts\": {\"adapter\": {\"path\": \"artifacts/adapter\", \"uri\": \"/var/folders/ym/zr1k55rd4rzcv421rg0fw28h0000gn/T/hw6-train-tif8duu2/adapter\"}}, \"loader_module\": \"mlflow.pyfunc.loaders.code_model\", \"python_version\": \"3.12.12\", \"env\": {\"conda\": \"conda.yaml\", \"virtualenv\": \"python_env.yaml\"}, \"model_code_path\": \"/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 \\u0441\\u0435\\u043c\\u0435\\u0441\\u0442\\u0440/MLOps/HW 6-7/src/model.py\", \"code\": null}}}]"
+      },
+      "history": {
+        "val_loss": [
+          {
+            "step": 0,
+            "value": 1.7733097337186337,
+            "timestamp": 1792613809076
+          },
+          {
+            "step": 2,
+            "value": 3.560511037707329,
+            "timestamp": 1792613817313
+          },
+          {
+            "step": 4,
+            "value": 3.821093648672104,
+            "timestamp": 1792613824795
+          }
+        ],
+        "train_loss": [
+          {
+            "step": 1,
+            "value": 1.0187562108039856,
+            "timestamp": 1792613810995
+          },
+          {
+            "step": 2,
+            "value": 0.15048079565167427,
+            "timestamp": 1792613817313
+          },
+          {
+            "step": 3,
+            "value": 0.8119135573506355,
+            "timestamp": 1792613819043
+          },
+          {
+            "step": 4,
+            "value": 0.303311868570745,
+            "timestamp": 1792613824795
+          }
+        ]
+      }
+    },
+    {
+      "run_id": "a1fa5fbdbde44a988b925014026bdb17",
+      "experiment_id": "2",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/2/a1fa5fbdbde44a988b925014026bdb17/artifacts",
+      "start_time": 1792614239771,
+      "end_time": 1792614239862,
+      "params": {},
+      "metrics": {
+        "baseline.accuracy": 0.7307692307692307,
+        "baseline.format_rate": 0.9038461538461539,
+        "candidate.accuracy": 0.7307692307692307,
+        "candidate.format_rate": 0.9038461538461539
+      },
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/HW 6-7/evaluation/cli.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "mlflow.runName": "baseline-vs-candidate",
+        "kind": "evaluation",
+        "candidate_run_id": "93842900641d4cca87da85158f95b855",
+        "protocol_sha256": "292ecab5a624a620af433080cca5a1521b43f4d4c3312e6f0989e8ce676ee294",
+        "golden_sha256": "6f6a04503c8b174f95cf1c553786b2fcb9e51121da17cb8eb10bd7561482a6ba"
+      }
+    },
+    {
+      "run_id": "fcaaf415cd634191ab90a1930ab8f5cf",
+      "experiment_id": "1",
+      "status": "FINISHED",
+      "artifact_uri": "mlflow-artifacts:/1/fcaaf415cd634191ab90a1930ab8f5cf/artifacts",
+      "start_time": 1792614304191,
+      "end_time": 1792614304233,
+      "params": {},
+      "metrics": {},
+      "tags": {
+        "mlflow.user": "shulikovmax",
+        "mlflow.source.name": "tests/check_storage.py",
+        "mlflow.source.type": "LOCAL",
+        "mlflow.source.git.commit": "e3231d800cea9974609dc3c4d570a39daf99a825",
+        "kind": "check",
+        "mlflow.runName": "storage-probe"
+      }
+    }
+  ]
+}

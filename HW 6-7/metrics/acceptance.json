@@ -1,0 +1,15 @@
+{
+  "mlflow_checks_passed": 9,
+  "mlflow_checks_total": 9,
+  "evaluation_tests_passed": 24,
+  "additional_tests_passed": 7,
+  "tests_sha256": "c42ac7788026de93c8066dbf47eec30ae16790d2da21ddc0e0693996d7bf04aa",
+  "quality_gate_expected_refusal": true,
+  "regression_tests": {
+    "HW 1": 0,
+    "HW 2": 0,
+    "HW 3": 0,
+    "HW 5": 0,
+    "HW 4": 0
+  }
+}

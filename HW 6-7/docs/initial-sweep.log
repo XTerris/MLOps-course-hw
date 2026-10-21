@@ -1,0 +1,181 @@
+uv run --project .. --frozen python -m src.sweep
+2026/10/21 23:14:40 INFO mlflow.tracking.fluent: Experiment with name 'hw6-lora' does not exist. Creating a new experiment.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 5513.60it/s]
+qv-r4-low step=2 val=1.7588
+qv-r4-low step=4 val=1.8597
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:300: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 5920.64it/s]
+2026/10/21 23:15:06 INFO mlflow.pyfunc: Validating input example against model signature
+Downloading artifacts:   0%|          | 0/7 [00:00<?, ?it/s]Downloading artifacts:  14%|█▍        | 1/7 [00:00<00:00, 20971.52it/s]Downloading artifacts:  29%|██▊       | 2/7 [00:00<00:00, 8933.55it/s] Downloading artifacts:  43%|████▎     | 3/7 [00:00<00:00, 5526.09it/s]Downloading artifacts:  57%|█████▋    | 4/7 [00:00<00:00, 6359.82it/s]Downloading artifacts:  71%|███████▏  | 5/7 [00:00<00:00, 5625.41it/s]Downloading artifacts:  86%|████████▌ | 6/7 [00:00<00:00, 5781.26it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 2502.99it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 2430.68it/s]
+2026/10/21 23:15:07 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 14234.12it/s]
+🏃 View run qv-r4-low at: http://127.0.0.1:5006/#/experiments/1/runs/016429f0cb664b658039b70f6e71d7d0
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 11581.95it/s]
+qv-r4-high step=2 val=1.9422
+qv-r4-high step=4 val=2.1523
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:300: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 4574.89it/s]
+2026/10/21 23:15:31 INFO mlflow.pyfunc: Validating input example against model signature
+Downloading artifacts:   0%|          | 0/7 [00:00<?, ?it/s]Downloading artifacts:  14%|█▍        | 1/7 [00:00<00:00, 31300.78it/s]Downloading artifacts:  29%|██▊       | 2/7 [00:00<00:00, 13684.52it/s]Downloading artifacts:  43%|████▎     | 3/7 [00:00<00:00, 6492.73it/s] Downloading artifacts:  57%|█████▋    | 4/7 [00:00<00:00, 7503.23it/s]Downloading artifacts:  71%|███████▏  | 5/7 [00:00<00:00, 7715.79it/s]Downloading artifacts:  86%|████████▌ | 6/7 [00:00<00:00, 6864.65it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 2392.45it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 2308.73it/s]
+2026/10/21 23:15:31 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13424.33it/s]
+🏃 View run qv-r4-high at: http://127.0.0.1:5006/#/experiments/1/runs/c4aadbfc7cf847f78b538291cd189b28
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 12131.40it/s]
+qv-r8-low step=2 val=1.7896
+qv-r8-low step=4 val=1.9863
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:300: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 4678.10it/s]
+2026/10/21 23:15:55 INFO mlflow.pyfunc: Validating input example against model signature
+Downloading artifacts:   0%|          | 0/7 [00:00<?, ?it/s]Downloading artifacts:  14%|█▍        | 1/7 [00:00<00:00, 5817.34it/s]Downloading artifacts:  29%|██▊       | 2/7 [00:00<00:00, 2656.30it/s]Downloading artifacts:  43%|████▎     | 3/7 [00:00<00:00, 2876.09it/s]Downloading artifacts:  57%|█████▋    | 4/7 [00:00<00:00, 3574.94it/s]Downloading artifacts:  71%|███████▏  | 5/7 [00:00<00:00, 4240.95it/s]Downloading artifacts:  86%|████████▌ | 6/7 [00:00<00:00, 3311.29it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 2308.91it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 2231.52it/s]
+2026/10/21 23:15:55 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 11887.08it/s]
+🏃 View run qv-r8-low at: http://127.0.0.1:5006/#/experiments/1/runs/2e84c95c0e0b455cb53ee402751fa1be
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13006.70it/s]
+qv-r8-high step=2 val=2.1227
+qv-r8-high step=4 val=2.1929
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:300: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 5064.58it/s]
+2026/10/21 23:16:16 INFO mlflow.pyfunc: Validating input example against model signature
+Downloading artifacts:   0%|          | 0/7 [00:00<?, ?it/s]Downloading artifacts:  14%|█▍        | 1/7 [00:00<00:00, 6710.89it/s]Downloading artifacts:  29%|██▊       | 2/7 [00:00<00:00, 6803.41it/s]Downloading artifacts:  43%|████▎     | 3/7 [00:00<00:00, 5523.67it/s]Downloading artifacts:  57%|█████▋    | 4/7 [00:00<00:00, 5540.69it/s]Downloading artifacts:  71%|███████▏  | 5/7 [00:00<00:00, 6486.71it/s]Downloading artifacts:  86%|████████▌ | 6/7 [00:00<00:00, 7111.00it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 1073.81it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 1056.12it/s]
+2026/10/21 23:16:16 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13198.58it/s]
+🏃 View run qv-r8-high at: http://127.0.0.1:5006/#/experiments/1/runs/cb8d31423a5447e0a9d8c360b085c6ad
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 12200.38it/s]
+all-r8-low step=2 val=1.8465
+all-r8-low step=4 val=2.0148
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:300: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 13068.33it/s]
+2026/10/21 23:16:41 INFO mlflow.pyfunc: Validating input example against model signature
+Downloading artifacts:   0%|          | 0/7 [00:00<?, ?it/s]Downloading artifacts:  14%|█▍        | 1/7 [00:00<00:00, 4424.37it/s]Downloading artifacts:  29%|██▊       | 2/7 [00:00<00:00, 6136.51it/s]Downloading artifacts:  43%|████▎     | 3/7 [00:00<00:00, 5289.16it/s]Downloading artifacts:  57%|█████▋    | 4/7 [00:00<00:00, 5729.92it/s]Downloading artifacts:  71%|███████▏  | 5/7 [00:00<00:00, 5445.73it/s]Downloading artifacts:  86%|████████▌ | 6/7 [00:00<00:00, 1582.26it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 1444.75it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 1425.94it/s]
+2026/10/21 23:16:41 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 12747.40it/s]
+🏃 View run all-r8-low at: http://127.0.0.1:5006/#/experiments/1/runs/2226dba1397d43fcbb238a46d109ca0d
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 12987.53it/s]
+all-r8-high step=2 val=3.5605
+all-r8-high step=4 val=3.8211
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/peft/utils/save_and_load.py:300: UserWarning: Could not find a config file in Qwen/Qwen3-0.6B - will assume that the vocabulary was not modified.
+  warnings.warn(
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 4837.31it/s]
+2026/10/21 23:17:07 INFO mlflow.pyfunc: Validating input example against model signature
+Downloading artifacts:   0%|          | 0/7 [00:00<?, ?it/s]Downloading artifacts:  14%|█▍        | 1/7 [00:00<00:00, 6584.46it/s]Downloading artifacts:  29%|██▊       | 2/7 [00:00<00:00, 9049.20it/s]Downloading artifacts:  43%|████▎     | 3/7 [00:00<00:00, 9058.97it/s]Downloading artifacts:  57%|█████▋    | 4/7 [00:00<00:00, 7858.18it/s]Downloading artifacts:  71%|███████▏  | 5/7 [00:00<00:00, 7363.60it/s]Downloading artifacts:  86%|████████▌ | 6/7 [00:00<00:00, 2079.82it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 1775.31it/s]Downloading artifacts: 100%|██████████| 7/7 [00:00<00:00, 1743.89it/s]
+2026/10/21 23:17:07 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+/Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/lib/python3.12/site-packages/mlflow/pyfunc/utils/data_validation.py:186: UserWarning: [33mAdd type hints to the `predict` method to enable data validation and automatic signature inference during model logging. Check https://mlflow.org/docs/latest/model/python_model.html#type-hint-usage-in-pythonmodel for more details.[0m
+  color_warning(
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 14259.63it/s]
+🏃 View run all-r8-high at: http://127.0.0.1:5006/#/experiments/1/runs/b50df9884dda47799f922e8dfc8f3080
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+🏃 View run sweep at: http://127.0.0.1:5006/#/experiments/1/runs/7a2e4c507d7a4dbca0e62f7e495be720
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+{
+  "parent_id": "7a2e4c507d7a4dbca0e62f7e495be720",
+  "rows": [
+    {
+      "run_id": "016429f0cb664b658039b70f6e71d7d0",
+      "name": "qv-r4-low",
+      "base_val_loss": 1.7733097337186337,
+      "final_val_loss": 1.8597435504198074,
+      "seconds": 19.43907087482512,
+      "steps": 4,
+      "peak_memory_mb": 6495.953125,
+      "trainable_params": 573440,
+      "adapter_mb": 13.106332778930664
+    },
+    {
+      "run_id": "c4aadbfc7cf847f78b538291cd189b28",
+      "name": "qv-r4-high",
+      "base_val_loss": 1.7733097337186337,
+      "final_val_loss": 2.152291849255562,
+      "seconds": 18.367411790881306,
+      "steps": 4,
+      "peak_memory_mb": 8708.125,
+      "trainable_params": 573440,
+      "adapter_mb": 13.10633373260498
+    },
+    {
+      "run_id": "2e84c95c0e0b455cb53ee402751fa1be",
+      "name": "qv-r8-low",
+      "base_val_loss": 1.7733097337186337,
+      "final_val_loss": 1.9863214418292046,
+      "seconds": 17.718357166973874,
+      "steps": 4,
+      "peak_memory_mb": 8460.125,
+      "trainable_params": 1146880,
+      "adapter_mb": 15.2938871383667
+    },
+    {
+      "run_id": "cb8d31423a5447e0a9d8c360b085c6ad",
+      "name": "qv-r8-high",
+      "base_val_loss": 1.7733097337186337,
+      "final_val_loss": 2.1929168105125427,
+      "seconds": 16.08181883301586,
+      "steps": 4,
+      "peak_memory_mb": 7756.125,
+      "trainable_params": 1146880,
+      "adapter_mb": 15.293888092041016
+    },
+    {
+      "run_id": "2226dba1397d43fcbb238a46d109ca0d",
+      "name": "all-r8-low",
+      "base_val_loss": 1.7733097337186337,
+      "final_val_loss": 2.0147985219955444,
+      "seconds": 19.16869862494059,
+      "steps": 4,
+      "peak_memory_mb": 8090.09375,
+      "trainable_params": 5046272,
+      "adapter_mb": 30.204002380371094
+    },
+    {
+      "run_id": "b50df9884dda47799f922e8dfc8f3080",
+      "name": "all-r8-high",
+      "base_val_loss": 1.7733097337186337,
+      "final_val_loss": 3.821093648672104,
+      "seconds": 19.39976912480779,
+      "steps": 4,
+      "peak_memory_mb": 7980.125,
+      "trainable_params": 5046272,
+      "adapter_mb": 30.20400333404541
+    }
+  ],
+  "provenance": {
+    "git_sha": "0417ac8bf1cf4dea74fa9c783bf1581b250d7e4f",
+    "git_dirty": "True",
+    "code_sha256": "2d26099267218034df1bc8073368c1eba5f269133a1aa9feef7d3f18c37a3581",
+    "data_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+    "data_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+    "config_sha256": "9f95952fd5f9da2efa225f629ddadc16df1a64815a5ba0e29064c64b8d67be83"
+  }
+}

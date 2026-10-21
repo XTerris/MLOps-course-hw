@@ -10,7 +10,7 @@ sweep:
 promote:
 	uv run --project .. --frozen python -m evaluation.cli promote
 predict:
-	uv run --project .. --frozen python -m src.predict --uri models:/my-qwen-adapter@champion --prompt "Какой показатель отражает запасы железа?"
+	uv run --project .. --frozen python -m src.predict --uri models:/my-qwen-adapter@champion --prompt "Title: Crash on empty input. Body: Opening an empty file raises IndexError."
 check:
 	bash tests/check.sh
 check-storage:
@@ -35,4 +35,4 @@ check-all: check check-eval
 baseline-update:
 	uv run --project .. --frozen python -m evaluation.cli baseline-update
 predict-candidate:
-	uv run --project .. --frozen python -m src.predict --uri models:/my-qwen-adapter@candidate --prompt "Выберите правильный вариант."
+	uv run --project .. --frozen python -m src.predict --uri models:/my-qwen-adapter@candidate --prompt "Title: Crash on empty input. Body: Opening an empty file raises IndexError."

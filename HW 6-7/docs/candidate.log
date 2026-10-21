@@ -1,0 +1,11 @@
+uv run --project .. --frozen python -m evaluation.cli candidate
+Successfully registered model 'my-qwen-adapter'.
+2026/10/21 23:22:58 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: my-qwen-adapter, version 1
+Created version '1' of model 'my-qwen-adapter'.
+{
+  "kind": "adapter",
+  "name": "my-qwen-adapter",
+  "version": "1",
+  "run_id": "93842900641d4cca87da85158f95b855",
+  "uri": "models:/my-qwen-adapter/1"
+}

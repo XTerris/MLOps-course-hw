@@ -1,0 +1,3 @@
+uv run --project .. --frozen python -m evaluation.cli candidate
+Отказ: Порог не пройден: val/base=1.0487, максимум 1.0
+make: *** [candidate] Error 1

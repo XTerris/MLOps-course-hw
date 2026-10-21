@@ -1,0 +1,8 @@
+
+To track the changes with git, run:
+
+	git add data/eval.dvc
+
+To enable auto staging, run:
+
+	dvc config core.autostage true

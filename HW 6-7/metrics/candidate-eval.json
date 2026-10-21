@@ -1,0 +1,798 @@
+{
+  "overall": {
+    "n": 52,
+    "correct": 38,
+    "valid": 47,
+    "errors": 0,
+    "accuracy": 0.7307692307692307,
+    "format_rate": 0.9038461538461539
+  },
+  "slices": {
+    "bug": {
+      "n": 13,
+      "correct": 7,
+      "valid": 10,
+      "errors": 0,
+      "accuracy": 0.5384615384615384,
+      "format_rate": 0.7692307692307693
+    },
+    "documentation": {
+      "n": 13,
+      "correct": 7,
+      "valid": 13,
+      "errors": 0,
+      "accuracy": 0.5384615384615384,
+      "format_rate": 1.0
+    },
+    "feature": {
+      "n": 13,
+      "correct": 12,
+      "valid": 12,
+      "errors": 0,
+      "accuracy": 0.9230769230769231,
+      "format_rate": 0.9230769230769231
+    },
+    "question": {
+      "n": 13,
+      "correct": 12,
+      "valid": 12,
+      "errors": 0,
+      "accuracy": 0.9230769230769231,
+      "format_rate": 0.9230769230769231
+    }
+  },
+  "per_item": [
+    {
+      "id": "github:3b1b/manim#2154",
+      "raw": "```json\n{\"answer\": \"bug\"}\n```",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:alteryx/featuretools#2669",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:alteryx/featuretools#2701",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4903",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4865",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2281",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2164",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2172",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:jmcnamara/XlsxWriter#1043",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2092",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2130",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2145",
+      "raw": "```json\n{\"answer\": \"bug\"}\n```",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:3b1b/manim#2146",
+      "raw": "```json\n{\n  \"answer\": \"bug\"\n}\n```",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "bug"
+      ]
+    },
+    {
+      "id": "github:scikit-learn/scikit-learn#28911",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:alteryx/featuretools#2736",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:scikit-learn/scikit-learn#28933",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:scikit-learn/scikit-learn#28733",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:wagtail/wagtail#11840",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:wagtail/wagtail#11587",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:scikit-learn/scikit-learn#28610",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:wagtail/wagtail#11424",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:wagtail/wagtail#12204",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:scikit-learn/scikit-learn#28314",
+      "raw": "{\"answer\": \"documentation\"}",
+      "parsed": {
+        "answer": "documentation"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#724",
+      "raw": "{\"answer\": \"bug\"}",
+      "parsed": {
+        "answer": "bug"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:wagtail/wagtail#11887",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:wagtail/wagtail#11550",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "documentation"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#7118",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#6973",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4824",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4938",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4915",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4939",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#4810",
+      "raw": "```json\n{\"answer\": \"feature\"}\n```",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#7128",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#7093",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#7006",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#7179",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#6974",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:gradio-app/gradio#7173",
+      "raw": "{\"answer\": \"feature\"}",
+      "parsed": {
+        "answer": "feature"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "feature"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#288",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#5205",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#348",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#244",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:jmcnamara/XlsxWriter#1139",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#266",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#372",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:jmcnamara/XlsxWriter#1052",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:jmcnamara/XlsxWriter#1068",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#404",
+      "raw": "```json\n{\"answer\": \"question\"}\n```",
+      "parsed": null,
+      "valid": false,
+      "correct": false,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:sherlock-project/sherlock#2114",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:docling-project/docling#385",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    },
+    {
+      "id": "github:cookiecutter/cookiecutter-django#5188",
+      "raw": "{\"answer\": \"question\"}",
+      "parsed": {
+        "answer": "question"
+      },
+      "valid": true,
+      "correct": true,
+      "error": null,
+      "slices": [
+        "question"
+      ]
+    }
+  ],
+  "status": "complete",
+  "model": {
+    "kind": "adapter",
+    "name": "my-qwen-adapter",
+    "version": "1",
+    "run_id": "93842900641d4cca87da85158f95b855",
+    "uri": "models:/my-qwen-adapter/1"
+  },
+  "protocol_sha256": "292ecab5a624a620af433080cca5a1521b43f4d4c3312e6f0989e8ce676ee294",
+  "golden_sha256": "6f6a04503c8b174f95cf1c553786b2fcb9e51121da17cb8eb10bd7561482a6ba",
+  "baseline_spec_sha256": "f71269b95f6b4e1e160fa25e9af6c973517cfebad15880b75b56c8184680b163",
+  "behavioral": {
+    "overall": {
+      "n": 3,
+      "correct": 2,
+      "valid": 2,
+      "errors": 0,
+      "accuracy": 0.6666666666666666,
+      "format_rate": 0.6666666666666666
+    },
+    "slices": {
+      "bug": {
+        "n": 2,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 0.5,
+        "format_rate": 0.5
+      },
+      "out_of_domain": {
+        "n": 1,
+        "correct": 1,
+        "valid": 1,
+        "errors": 0,
+        "accuracy": 1.0,
+        "format_rate": 1.0
+      }
+    },
+    "per_item": [
+      {
+        "id": "behavior-format",
+        "raw": "```json\n{\"answer\": \"bug\"}\n```",
+        "parsed": null,
+        "valid": false,
+        "correct": false,
+        "error": null,
+        "slices": [
+          "bug"
+        ]
+      },
+      {
+        "id": "behavior-paraphrase",
+        "raw": "{\"answer\": \"bug\"}",
+        "parsed": {
+          "answer": "bug"
+        },
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "bug"
+        ]
+      },
+      {
+        "id": "behavior-refusal",
+        "raw": "{\"answer\": \"REFUSE\"}",
+        "parsed": {
+          "answer": "REFUSE"
+        },
+        "valid": true,
+        "correct": true,
+        "error": null,
+        "slices": [
+          "out_of_domain"
+        ]
+      }
+    ]
+  },
+  "leakage": {
+    "exact_or_group_intersections": 0,
+    "n_train_index": 2188,
+    "n_golden": 52,
+    "n_behavioral": 3
+  },
+  "outputs_sha256": "a5d9110137f67d3b67deeecd7776d6375cede318dc74a40b3bf6cbc7b2ca2312",
+  "evaluation_run_id": "a1fa5fbdbde44a988b925014026bdb17"
+}

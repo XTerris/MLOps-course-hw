@@ -1,0 +1,17 @@
+{
+  "report": 0,
+  "candidate": 0,
+  "baseline-init": 0,
+  "evaluate": 0,
+  "eval": 2,
+  "check-negative": 0,
+  "check-storage": 0,
+  "sweep": 0,
+  "check-eval": 0,
+  "extra-tests": 0,
+  "check-all": 0,
+  "check-raw-negative": 0,
+  "predict-candidate": 0,
+  "dvc-status": 0,
+  "video-full-decode": 0
+}

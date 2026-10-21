@@ -1,0 +1,3 @@
+PASS train: 20 distributed examples retain exact input_ids, attention_mask and labels
+PASS val: 20 distributed examples retain exact input_ids, attention_mask and labels
+PASS: old tensors were not modified

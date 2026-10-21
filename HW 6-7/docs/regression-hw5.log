@@ -1,0 +1,12 @@
+uv run --project .. --locked python -m unittest discover -s tests -v
+test_accumulation_matches_physical_effective_batch (test_training.TrainingTests.test_accumulation_matches_physical_effective_batch) ... ok
+test_incomplete_accumulation_is_flushed_each_epoch (test_training.TrainingTests.test_incomplete_accumulation_is_flushed_each_epoch) ... ok
+test_lora_freeze_reduces_params_and_preserves_base (test_training.TrainingTests.test_lora_freeze_reduces_params_and_preserves_base) ... ok
+test_no_supervision_fails_instead_of_silent_nan (test_training.TrainingTests.test_no_supervision_fails_instead_of_silent_nan) ... ok
+test_sparse_loss_and_gradients_equal_dense_causal_lm (test_training.TrainingTests.test_sparse_loss_and_gradients_equal_dense_causal_lm) ... ok
+test_validation_is_token_weighted_and_restores_mode (test_training.TrainingTests.test_validation_is_token_weighted_and_restores_mode) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.274s
+
+OK

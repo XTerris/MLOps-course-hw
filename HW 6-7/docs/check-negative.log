@@ -1,0 +1,2 @@
+uv run --project .. --frozen python -m evaluation.cli negative
+PASS: испорченные ответы отклонены, alias не менялся

@@ -1,0 +1,18 @@
+uv run --project .. --locked python -m unittest discover -s tests -v
+test_cpu_uses_rss (test_inspect_model.AnatomyTests.test_cpu_uses_rss) ... ok
+test_cuda_uses_allocator_high_water_mark (test_inspect_model.AnatomyTests.test_cuda_uses_allocator_high_water_mark) ... ok
+test_every_repeat_gets_separate_probe_and_maximum (test_inspect_model.AnatomyTests.test_every_repeat_gets_separate_probe_and_maximum) ... ok
+test_hooks_clean_up_after_forward_exception (test_inspect_model.AnatomyTests.test_hooks_clean_up_after_forward_exception) ... ok
+test_hooks_repeat_and_preserve_foreign_hooks_and_modes (test_inspect_model.AnatomyTests.test_hooks_repeat_and_preserve_foreign_hooks_and_modes) ... ok
+test_lora_uses_asymmetric_actual_shapes (test_inspect_model.AnatomyTests.test_lora_uses_asymmetric_actual_shapes) ... ok
+test_mps_reads_driver_not_rss (test_inspect_model.AnatomyTests.test_mps_reads_driver_not_rss) ... ok
+test_mps_retains_intermediate_peak_after_memory_drops (test_inspect_model.AnatomyTests.test_mps_retains_intermediate_peak_after_memory_drops) ... ok
+test_partial_hook_registration_is_cleaned (test_inspect_model.AnatomyTests.test_partial_hook_registration_is_cleaned) ... ok
+test_probe_passes_params_and_propagates_failures (test_inspect_model.AnatomyTests.test_probe_passes_params_and_propagates_failures) ... ok
+test_sampler_stops_on_exception (test_inspect_model.AnatomyTests.test_sampler_stops_on_exception) ... ok
+test_shared_and_independent_parameters (test_inspect_model.AnatomyTests.test_shared_and_independent_parameters) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.050s
+
+OK

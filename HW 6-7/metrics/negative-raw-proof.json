@@ -1,0 +1,16 @@
+{
+  "rejected": true,
+  "reason": "Регрессия общей accuracy",
+  "overall": {
+    "n": 52,
+    "correct": 0,
+    "valid": 0,
+    "errors": 0,
+    "accuracy": 0.0,
+    "format_rate": 0.0
+  },
+  "source_outputs_sha256": "1cbdff499f38111bd38e6658eb6fe7e8f666572fc196620e27b597d39e0fcafd",
+  "original_outputs_unchanged": true,
+  "aliases_unchanged": true,
+  "note": "Only copied golden raw answers changed; behavioral metrics and all counts remain internally consistent."
+}

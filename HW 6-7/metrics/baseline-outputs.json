@@ -1,0 +1,332 @@
+[
+  {
+    "id": "github:3b1b/manim#2154",
+    "raw": "```json\n{\"answer\": \"bug\"}\n```",
+    "error": null,
+    "latency_seconds": 0.7781895829830319
+  },
+  {
+    "id": "github:alteryx/featuretools#2669",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.20712491706945002
+  },
+  {
+    "id": "github:alteryx/featuretools#2701",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.20184566685929894
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4903",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.20868058316409588
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4865",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.28427904192358255
+  },
+  {
+    "id": "github:3b1b/manim#2281",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.37544158403761685
+  },
+  {
+    "id": "github:3b1b/manim#2164",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.31335729197598994
+  },
+  {
+    "id": "github:3b1b/manim#2172",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.3279283749870956
+  },
+  {
+    "id": "github:jmcnamara/XlsxWriter#1043",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.38895770790986717
+  },
+  {
+    "id": "github:3b1b/manim#2092",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.3235359999816865
+  },
+  {
+    "id": "github:3b1b/manim#2130",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.4038964160718024
+  },
+  {
+    "id": "github:3b1b/manim#2145",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.38547729095444083
+  },
+  {
+    "id": "github:3b1b/manim#2146",
+    "raw": "```json\n{\n  \"answer\": \"bug\"\n}\n```",
+    "error": null,
+    "latency_seconds": 0.7172234999015927
+  },
+  {
+    "id": "github:scikit-learn/scikit-learn#28911",
+    "raw": "{\"answer\": \"documentation\"}",
+    "error": null,
+    "latency_seconds": 0.27177008404396474
+  },
+  {
+    "id": "github:alteryx/featuretools#2736",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.24845445808023214
+  },
+  {
+    "id": "github:scikit-learn/scikit-learn#28933",
+    "raw": "{\"answer\": \"documentation\"}",
+    "error": null,
+    "latency_seconds": 0.2598740418907255
+  },
+  {
+    "id": "github:scikit-learn/scikit-learn#28733",
+    "raw": "{\"answer\": \"documentation\"}",
+    "error": null,
+    "latency_seconds": 0.3328927499242127
+  },
+  {
+    "id": "github:wagtail/wagtail#11840",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.2831623749807477
+  },
+  {
+    "id": "github:wagtail/wagtail#11587",
+    "raw": "{\"answer\": \"documentation\"}",
+    "error": null,
+    "latency_seconds": 0.2768780831247568
+  },
+  {
+    "id": "github:scikit-learn/scikit-learn#28610",
+    "raw": "{\"answer\": \"documentation\"}",
+    "error": null,
+    "latency_seconds": 0.2926950000692159
+  },
+  {
+    "id": "github:wagtail/wagtail#11424",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.3347129998728633
+  },
+  {
+    "id": "github:wagtail/wagtail#12204",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.30434812512248755
+  },
+  {
+    "id": "github:scikit-learn/scikit-learn#28314",
+    "raw": "{\"answer\": \"documentation\"}",
+    "error": null,
+    "latency_seconds": 0.3154690000228584
+  },
+  {
+    "id": "github:docling-project/docling#724",
+    "raw": "```json\n{\n  \"answer\": \"bug\"\n}\n```",
+    "error": null,
+    "latency_seconds": 0.44632424996234477
+  },
+  {
+    "id": "github:wagtail/wagtail#11887",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.27508037514053285
+  },
+  {
+    "id": "github:wagtail/wagtail#11550",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.34457700001075864
+  },
+  {
+    "id": "github:gradio-app/gradio#7118",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.2843017908744514
+  },
+  {
+    "id": "github:gradio-app/gradio#6973",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.2622724170796573
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4824",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.26544125005602837
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4938",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.2961729581002146
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4915",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.2761067079845816
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4939",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.2704787920229137
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#4810",
+    "raw": "```json\n{\"answer\": \"feature\"}\n```",
+    "error": null,
+    "latency_seconds": 0.3858091670554131
+  },
+  {
+    "id": "github:gradio-app/gradio#7128",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.31803883286193013
+  },
+  {
+    "id": "github:gradio-app/gradio#7093",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.26705779205076396
+  },
+  {
+    "id": "github:gradio-app/gradio#7006",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.29208354093134403
+  },
+  {
+    "id": "github:gradio-app/gradio#7179",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.32193837501108646
+  },
+  {
+    "id": "github:gradio-app/gradio#6974",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.3520019999705255
+  },
+  {
+    "id": "github:gradio-app/gradio#7173",
+    "raw": "{\"answer\": \"feature\"}",
+    "error": null,
+    "latency_seconds": 0.45499891601502895
+  },
+  {
+    "id": "github:docling-project/docling#288",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.33667062502354383
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#5205",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.34978316584602
+  },
+  {
+    "id": "github:docling-project/docling#348",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.29361866717226803
+  },
+  {
+    "id": "github:docling-project/docling#244",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.268876374932006
+  },
+  {
+    "id": "github:jmcnamara/XlsxWriter#1139",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.24930754187516868
+  },
+  {
+    "id": "github:docling-project/docling#266",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.2633453339803964
+  },
+  {
+    "id": "github:docling-project/docling#372",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.3116191658191383
+  },
+  {
+    "id": "github:jmcnamara/XlsxWriter#1052",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.3035139578860253
+  },
+  {
+    "id": "github:jmcnamara/XlsxWriter#1068",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.3163187501486391
+  },
+  {
+    "id": "github:docling-project/docling#404",
+    "raw": "```json\n{\"answer\": \"question\"}\n```",
+    "error": null,
+    "latency_seconds": 0.4152975420001894
+  },
+  {
+    "id": "github:sherlock-project/sherlock#2114",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.3279047501273453
+  },
+  {
+    "id": "github:docling-project/docling#385",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.34130454109981656
+  },
+  {
+    "id": "github:cookiecutter/cookiecutter-django#5188",
+    "raw": "{\"answer\": \"question\"}",
+    "error": null,
+    "latency_seconds": 0.3941061249934137
+  },
+  {
+    "id": "behavior-format",
+    "raw": "```json\n{\"answer\": \"bug\"}\n```",
+    "error": null,
+    "latency_seconds": 0.4402878750115633
+  },
+  {
+    "id": "behavior-paraphrase",
+    "raw": "{\"answer\": \"bug\"}",
+    "error": null,
+    "latency_seconds": 0.36759325000457466
+  },
+  {
+    "id": "behavior-refusal",
+    "raw": "{\"answer\": \"REFUSE\"}",
+    "error": null,
+    "latency_seconds": 0.31995929195545614
+  }
+]

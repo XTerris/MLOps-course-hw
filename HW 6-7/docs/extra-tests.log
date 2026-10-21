@@ -1,0 +1,12 @@
+test_baseline_generation_errors_also_block (__main__.EdgeCases.test_baseline_generation_errors_also_block) ... ok
+test_duplicate_json_keys_rejected (__main__.EdgeCases.test_duplicate_json_keys_rejected) ... ok
+test_duplicate_question_id_rejected (__main__.EdgeCases.test_duplicate_question_id_rejected) ... ok
+test_error_overrides_apparently_correct_raw (__main__.EdgeCases.test_error_overrides_apparently_correct_raw) ... ok
+test_forged_per_item_membership_rejected (__main__.EdgeCases.test_forged_per_item_membership_rejected) ... ok
+test_forged_slice_and_behavior_counts_rejected (__main__.EdgeCases.test_forged_slice_and_behavior_counts_rejected) ... ok
+test_overlapping_slices_do_not_inflate_overall (__main__.EdgeCases.test_overlapping_slices_do_not_inflate_overall) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+OK

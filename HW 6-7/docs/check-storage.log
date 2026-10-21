@@ -1,0 +1,12 @@
+uv run --project .. --frozen python tests/check_storage.py
+ Container mlops-hw6-db-1 Running 
+ Container mlops-hw6-mlflow-1 Recreate 
+ Container mlops-hw6-mlflow-1 Recreated 
+ Container mlops-hw6-mlflow-1 Starting 
+ Container mlops-hw6-mlflow-1 Started 
+ Container mlops-hw6-mlflow-1 Waiting 
+ Container mlops-hw6-mlflow-1 Healthy 
+🏃 View run storage-probe at: http://127.0.0.1:5006/#/experiments/1/runs/fcaaf415cd634191ab90a1930ab8f5cf
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/1
+Downloading artifacts:   0%|          | 0/1 [00:00<?, ?it/s]Downloading artifacts: 100%|██████████| 1/1 [00:00<00:00, 4837.72it/s]Downloading artifacts: 100%|██████████| 1/1 [00:00<00:00, 3344.74it/s]
+PASS: новый контейнер вернул тот же артефакт, SHA256 совпал

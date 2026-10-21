@@ -1,0 +1,20 @@
+uv run --project .. --locked python -m unittest discover -s tests -v
+test_accelerators_are_synchronized_and_cpu_is_not (test_bench.BenchmarkTests.test_accelerators_are_synchronized_and_cpu_is_not) ... ok
+test_empty_measurement_or_missing_warmup_is_rejected (test_bench.BenchmarkTests.test_empty_measurement_or_missing_warmup_is_rejected) ... ok
+test_load_warmup_and_generation_are_separate (test_bench.BenchmarkTests.test_load_warmup_and_generation_are_separate) ... ok
+test_peak_rss_linux_kibibytes (test_bench.BenchmarkTests.test_peak_rss_linux_kibibytes) ... ok
+test_peak_rss_macos_bytes (test_bench.BenchmarkTests.test_peak_rss_macos_bytes) ... ok
+test_generation_failure_cannot_pass_as_identical_output (test_check.CheckScriptTests.test_generation_failure_cannot_pass_as_identical_output) ... ok
+test_successful_checks_restore_original_config (test_check.CheckScriptTests.test_successful_checks_restore_original_config) ... ok
+test_chat_template_receives_thinking_flag (test_model.ModelTests.test_chat_template_receives_thinking_flag) ... ok
+test_generate_decodes_only_new_tokens (test_model.ModelTests.test_generate_decodes_only_new_tokens) ... ok
+test_greedy_generation_crops_prompt_and_disables_sampling (test_model.ModelTests.test_greedy_generation_crops_prompt_and_disables_sampling) ... ok
+test_loader_uses_config_and_sets_seed (test_model.ModelTests.test_loader_uses_config_and_sets_seed) ... ok
+test_positive_temperature_enables_sampling (test_model.ModelTests.test_positive_temperature_enables_sampling) ... ok
+test_seed_repeats_all_random_sources (test_model.ModelTests.test_seed_repeats_all_random_sources) ... ok
+test_thinking_flag_is_optional (test_model.ModelTests.test_thinking_flag_is_optional) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.983s
+
+OK

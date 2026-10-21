@@ -1,0 +1,17 @@
+uv run --project .. --locked python -m unittest discover -s tests -p 'test_*.py' -v
+test_exact_and_near_duplicates (test_hw3.CleaningTests.test_exact_and_near_duplicates) ... ok
+test_pii_scrubbing (test_hw3.CleaningTests.test_pii_scrubbing) ... ok
+test_schema_error_contains_line_number (test_hw3.CleaningTests.test_schema_error_contains_line_number) ... ok
+test_english_probability (test_hw3.CollectTests.test_english_probability) ... ok
+test_label_mapping_rejects_ambiguous_issue (test_hw3.CollectTests.test_label_mapping_rejects_ambiguous_issue) ... ok
+test_prompt_selection_is_stable (test_hw3.CollectTests.test_prompt_selection_is_stable) ... ok
+test_rate_limit_response_is_retried (test_hw3.CollectTests.test_rate_limit_response_is_retried) ... collect: GitHub rate limit, ожидание 1 с
+ok
+test_contamination_detects_group_overlap (test_hw3.SplitAndGateTests.test_contamination_detects_group_overlap) ... ok
+test_diversity_reports_classifier_specific_failures (test_hw3.SplitAndGateTests.test_diversity_reports_classifier_specific_failures) ... ok
+test_group_split_is_deterministic_and_disjoint (test_hw3.SplitAndGateTests.test_group_split_is_deterministic_and_disjoint) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.256s
+
+OK

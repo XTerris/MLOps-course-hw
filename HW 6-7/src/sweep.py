@@ -22,7 +22,7 @@ def run_candidate(params, candidate, versions):
     mlflow.log_dict(params, "config.json")
     # Достаточно sha для коммита, но dirty-код дополнительно сохраняется целиком.
     mlflow.log_artifacts("src", "source")
-    mlflow.log_artifact("uv.lock")
+    mlflow.log_artifact("../uv.lock")
     with tempfile.TemporaryDirectory(prefix="hw6-train-") as tmp:
         out = Path(tmp) / "adapter"
         results, details, answers = train(params, candidate, out, lambda values, step: mlflow.log_metrics(values, step=step))
@@ -45,11 +45,11 @@ def main():
     if any(p["train"][k] <= 0 for k in ("max_steps", "train_limit", "val_limit", "batch_size", "grad_accum", "eval_every")):
         raise SystemExit("Бюджеты и размеры батча должны быть положительными")
     connect(p)
-    versions = {k: v for k, v in provenance(p).items() if not k.startswith("data_")}
+    versions = provenance(p)
     rows = []
     with mlflow.start_run(run_name="sweep", tags={"kind": "sweep", **versions}) as parent:
-        with mlflow.start_run(run_name="all-candidates", nested=True):
-            for candidate in p["sweep"]:
+        for candidate in p["sweep"]:
+            with mlflow.start_run(run_name=candidate["name"], nested=True):
                 rows.append(run_candidate(p, candidate, versions))
         mlflow.log_dict({"candidates": rows}, "comparison.json")
         result = {"parent_id": parent.info.run_id, "rows": rows, "provenance": versions}

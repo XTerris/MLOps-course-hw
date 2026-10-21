@@ -59,3 +59,5 @@ make -C "HW 5" check
 
 Данные ДЗ 3 хранятся через DVC в локальном remote `dvc_remote/` и не
 попадают в Git. Видео для ДЗ 3 в текущий этап не входит.
+
+- [ДЗ 6–7: единый отчёт](HW%206-7/docs/conclusion.md), [дефекты](HW%206-7/docs/defects.md), [сравнение MLflow](HW%206-7/docs/comparison.csv).

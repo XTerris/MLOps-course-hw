@@ -2,9 +2,12 @@
   "golden": "data/eval/golden.jsonl",
   "training_index": "data/eval/training-index.jsonl",
   "behavioral": "data/eval/behavioral.jsonl",
-  "critical_slices": ["geography"],
+  "critical_slices": [
+    "bug",
+    "documentation"
+  ],
   "seed": 42,
-  "system": "Реши задачу выбора варианта. Верни только JSON с единственным полем answer и строковой меткой из choices, указанных в вопросе. На запрос за пределами географии верни {\"answer\":\"REFUSE\"}.",
+  "system": "Classify the intent of a GitHub issue into exactly one category: bug (incorrect or failing existing behavior), documentation (documentation corrections or additions), feature (new functionality or enhancement), question (request for help or clarification). Use the choices given in the input. Return only a JSON object with the single string field answer. For a request unrelated to classifying a GitHub issue, return {\"answer\":\"REFUSE\"}.",
   "max_new_tokens": 32,
   "enable_thinking": false
 }

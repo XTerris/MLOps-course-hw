@@ -1,0 +1,309 @@
+{
+  "exact_or_group_intersections": 0,
+  "n_train_index": 2188,
+  "n_golden": 52,
+  "n_behavioral": 3,
+  "source_train": "HW 4/data/train.jsonl",
+  "source_train_sha256": "739b35707a4f74118db84b33492599adcae1d190c57caf3920fc7ba00f9230a3",
+  "source_test_sha256": "0f714bb7540403604085f26386e6dd9999d5cfbe15599ac03120664f3c0ee58f",
+  "tensor_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
+  "tensor_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
+  "tokenized_rows": 2114,
+  "source_rows_without_supervised_tensor": 74,
+  "token_ids_sha256": "c6c77f1bd8e5c3702ba8c7e6fd66f82d3f956ccc6bcfeea2b0de8bfe4b2ca31a",
+  "label_counts": {
+    "bug": 13,
+    "documentation": 13,
+    "feature": 13,
+    "question": 13
+  },
+  "golden_groups": [
+    "3b1b/manim",
+    "alteryx/featuretools",
+    "cookiecutter/cookiecutter-django",
+    "docling-project/docling",
+    "gradio-app/gradio",
+    "jmcnamara/XlsxWriter",
+    "scikit-learn/scikit-learn",
+    "sherlock-project/sherlock",
+    "wagtail/wagtail"
+  ],
+  "reviewer": "Codex agent; human review not claimed",
+  "excluded": {
+    "github:3b1b/manim#2217": "Метка bug противоречит явному запросу новой возможности.",
+    "github:cookiecutter/cookiecutter-django#4792": "Предложение поменять стиль кода, а не однозначный bug.",
+    "github:alteryx/featuretools#2765": "Метка bug, но содержание — исправление ссылки документации.",
+    "github:3b1b/manim#2120": "Смешаны дефект установки и ошибка документации.",
+    "github:3b1b/manim#2166": "Для понимания сути требуется внешнее видео, текст почти пуст.",
+    "github:scikit-learn/scikit-learn#28671": "Метка documentation, но автор просит помочь с ошибкой метрики.",
+    "github:wagtail/wagtail#11826": "Метка documentation, но автор просит восстановить данные.",
+    "github:beeware/toga#3693": "Метка documentation, но описан дефект отрисовки.",
+    "github:jmcnamara/XlsxWriter#1164": "Служебная заглушка, не вопрос.",
+    "github:docling-project/docling#257": "Метка question, но явно требуется интеграция новой системы.",
+    "github:docling-project/docling#293": "Смысловой дубль вопроса #288 о Docker/FastAPI.",
+    "github:docling-project/docling#303": "Смысловой дубль вопроса #288 о Docker/FastAPI."
+  },
+  "nearest_train_by_word_jaccard": [
+    {
+      "golden_id": "github:3b1b/manim#2154",
+      "nearest_train_id": "github:langchain-ai/langchain#32269",
+      "word_jaccard": 0.15517241379310345
+    },
+    {
+      "golden_id": "github:alteryx/featuretools#2669",
+      "nearest_train_id": "github:agno-agi/agno#106",
+      "word_jaccard": 0.18333333333333332
+    },
+    {
+      "golden_id": "github:alteryx/featuretools#2701",
+      "nearest_train_id": "github:numba/numba#9635",
+      "word_jaccard": 0.21333333333333335
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4903",
+      "nearest_train_id": "github:PrefectHQ/fastmcp#38",
+      "word_jaccard": 0.2
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4865",
+      "nearest_train_id": "github:dgtlmoon/changedetection.io#2134",
+      "word_jaccard": 0.15789473684210525
+    },
+    {
+      "golden_id": "github:3b1b/manim#2281",
+      "nearest_train_id": "github:agentscope-ai/agentscope#150",
+      "word_jaccard": 0.19101123595505617
+    },
+    {
+      "golden_id": "github:3b1b/manim#2164",
+      "nearest_train_id": "github:agentscope-ai/agentscope#150",
+      "word_jaccard": 0.1875
+    },
+    {
+      "golden_id": "github:3b1b/manim#2172",
+      "nearest_train_id": "github:ScrapeGraphAI/Scrapegraph-ai#1014",
+      "word_jaccard": 0.18471337579617833
+    },
+    {
+      "golden_id": "github:jmcnamara/XlsxWriter#1043",
+      "nearest_train_id": "github:openai/openai-python#1678",
+      "word_jaccard": 0.19047619047619047
+    },
+    {
+      "golden_id": "github:3b1b/manim#2092",
+      "nearest_train_id": "github:deepspeedai/DeepSpeed#4900",
+      "word_jaccard": 0.17307692307692307
+    },
+    {
+      "golden_id": "github:3b1b/manim#2130",
+      "nearest_train_id": "github:huggingface/pytorch-image-models#2210",
+      "word_jaccard": 0.21374045801526717
+    },
+    {
+      "golden_id": "github:3b1b/manim#2145",
+      "nearest_train_id": "github:9001/copyparty#79",
+      "word_jaccard": 0.18691588785046728
+    },
+    {
+      "golden_id": "github:3b1b/manim#2146",
+      "nearest_train_id": "github:datalab-to/marker#743",
+      "word_jaccard": 0.15086206896551724
+    },
+    {
+      "golden_id": "github:scikit-learn/scikit-learn#28911",
+      "nearest_train_id": "github:sktime/sktime#7217",
+      "word_jaccard": 0.3617021276595745
+    },
+    {
+      "golden_id": "github:alteryx/featuretools#2736",
+      "nearest_train_id": "github:deepseek-ai/DeepSeek-V3#294",
+      "word_jaccard": 0.21052631578947367
+    },
+    {
+      "golden_id": "github:scikit-learn/scikit-learn#28933",
+      "nearest_train_id": "github:public-apis/public-apis#3744",
+      "word_jaccard": 0.19148936170212766
+    },
+    {
+      "golden_id": "github:scikit-learn/scikit-learn#28733",
+      "nearest_train_id": "github:sktime/sktime#7217",
+      "word_jaccard": 0.23809523809523808
+    },
+    {
+      "golden_id": "github:wagtail/wagtail#11840",
+      "nearest_train_id": "github:dask/dask#11838",
+      "word_jaccard": 0.22448979591836735
+    },
+    {
+      "golden_id": "github:wagtail/wagtail#11587",
+      "nearest_train_id": "github:dask/dask#10958",
+      "word_jaccard": 0.2112676056338028
+    },
+    {
+      "golden_id": "github:scikit-learn/scikit-learn#28610",
+      "nearest_train_id": "github:sktime/sktime#5993",
+      "word_jaccard": 0.26881720430107525
+    },
+    {
+      "golden_id": "github:wagtail/wagtail#11424",
+      "nearest_train_id": "github:dask/dask#11838",
+      "word_jaccard": 0.16901408450704225
+    },
+    {
+      "golden_id": "github:wagtail/wagtail#12204",
+      "nearest_train_id": "github:mkdocstrings/mkdocstrings#700",
+      "word_jaccard": 0.1919191919191919
+    },
+    {
+      "golden_id": "github:scikit-learn/scikit-learn#28314",
+      "nearest_train_id": "github:sktime/sktime#6775",
+      "word_jaccard": 0.23333333333333334
+    },
+    {
+      "golden_id": "github:docling-project/docling#724",
+      "nearest_train_id": "github:openai/openai-python#1678",
+      "word_jaccard": 0.18803418803418803
+    },
+    {
+      "golden_id": "github:wagtail/wagtail#11887",
+      "nearest_train_id": "github:ray-project/ray#46653",
+      "word_jaccard": 0.226890756302521
+    },
+    {
+      "golden_id": "github:wagtail/wagtail#11550",
+      "nearest_train_id": "github:sgl-project/sglang#2661",
+      "word_jaccard": 0.2012987012987013
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#7118",
+      "nearest_train_id": "github:angr/angr#4641",
+      "word_jaccard": 0.19047619047619047
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#6973",
+      "nearest_train_id": "github:Kozea/WeasyPrint#2089",
+      "word_jaccard": 0.24242424242424243
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4824",
+      "nearest_train_id": "github:browser-use/browser-use#818",
+      "word_jaccard": 0.19047619047619047
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4938",
+      "nearest_train_id": "github:public-apis/public-apis#3987",
+      "word_jaccard": 0.1896551724137931
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4915",
+      "nearest_train_id": "github:google/adk-python#98",
+      "word_jaccard": 0.136986301369863
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4939",
+      "nearest_train_id": "github:TheAlgorithms/Python#11800",
+      "word_jaccard": 0.2
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#4810",
+      "nearest_train_id": "github:caronc/apprise#1175",
+      "word_jaccard": 0.18840579710144928
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#7128",
+      "nearest_train_id": "github:PrefectHQ/fastmcp#2216",
+      "word_jaccard": 0.17567567567567569
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#7093",
+      "nearest_train_id": "github:dgtlmoon/changedetection.io#2081",
+      "word_jaccard": 0.29577464788732394
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#7006",
+      "nearest_train_id": "github:HKUDS/DeepTutor#7",
+      "word_jaccard": 0.22105263157894736
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#7179",
+      "nearest_train_id": "github:dgtlmoon/changedetection.io#2081",
+      "word_jaccard": 0.2682926829268293
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#6974",
+      "nearest_train_id": "github:github/spec-kit#140",
+      "word_jaccard": 0.20833333333333334
+    },
+    {
+      "golden_id": "github:gradio-app/gradio#7173",
+      "nearest_train_id": "github:huggingface/pytorch-image-models#2210",
+      "word_jaccard": 0.3008849557522124
+    },
+    {
+      "golden_id": "github:docling-project/docling#288",
+      "nearest_train_id": "github:bytedance/deer-flow#19",
+      "word_jaccard": 0.3181818181818182
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#5205",
+      "nearest_train_id": "github:microsoft/markitdown#23",
+      "word_jaccard": 0.25925925925925924
+    },
+    {
+      "golden_id": "github:docling-project/docling#348",
+      "nearest_train_id": "github:agno-agi/agno#3162",
+      "word_jaccard": 0.25
+    },
+    {
+      "golden_id": "github:docling-project/docling#244",
+      "nearest_train_id": "github:mem0ai/mem0#2012",
+      "word_jaccard": 0.2
+    },
+    {
+      "golden_id": "github:jmcnamara/XlsxWriter#1139",
+      "nearest_train_id": "github:caronc/apprise#1175",
+      "word_jaccard": 0.30952380952380953
+    },
+    {
+      "golden_id": "github:docling-project/docling#266",
+      "nearest_train_id": "github:bytedance/deer-flow#51",
+      "word_jaccard": 0.24444444444444444
+    },
+    {
+      "golden_id": "github:docling-project/docling#372",
+      "nearest_train_id": "github:agentscope-ai/agentscope#150",
+      "word_jaccard": 0.2
+    },
+    {
+      "golden_id": "github:jmcnamara/XlsxWriter#1052",
+      "nearest_train_id": "github:Kozea/WeasyPrint#2254",
+      "word_jaccard": 0.21212121212121213
+    },
+    {
+      "golden_id": "github:jmcnamara/XlsxWriter#1068",
+      "nearest_train_id": "github:gunthercox/ChatterBot#2359",
+      "word_jaccard": 0.2
+    },
+    {
+      "golden_id": "github:docling-project/docling#404",
+      "nearest_train_id": "github:isaac-sim/IsaacLab#1565",
+      "word_jaccard": 0.16853932584269662
+    },
+    {
+      "golden_id": "github:sherlock-project/sherlock#2114",
+      "nearest_train_id": "github:github/spec-kit#73",
+      "word_jaccard": 0.17857142857142858
+    },
+    {
+      "golden_id": "github:docling-project/docling#385",
+      "nearest_train_id": "github:Aider-AI/aider#434",
+      "word_jaccard": 0.2336448598130841
+    },
+    {
+      "golden_id": "github:cookiecutter/cookiecutter-django#5188",
+      "nearest_train_id": "github:babybuddy/babybuddy#817",
+      "word_jaccard": 0.19791666666666666
+    }
+  ],
+  "limitation": "Exact/group checks and lexical screening do not prove absence of all semantic paraphrases."
+}

@@ -6,6 +6,7 @@
   "source_train": "HW 4/data/train.jsonl",
   "source_train_sha256": "739b35707a4f74118db84b33492599adcae1d190c57caf3920fc7ba00f9230a3",
   "source_test_sha256": "0f714bb7540403604085f26386e6dd9999d5cfbe15599ac03120664f3c0ee58f",
+  "redacted_credential_shaped_strings": 2,
   "tensor_train_sha256": "433d2f471bf4d483ffcc5ed22b33a7dd633b36aab4fdb04a53f6fa3b8546c714",
   "tensor_val_sha256": "c6ddb80678192229358b835580600b69671ec249e19fa75305fcd353d0186633",
   "tokenized_rows": 2114,

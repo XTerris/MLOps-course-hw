@@ -97,6 +97,13 @@ def user(row):
  return '\n\n'.join(m['content'] for m in row['messages'] if m['role']=='user')
 
 
+SECRET_PATTERN = re.compile(r'gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{30,}|AKIA[A-Z0-9]{16}')
+
+
+def redact(text):
+ return SECRET_PATTERN.sub('[REDACTED_API_KEY]',text)
+
+
 def prompt(text):
  return text + '\n\nChoices: ' + ', '.join(CHOICES) + '.'
 
@@ -118,7 +125,8 @@ def main():
    golden.append(dict(id=record['id'],group_id=record['topic'],input=prompt(user(record)),
       expected=label,choices=CHOICES,slices=[label],source='https://github.com/'+source_id.replace('#','/issues/'),
       review=dict(reviewer='Codex agent; not a human annotation audit',reason=reason,version=1)))
- training=[dict(id=r['id'],input=prompt(user(r)),group_id=r['topic']) for r in train]
+ training=[dict(id=r['id'],input=prompt(redact(user(r))),group_id=r['topic'],
+   source_input_sha256=hashlib.sha256(user(r).encode()).hexdigest()) for r in train]
  basic=next(r for r in golden if r['id']=='github:3b1b/manim#2154')
  behavioral=[dict(basic,id='behavior-format',type='format'),
   dict(basic,id='behavior-paraphrase',type='paraphrase',
@@ -147,7 +155,8 @@ def main():
   path=ROOT/f'data/eval/{name}.jsonl';path.parent.mkdir(parents=True,exist_ok=True)
   path.write_text(''.join(json.dumps(row,ensure_ascii=False)+'\n' for row in rows))
  write(ROOT/'docs/data-lineage.json',dict(**proof,source_train=str(train_path.relative_to(REPO)),
-   source_train_sha256=digest(train_path),source_test_sha256=digest(test_path),tensor_train_sha256=digest(ROOT/'data/tokenized/train.pt'),
+   source_train_sha256=digest(train_path),source_test_sha256=digest(test_path),
+   redacted_credential_shaped_strings=sum(len(SECRET_PATTERN.findall(user(r))) for r in train),tensor_train_sha256=digest(ROOT/'data/tokenized/train.pt'),
    tensor_val_sha256=digest(ROOT/'data/tokenized/val.pt'),tokenized_rows=len(token_ids),
    source_rows_without_supervised_tensor=len(train)-len(token_ids),token_ids_sha256=hashlib.sha256(json.dumps(token_ids).encode()).hexdigest(),
    label_counts=dict(collections.Counter(r['expected'] for r in golden)),

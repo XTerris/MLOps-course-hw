@@ -1,0 +1,206 @@
+{
+  "train": [
+    {
+      "index": 1156,
+      "id": "github:google/langextract#6",
+      "label": "bug"
+    },
+    {
+      "index": 173,
+      "id": "github:Kozea/WeasyPrint#2066",
+      "label": "bug"
+    },
+    {
+      "index": 36,
+      "id": "github:Ackee-Blockchain/wake#414",
+      "label": "bug"
+    },
+    {
+      "index": 1345,
+      "id": "github:huggingface/transformers#29595",
+      "label": "bug"
+    },
+    {
+      "index": 404,
+      "id": "github:abi/screenshot-to-code#384",
+      "label": "bug"
+    },
+    {
+      "index": 276,
+      "id": "github:ParthJadhav/Tkinter-Designer#461",
+      "label": "bug"
+    },
+    {
+      "index": 261,
+      "id": "github:ParthJadhav/Tkinter-Designer#394",
+      "label": "bug"
+    },
+    {
+      "index": 189,
+      "id": "github:Kozea/WeasyPrint#2174",
+      "label": "bug"
+    },
+    {
+      "index": 563,
+      "id": "github:browser-use/browser-use#1061",
+      "label": "documentation"
+    },
+    {
+      "index": 410,
+      "id": "github:agentscope-ai/agentscope#119",
+      "label": "documentation"
+    },
+    {
+      "index": 1962,
+      "id": "github:scipy/scipy#19959",
+      "label": "documentation"
+    },
+    {
+      "index": 233,
+      "id": "github:PaddlePaddle/PaddleOCR#16724",
+      "label": "documentation"
+    },
+    {
+      "index": 231,
+      "id": "github:PaddlePaddle/PaddleOCR#14872",
+      "label": "documentation"
+    },
+    {
+      "index": 526,
+      "id": "github:authlib/authlib#687",
+      "label": "documentation"
+    },
+    {
+      "index": 1095,
+      "id": "github:github/spec-kit#140",
+      "label": "documentation"
+    },
+    {
+      "index": 1124,
+      "id": "github:google/adk-python#151",
+      "label": "documentation"
+    },
+    {
+      "index": 1781,
+      "id": "github:modoboa/modoboa#3460",
+      "label": "feature"
+    },
+    {
+      "index": 55,
+      "id": "github:Aider-AI/aider#446",
+      "label": "feature"
+    },
+    {
+      "index": 673,
+      "id": "github:commaai/openpilot#30884",
+      "label": "feature"
+    },
+    {
+      "index": 1328,
+      "id": "github:huggingface/pytorch-image-models#2231",
+      "label": "feature"
+    },
+    {
+      "index": 699,
+      "id": "github:commaai/openpilot#31735",
+      "label": "feature"
+    },
+    {
+      "index": 1490,
+      "id": "github:jupyterhub/jupyterhub#4787",
+      "label": "feature"
+    },
+    {
+      "index": 849,
+      "id": "github:dgtlmoon/changedetection.io#2123",
+      "label": "feature"
+    },
+    {
+      "index": 6,
+      "id": "github:9001/copyparty#122",
+      "label": "feature"
+    },
+    {
+      "index": 718,
+      "id": "github:crewAIInc/crewAI#57",
+      "label": "question"
+    },
+    {
+      "index": 1908,
+      "id": "github:ray-project/ray#44561",
+      "label": "question"
+    },
+    {
+      "index": 1689,
+      "id": "github:microsoft/qlib#1791",
+      "label": "question"
+    },
+    {
+      "index": 1543,
+      "id": "github:librosa/librosa#1795",
+      "label": "question"
+    },
+    {
+      "index": 711,
+      "id": "github:crewAIInc/crewAI#40",
+      "label": "question"
+    },
+    {
+      "index": 984,
+      "id": "github:fastapi/fastapi#12245",
+      "label": "question"
+    },
+    {
+      "index": 1685,
+      "id": "github:microsoft/qlib#1779",
+      "label": "question"
+    },
+    {
+      "index": 500,
+      "id": "github:angr/angr#4570",
+      "label": "question"
+    }
+  ],
+  "val": [
+    {
+      "index": 130,
+      "id": "github:huggingface/diffusers#6443",
+      "label": "bug"
+    },
+    {
+      "index": 30,
+      "id": "github:NVIDIA/apex#1793",
+      "label": "bug"
+    },
+    {
+      "index": 58,
+      "id": "github:Textualize/textual#4094",
+      "label": "documentation"
+    },
+    {
+      "index": 176,
+      "id": "github:langflow-ai/langflow#4085",
+      "label": "documentation"
+    },
+    {
+      "index": 115,
+      "id": "github:hiyouga/LlamaFactory#6763",
+      "label": "feature"
+    },
+    {
+      "index": 112,
+      "id": "github:hiyouga/LlamaFactory#6718",
+      "label": "feature"
+    },
+    {
+      "index": 17,
+      "id": "github:Lightning-AI/pytorch-lightning#19595",
+      "label": "question"
+    },
+    {
+      "index": 13,
+      "id": "github:Lightning-AI/pytorch-lightning#19539",
+      "label": "question"
+    }
+  ]
+}

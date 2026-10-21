@@ -44,8 +44,14 @@ def train(params, candidate, out, log):
     for b in (tr, va):
         if b.get("model") != m["name"]:
             raise ValueError("Тензоры токенизированы другой моделью: повторите ДЗ 4 с выбранной моделью")
-    examples = tr["examples"][:t["train_limit"]]
-    val = va["examples"][:t["val_limit"]]
+    def pool(split, key, limit):
+        indices = t[key]
+        if (len(indices) != limit or len(set(indices)) != len(indices) or
+                any(type(i) is not int or i < 0 or i >= len(split["examples"]) for i in indices)):
+            raise ValueError("Некорректная закреплённая подвыборка")
+        return [split["examples"][i] for i in indices]
+    examples = pool(tr, "train_indices", t["train_limit"])
+    val = pool(va, "val_indices", t["val_limit"])
     if tr["pad_token_id"] != va["pad_token_id"]:
         raise ValueError("pad_token_id train и val различаются")
     tok = AutoTokenizer.from_pretrained(m["name"], revision=m["revision"])

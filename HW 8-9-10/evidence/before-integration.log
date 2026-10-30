@@ -1,0 +1,147 @@
+test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) ...
+  test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': '', 'max_new_tokens': 8}) ... FAIL
+  test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': 'test', 'max_new_tokens': 0}) ... FAIL
+  test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': 'test', 'max_new_tokens': 100000}) ... FAIL
+  test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': 'test', 'max_new_tokens': '8'}) ... FAIL
+test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) ... FAIL
+test_loaded_version_stays_until_restart_and_can_roll_back (__main__.HTTPTests.test_loaded_version_stays_until_restart_and_can_roll_back) ... FAIL
+test_warmup_readiness_blocks_generation (__main__.HTTPTests.test_warmup_readiness_blocks_generation) ... FAIL
+test_atomic_write_error_preserves_bytes (__main__.ProcessTests.test_atomic_write_error_preserves_bytes) ... FAIL
+test_changed_model_file_rejected_without_overwriting_pointer (__main__.ProcessTests.test_changed_model_file_rejected_without_overwriting_pointer) ... FAIL
+test_fault_after_pointer_update_recovers_once (__main__.ProcessTests.test_fault_after_pointer_update_recovers_once) ... FAIL
+test_incomplete_foreign_and_refused_reports_preserve_pointer (__main__.ProcessTests.test_incomplete_foreign_and_refused_reports_preserve_pointer) ...
+  test_incomplete_foreign_and_refused_reports_preserve_pointer (__main__.ProcessTests.test_incomplete_foreign_and_refused_reports_preserve_pointer) (report='report-incomplete.json') ... FAIL
+  test_incomplete_foreign_and_refused_reports_preserve_pointer (__main__.ProcessTests.test_incomplete_foreign_and_refused_reports_preserve_pointer) (report='report-A.json') ... FAIL
+test_repeated_release_has_one_publication (__main__.ProcessTests.test_repeated_release_has_one_publication) ... FAIL
+test_restart_cache_and_changed_input (__main__.ProcessTests.test_restart_cache_and_changed_input) ... FAIL
+
+======================================================================
+FAIL: test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': '', 'max_new_tokens': 8})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 198, in test_invalid_requests_never_reach_backend
+    self.assertGreaterEqual(status, 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': 'test', 'max_new_tokens': 0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 198, in test_invalid_requests_never_reach_backend
+    self.assertGreaterEqual(status, 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': 'test', 'max_new_tokens': 100000})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 198, in test_invalid_requests_never_reach_backend
+    self.assertGreaterEqual(status, 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) (payload={'prompt': 'test', 'max_new_tokens': '8'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 198, in test_invalid_requests_never_reach_backend
+    self.assertGreaterEqual(status, 400)
+AssertionError: 200 not greater than or equal to 400
+
+======================================================================
+FAIL: test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 202, in test_invalid_requests_never_reach_backend
+    self.assertEqual(request(self.port, '/debug')[1]['calls'], calls + 1)
+AssertionError: 5 != 1
+
+======================================================================
+FAIL: test_loaded_version_stays_until_restart_and_can_roll_back (__main__.HTTPTests.test_loaded_version_stays_until_restart_and_can_roll_back)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 172, in test_loaded_version_stays_until_restart_and_can_roll_back
+    self.assertEqual(before_restart['model_id'], 'fixture-A')
+AssertionError: 'fixture-B' != 'fixture-A'
+- fixture-B
+?         ^
++ fixture-A
+?         ^
+
+
+======================================================================
+FAIL: test_warmup_readiness_blocks_generation (__main__.HTTPTests.test_warmup_readiness_blocks_generation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 160, in test_warmup_readiness_blocks_generation
+    self.assertEqual(request(self.port, '/ready')[0], 503)
+AssertionError: 200 != 503
+
+======================================================================
+FAIL: test_atomic_write_error_preserves_bytes (__main__.ProcessTests.test_atomic_write_error_preserves_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 87, in test_atomic_write_error_preserves_bytes
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 3 != 0 :
+
+======================================================================
+FAIL: test_changed_model_file_rejected_without_overwriting_pointer (__main__.ProcessTests.test_changed_model_file_rejected_without_overwriting_pointer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 106, in test_changed_model_file_rejected_without_overwriting_pointer
+    self.assertNotEqual(result.returncode, 0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_fault_after_pointer_update_recovers_once (__main__.ProcessTests.test_fault_after_pointer_update_recovers_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 94, in test_fault_after_pointer_update_recovers_once
+    self.assertEqual(json.loads((self.root / 'accepted.json').read_text())['model_id'], 'fixture-B')
+AssertionError: 'fixture-A' != 'fixture-B'
+- fixture-A
+?         ^
++ fixture-B
+?         ^
+
+
+======================================================================
+FAIL: test_incomplete_foreign_and_refused_reports_preserve_pointer (__main__.ProcessTests.test_incomplete_foreign_and_refused_reports_preserve_pointer) (report='report-incomplete.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 69, in test_incomplete_foreign_and_refused_reports_preserve_pointer
+    self.assertNotEqual(result.returncode, 0, result.stdout)
+AssertionError: 0 == 0 : PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4
+PUBLISHED fixture-B
+
+
+======================================================================
+FAIL: test_incomplete_foreign_and_refused_reports_preserve_pointer (__main__.ProcessTests.test_incomplete_foreign_and_refused_reports_preserve_pointer) (report='report-A.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 69, in test_incomplete_foreign_and_refused_reports_preserve_pointer
+    self.assertNotEqual(result.returncode, 0, result.stdout)
+AssertionError: 0 == 0 : PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4
+PUBLISHED fixture-B
+
+
+======================================================================
+FAIL: test_repeated_release_has_one_publication (__main__.ProcessTests.test_repeated_release_has_one_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 78, in test_repeated_release_has_one_publication
+    self.assertEqual(len(events), 1, events)
+AssertionError: 2 != 1 : [{'model_id': 'fixture-B', 'prepared': '88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4'}, {'model_id': 'fixture-B', 'prepared': '88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4'}]
+
+======================================================================
+FAIL: test_restart_cache_and_changed_input (__main__.ProcessTests.test_restart_cache_and_changed_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/integration_tests/test_integration.py", line 58, in test_restart_cache_and_changed_input
+    self.assertIn('PREPARED', changed.stdout)
+AssertionError: 'PREPARED' not found in 'CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4\nPUBLISHED fixture-B\n'
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.083s
+
+FAILED (failures=14)

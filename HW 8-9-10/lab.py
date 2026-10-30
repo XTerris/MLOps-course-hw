@@ -6,6 +6,9 @@
 import argparse
 import hashlib
 import json
+import os
+import time
+import uuid
 from pathlib import Path
 import release
 
@@ -58,27 +61,104 @@ def prepare(root):
     if entry.exists():
         result=read(entry);print('CACHE_HIT',result['input_sha256']);return result
     payload=(root/'input.txt').read_bytes()
-    result={'input_sha256':digest(payload),'rows':len(payload.splitlines()),'config':config}
-    write(entry,result);print('PREPARED',result['input_sha256']);return result
+    lines=payload.decode('utf-8').splitlines()
+    if not lines or any(not line.strip() for line in lines):
+        raise ValueError('Пустой набор или пустая строка')
+    result={'input_sha256':digest(payload),'rows':len(lines),
+            'word_counts':[len(line.split()) for line in lines], 'config':config}
+    if config.get('input_format') == 'golden-jsonl':
+        max_length = config.get('max_length')
+        if type(max_length) is not int or max_length < 1:
+            raise ValueError('max_length должен задавать положительное число символов')
+        rows = [json.loads(line) for line in lines]
+        ids = set()
+        for row in rows:
+            if (not isinstance(row,dict) or not isinstance(row.get('id'),str) or not row['id']
+                or row['id'] in ids or not isinstance(row.get('input'),str) or not row['input'].strip()
+                or len(row['input']) > max_length
+                or not isinstance(row.get('choices'),list) or row.get('expected') not in row['choices']
+                or not isinstance(row.get('slices'),list) or not row['slices']
+                or not isinstance(row.get('source'),str) or not row['source']):
+                raise ValueError('Некорректная схема golden JSONL')
+            ids.add(row['id'])
+        result['schema']='golden-jsonl-v1'
+        result['max_input_length_chars']=max(len(row['input']) for row in rows)
+    release.atomic_write(entry,canonical(result))
+    print('PREPARED',result['input_sha256']);return result
 
 
-def run(root,report_name,fail_after_prepare=False):
+def record_publication(root, event):
+    """События и указатель согласуются при повторе после сбоя одного писателя."""
+    path=root/'publications.jsonl'
+    existing=path.read_text(encoding='utf-8') if path.exists() else ''
+    events=[json.loads(line) for line in existing.splitlines() if line.strip()]
+    if not any(item['event_id']==event['event_id'] for item in events):
+        release.atomic_write(path,(existing + json.dumps(event,ensure_ascii=False)+'\n').encode('utf-8'))
+        print('PUBLICATION_EVENT',event['release_id'])
+    else:
+        print('PUBLICATION_ALREADY_RECORDED',event['release_id'])
+
+
+def publish_stage(root,manifest,report,prepared,fail_after_publish=False):
+    release.validate_release(manifest, report)
+    release.verify_files(manifest, root)
+    release_id=digest(canonical({'model_sha256':manifest['model_sha256'],
+                                  'model_id':manifest['model_id'],
+                                  'runtime_sha256':manifest['runtime_sha256'],
+                                  'report_sha256':digest(canonical(report))}))
+    pending_path=root/'pending-publication.json'
+    target=root/'accepted.json'
+    current=read(target) if target.exists() else None
+    log_path=root/'publications.jsonl'
+    prior=[json.loads(line) for line in log_path.read_text(encoding='utf-8').splitlines() if line.strip()] if log_path.exists() else []
+    if pending_path.exists():
+        event=read(pending_path)
+        if event['release_id'] != release_id:
+            raise ValueError('Сначала завершите предыдущую прерванную публикацию')
+    elif current == manifest and prior and prior[-1]['release_id'] == release_id:
+        print('PUBLICATION_ALREADY_CURRENT',release_id)
+        return
+    else:
+        event={'event_id':str(uuid.uuid4()),'release_id':release_id,
+               'model_id':manifest['model_id'],'runtime_sha256':manifest['runtime_sha256'],
+               'prepared':prepared['input_sha256']}
+        release.atomic_write(pending_path,canonical(event))
+    release.publish(manifest,report,root/'accepted.json')
+    if fail_after_publish:raise RuntimeError('Инъекция сбоя после указателя до журнала')
+    record_publication(root,event)
+    pending_path.unlink()
+    print('PUBLISHED',manifest['model_id'])
+
+
+def run(root,report_name,fail_after_prepare=False,manifest_name='manifest-B.json',fail_after_publish=False):
+    attempt={'attempt_id':str(uuid.uuid4()),'started_at':time.time()}
+    try:
+        _run(root,report_name,fail_after_prepare,manifest_name,fail_after_publish)
+        attempt['status']='success'
+    except Exception as exc:
+        attempt.update(status='failed',error=str(exc))
+        raise
+    finally:
+        with (root/'attempts.jsonl').open('a',encoding='utf-8') as f:
+            f.write(json.dumps(attempt,ensure_ascii=False)+'\n')
+            f.flush();os.fsync(f.fileno())
+
+
+def _run(root,report_name,fail_after_prepare,manifest_name,fail_after_publish):
     prepared=prepare(root)
     if fail_after_prepare:raise RuntimeError('Инъекция сбоя после подготовки')
-    manifest=read(root/'manifest-B.json');report=read(root/report_name)
-    release.publish(manifest,report,root/'accepted.json')
-    with (root/'publications.jsonl').open('a') as f:
-        f.write(json.dumps({'model_id':manifest['model_id'],'prepared':prepared['input_sha256']})+'\n')
-    print('PUBLISHED',manifest['model_id'])
+    manifest=read(root/manifest_name);report=read(root/report_name)
+    release.validate_stub(manifest, report, root)
+    publish_stage(root,manifest,report,prepared,fail_after_publish)
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--workspace',type=Path,default=Path('.lab'))
     sub=parser.add_subparsers(dest='command',required=True);sub.add_parser('init')
-    run_parser=sub.add_parser('run');run_parser.add_argument('--report',default='report-B.json');run_parser.add_argument('--fail-after-prepare',action='store_true')
+    run_parser=sub.add_parser('run');run_parser.add_argument('--report',default='report-B.json');run_parser.add_argument('--manifest',default='manifest-B.json');run_parser.add_argument('--fail-after-prepare',action='store_true');run_parser.add_argument('--fail-after-publish',action='store_true')
     args=parser.parse_args()
     if args.command=='init':initialize(args.workspace)
-    else:run(args.workspace,args.report,args.fail_after_prepare)
+    else:run(args.workspace,args.report,args.fail_after_prepare,args.manifest,args.fail_after_publish)
 
 
 if __name__=='__main__':main()

@@ -1,0 +1,46 @@
+{
+  "steps": [
+    {
+      "step": "00-init",
+      "exit_code": 0
+    },
+    {
+      "step": "01-fail-after-prepare",
+      "exit_code": 1
+    },
+    {
+      "step": "02-recovery",
+      "exit_code": 0
+    },
+    {
+      "step": "03-changed-input",
+      "exit_code": 0
+    },
+    {
+      "step": "04-fail-after-pointer",
+      "exit_code": 1
+    },
+    {
+      "step": "05-recover-pointer",
+      "exit_code": 0
+    },
+    {
+      "step": "06-repeat",
+      "exit_code": 0
+    },
+    {
+      "step": "07-switch-back",
+      "exit_code": 0
+    }
+  ],
+  "publication_models": [
+    "fixture-B",
+    "fixture-A",
+    "fixture-B"
+  ],
+  "golden_sha256": "d5b9f51c44376004748729e1e60122f8808ca08057d49840e50eafc0f43d55ed",
+  "rows": 52,
+  "max_length_chars": 8192,
+  "max_input_length_chars": 1670,
+  "note": "Проверка схемы реального golden; публикации исключительно STUB."
+}

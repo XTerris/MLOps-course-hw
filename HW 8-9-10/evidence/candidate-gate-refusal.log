@@ -1,0 +1,33 @@
+{
+  "model_id": "models:/my-qwen-adapter/1",
+  "model_sha256": "064148be520e12d2c70ecf10d65a3ebb5e78e17142c57aa87d0d4f575b2289bd",
+  "protocol_sha256": "292ecab5a624a620af433080cca5a1521b43f4d4c3312e6f0989e8ce676ee294",
+  "golden_sha256": "6f6a04503c8b174f95cf1c553786b2fcb9e51121da17cb8eb10bd7561482a6ba",
+  "runtime_sha256": "ea4d3f099301079ac014023661b820dbb59310f63ad540dc0037c23701f1f34c",
+  "status": "complete",
+  "passed": false,
+  "evaluation_run_id": "a1fa5fbdbde44a988b925014026bdb17",
+  "metrics": {
+    "accuracy": 0.7307692307692307,
+    "format_rate": 0.9038461538461539
+  },
+  "source_reports": {
+    "baseline-eval": {
+      "path": "HW 6-7/metrics/baseline-eval.json",
+      "sha256": "fa131ec0e1088ba79813fe4ab54edf6ccab6987eb8ec71fb90496612da7a0115"
+    },
+    "candidate-eval": {
+      "path": "HW 6-7/metrics/candidate-eval.json",
+      "sha256": "abaf8e1e74b0d5b6866fb3cb5cde6e5cba985c714f8edc3c4848702e7ca00e3e"
+    },
+    "baseline-outputs": {
+      "path": "HW 6-7/metrics/baseline-outputs.json",
+      "sha256": "72e6253329c1d2844b423765781ba6c7ed82cb9d5a2dd7fffb97c2c82ca76183"
+    },
+    "candidate-outputs": {
+      "path": "HW 6-7/metrics/candidate-outputs.json",
+      "sha256": "1cbdff499f38111bd38e6658eb6fe7e8f666572fc196620e27b597d39e0fcafd"
+    }
+  },
+  "reason": "Регрессия критического среза bug"
+}

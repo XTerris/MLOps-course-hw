@@ -1,0 +1,20 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden
+19:13:18.625 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8268
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:20.391 | INFO    | Flow run 'sapphire-malkoha' - Beginning flow run 'sapphire-malkoha' for flow 'model-release'
+19:13:20.393 | INFO    | Flow run 'sapphire-malkoha' - FLOW_RUN_ID 7ee0c4bc-2859-4a9e-9404-17b786710349
+19:13:20.411 | INFO    | Task run 'prepare-input-ed3' - Finished in state Cached(type=COMPLETED)
+19:13:20.411 | INFO    | Flow run 'sapphire-malkoha' - PREPARE_TASK_STATE Cached
+19:13:20.422 | INFO    | Task run 'obtain-and-verify-artifact-18c' - ARTIFACT_VERIFIED fixture-B
+19:13:20.424 | INFO    | Task run 'obtain-and-verify-artifact-18c' - Finished in state Completed()
+19:13:20.434 | INFO    | Task run 'evaluate-release-b62' - GATE_PASS fixture-B
+19:13:20.435 | INFO    | Task run 'evaluate-release-b62' - Finished in state Completed()
+19:13:20.447 | INFO    | Task run 'publish-release-2c6' - PUBLICATION_EVENT 25b8c3f2767c806482cf7ceffaf850ca699139975bdad31ec7f5bba2eed1ea26
+19:13:20.447 | INFO    | Task run 'publish-release-2c6' - PUBLISHED fixture-B
+19:13:20.448 | INFO    | Task run 'publish-release-2c6' - Finished in state Completed()
+19:13:20.457 | INFO    | Flow run 'sapphire-malkoha' - Finished in state Completed()
+19:13:20.466 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8268
+
+exit_code=0

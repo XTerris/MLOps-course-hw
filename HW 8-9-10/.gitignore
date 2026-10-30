@@ -8,3 +8,6 @@ models/
 *.bin
 *.pt
 .lab*/
+
+.prefect/
+.deps/

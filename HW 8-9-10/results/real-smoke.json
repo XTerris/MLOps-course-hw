@@ -1,0 +1,26 @@
+{
+  "health": {
+    "alive": true,
+    "backend": "transformers"
+  },
+  "ready": {
+    "ready": true,
+    "model_id": "Qwen/Qwen3-0.6B@c1899de289a04d12100db370d81485cdf75e47ca",
+    "runtime_sha256": "3f65a58f4cec4df75a1f65d3da644fc525429402024e9a40fbfd83cb687386c6"
+  },
+  "request": {
+    "prompt": "Title: Crash when opening an empty file\nBody: The application raises IndexError instead of opening an empty document.\nChoices: bug, documentation, feature, question",
+    "max_new_tokens": 32
+  },
+  "response": {
+    "answer": "{\"answer\": \"bug\"}",
+    "output_tokens": 7,
+    "model_id": "Qwen/Qwen3-0.6B@c1899de289a04d12100db370d81485cdf75e47ca",
+    "runtime_sha256": "3f65a58f4cec4df75a1f65d3da644fc525429402024e9a40fbfd83cb687386c6",
+    "request_id": "fab9a1f5-19d2-4d9f-8c8a-257f761d74a6",
+    "generation_seconds": 0.22197345807217062,
+    "waiting_seconds": 0.004430750152096152,
+    "total_seconds": 0.22640420822426677,
+    "diagnostic_only": true
+  }
+}

@@ -1,0 +1,20 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden
+19:13:23.223 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8056
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:24.875 | INFO    | Flow run 'nonchalant-quoll' - Beginning flow run 'nonchalant-quoll' for flow 'model-release'
+19:13:24.877 | INFO    | Flow run 'nonchalant-quoll' - FLOW_RUN_ID 490e576a-c83b-4652-9a53-1a3cdf6f3e7d
+19:13:24.893 | INFO    | Task run 'prepare-input-ad7' - PREPARED 31b28988ce6569eefe7d9b3abef3c05523679e82c68c552e2f0236f08aa49f24
+19:13:24.897 | INFO    | Task run 'prepare-input-ad7' - Finished in state Completed()
+19:13:24.897 | INFO    | Flow run 'nonchalant-quoll' - PREPARE_TASK_STATE Completed
+19:13:24.907 | INFO    | Task run 'obtain-and-verify-artifact-651' - ARTIFACT_VERIFIED fixture-B
+19:13:24.908 | INFO    | Task run 'obtain-and-verify-artifact-651' - Finished in state Completed()
+19:13:24.917 | INFO    | Task run 'evaluate-release-1f1' - GATE_PASS fixture-B
+19:13:24.918 | INFO    | Task run 'evaluate-release-1f1' - Finished in state Completed()
+19:13:24.928 | INFO    | Task run 'publish-release-5ba' - PUBLICATION_ALREADY_CURRENT 25b8c3f2767c806482cf7ceffaf850ca699139975bdad31ec7f5bba2eed1ea26
+19:13:24.929 | INFO    | Task run 'publish-release-5ba' - Finished in state Completed()
+19:13:24.937 | INFO    | Flow run 'nonchalant-quoll' - Finished in state Completed()
+19:13:24.945 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8056
+
+exit_code=0

@@ -1,0 +1,132 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden --manifest manifest-A.json --report report-A.json --fail-after-publish
+19:13:27.697 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8306
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:29.346 | INFO    | Flow run 'tourmaline-gopher' - Beginning flow run 'tourmaline-gopher' for flow 'model-release'
+19:13:29.347 | INFO    | Flow run 'tourmaline-gopher' - FLOW_RUN_ID abe76769-84a4-4904-9513-03484c32f973
+19:13:29.364 | INFO    | Task run 'prepare-input-afa' - Finished in state Cached(type=COMPLETED)
+19:13:29.364 | INFO    | Flow run 'tourmaline-gopher' - PREPARE_TASK_STATE Cached
+19:13:29.374 | INFO    | Task run 'obtain-and-verify-artifact-2c0' - ARTIFACT_VERIFIED fixture-A
+19:13:29.376 | INFO    | Task run 'obtain-and-verify-artifact-2c0' - Finished in state Completed()
+19:13:29.385 | INFO    | Task run 'evaluate-release-2cc' - GATE_PASS fixture-A
+19:13:29.386 | INFO    | Task run 'evaluate-release-2cc' - Finished in state Completed()
+19:13:29.397 | ERROR   | Task run 'publish-release-ce6' - Task run failed with exception: RuntimeError('Инъекция сбоя после указателя до журнала')
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 872, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1514, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 889, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 60, in publish_release
+    lab.publish_stage(Path(workspace), manifest, report, prepared, fail_after_publish)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/lab.py", line 127, in publish_stage
+    if fail_after_publish:raise RuntimeError('Инъекция сбоя после указателя до журнала')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Инъекция сбоя после указателя до журнала
+19:13:29.400 | ERROR   | Task run 'publish-release-ce6' - Finished in state Failed('Task run encountered an exception RuntimeError: Инъекция сбоя после указателя до журнала')
+19:13:29.400 | ERROR   | Flow run 'tourmaline-gopher' - Encountered exception during execution: RuntimeError('Инъекция сбоя после указателя до журнала')
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 788, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1409, in run_flow_sync
+    engine.call_flow_fn()
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 808, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 76, in release_flow
+    publish_release(workspace, manifest, report, prepared, fail_after_publish)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/tasks.py", line 1138, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1741, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1516, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 493, in result
+    raise self._raised
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 872, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1514, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 889, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 60, in publish_release
+    lab.publish_stage(Path(workspace), manifest, report, prepared, fail_after_publish)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/lab.py", line 127, in publish_stage
+    if fail_after_publish:raise RuntimeError('Инъекция сбоя после указателя до журнала')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Инъекция сбоя после указателя до журнала
+19:13:29.412 | INFO    | Flow run 'tourmaline-gopher' - Finished in state Failed('Flow run encountered an exception: RuntimeError: Инъекция сбоя после указателя до журнала')
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 100, in <module>
+    main()
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 95, in main
+    release_flow(str(args.workspace.resolve()), args.manifest, args.report,
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flows.py", line 1708, in __call__
+    return run_flow(
+           ^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1566, in run_flow
+    ret_val = run_flow_sync(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1411, in run_flow_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 361, in result
+    raise self._raised
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 788, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1409, in run_flow_sync
+    engine.call_flow_fn()
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 808, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 76, in release_flow
+    publish_release(workspace, manifest, report, prepared, fail_after_publish)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/tasks.py", line 1138, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1741, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1516, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 493, in result
+    raise self._raised
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 872, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 1514, in run_task_sync
+    engine.call_task_fn(txn)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/task_engine.py", line 889, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 60, in publish_release
+    lab.publish_stage(Path(workspace), manifest, report, prepared, fail_after_publish)
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/lab.py", line 127, in publish_stage
+    if fail_after_publish:raise RuntimeError('Инъекция сбоя после указателя до журнала')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Инъекция сбоя после указателя до журнала
+19:13:29.422 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8306
+
+exit_code=1

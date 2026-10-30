@@ -1,0 +1,20 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden --manifest manifest-A.json --report report-A.json
+19:13:32.001 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8718
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:33.657 | INFO    | Flow run 'simple-malkoha' - Beginning flow run 'simple-malkoha' for flow 'model-release'
+19:13:33.658 | INFO    | Flow run 'simple-malkoha' - FLOW_RUN_ID 63bb6b22-4cb3-4495-a4c8-938b40e90943
+19:13:33.674 | INFO    | Task run 'prepare-input-485' - Finished in state Cached(type=COMPLETED)
+19:13:33.675 | INFO    | Flow run 'simple-malkoha' - PREPARE_TASK_STATE Cached
+19:13:33.685 | INFO    | Task run 'obtain-and-verify-artifact-3f3' - ARTIFACT_VERIFIED fixture-A
+19:13:33.687 | INFO    | Task run 'obtain-and-verify-artifact-3f3' - Finished in state Completed()
+19:13:33.696 | INFO    | Task run 'evaluate-release-c43' - GATE_PASS fixture-A
+19:13:33.697 | INFO    | Task run 'evaluate-release-c43' - Finished in state Completed()
+19:13:33.708 | INFO    | Task run 'publish-release-580' - PUBLICATION_EVENT f863d3b2c1e86f6440c7c09bb9b6e8e8ad29fdd10166e5c7b678de4737aa3510
+19:13:33.708 | INFO    | Task run 'publish-release-580' - PUBLISHED fixture-A
+19:13:33.709 | INFO    | Task run 'publish-release-580' - Finished in state Completed()
+19:13:33.718 | INFO    | Flow run 'simple-malkoha' - Finished in state Completed()
+19:13:33.725 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8718
+
+exit_code=0

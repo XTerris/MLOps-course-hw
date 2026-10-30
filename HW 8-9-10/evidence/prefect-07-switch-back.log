@@ -1,0 +1,20 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden
+19:13:40.786 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8487
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:42.439 | INFO    | Flow run 'awesome-mongoose' - Beginning flow run 'awesome-mongoose' for flow 'model-release'
+19:13:42.440 | INFO    | Flow run 'awesome-mongoose' - FLOW_RUN_ID a4b3cfba-6196-49d5-8dc9-bbd408c6435a
+19:13:42.456 | INFO    | Task run 'prepare-input-001' - Finished in state Cached(type=COMPLETED)
+19:13:42.457 | INFO    | Flow run 'awesome-mongoose' - PREPARE_TASK_STATE Cached
+19:13:42.467 | INFO    | Task run 'obtain-and-verify-artifact-c5b' - ARTIFACT_VERIFIED fixture-B
+19:13:42.468 | INFO    | Task run 'obtain-and-verify-artifact-c5b' - Finished in state Completed()
+19:13:42.477 | INFO    | Task run 'evaluate-release-df1' - GATE_PASS fixture-B
+19:13:42.479 | INFO    | Task run 'evaluate-release-df1' - Finished in state Completed()
+19:13:42.490 | INFO    | Task run 'publish-release-33a' - PUBLICATION_EVENT 25b8c3f2767c806482cf7ceffaf850ca699139975bdad31ec7f5bba2eed1ea26
+19:13:42.490 | INFO    | Task run 'publish-release-33a' - PUBLISHED fixture-B
+19:13:42.491 | INFO    | Task run 'publish-release-33a' - Finished in state Completed()
+19:13:42.499 | INFO    | Flow run 'awesome-mongoose' - Finished in state Completed()
+19:13:42.506 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8487
+
+exit_code=0

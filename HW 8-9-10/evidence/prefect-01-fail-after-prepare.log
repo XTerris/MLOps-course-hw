@@ -1,0 +1,58 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden --fail-after-prepare
+19:13:11.158 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8377
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:15.899 | INFO    | Flow run 'happy-ferret' - Beginning flow run 'happy-ferret' for flow 'model-release'
+19:13:15.901 | INFO    | Flow run 'happy-ferret' - FLOW_RUN_ID a0e3d4c3-a00b-4d5e-bf80-1c22d5cd3515
+19:13:15.918 | INFO    | Task run 'prepare-input-845' - PREPARED d5b9f51c44376004748729e1e60122f8808ca08057d49840e50eafc0f43d55ed
+19:13:15.922 | INFO    | Task run 'prepare-input-845' - Finished in state Completed()
+19:13:15.923 | INFO    | Flow run 'happy-ferret' - PREPARE_TASK_STATE Completed
+19:13:15.925 | ERROR   | Flow run 'happy-ferret' - Encountered exception during execution: RuntimeError('Инъекция сбоя после подготовки')
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 788, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1409, in run_flow_sync
+    engine.call_flow_fn()
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 808, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 73, in release_flow
+    raise RuntimeError('Инъекция сбоя после подготовки')
+RuntimeError: Инъекция сбоя после подготовки
+19:13:15.946 | INFO    | Flow run 'happy-ferret' - Finished in state Failed('Flow run encountered an exception: RuntimeError: Инъекция сбоя после подготовки')
+Traceback (most recent call last):
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 100, in <module>
+    main()
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 95, in main
+    release_flow(str(args.workspace.resolve()), args.manifest, args.report,
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flows.py", line 1708, in __call__
+    return run_flow(
+           ^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1566, in run_flow
+    ret_val = run_flow_sync(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1411, in run_flow_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 361, in result
+    raise self._raised
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 788, in run_context
+    yield self
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 1409, in run_flow_sync
+    engine.call_flow_fn()
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/flow_engine.py", line 808, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/prefect/utilities/callables.py", line 210, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/mlops-repo/HW 8-9-10/prefect_flow.py", line 73, in release_flow
+    raise RuntimeError('Инъекция сбоя после подготовки')
+RuntimeError: Инъекция сбоя после подготовки
+19:13:15.956 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8377
+
+exit_code=1

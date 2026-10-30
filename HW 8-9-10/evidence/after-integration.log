@@ -1,0 +1,14 @@
+test_invalid_requests_never_reach_backend (__main__.HTTPTests.test_invalid_requests_never_reach_backend) ... ok
+test_loaded_version_stays_until_restart_and_can_roll_back (__main__.HTTPTests.test_loaded_version_stays_until_restart_and_can_roll_back) ... ok
+test_warmup_readiness_blocks_generation (__main__.HTTPTests.test_warmup_readiness_blocks_generation) ... ok
+test_atomic_write_error_preserves_bytes (__main__.ProcessTests.test_atomic_write_error_preserves_bytes) ... ok
+test_changed_model_file_rejected_without_overwriting_pointer (__main__.ProcessTests.test_changed_model_file_rejected_without_overwriting_pointer) ... ok
+test_fault_after_pointer_update_recovers_once (__main__.ProcessTests.test_fault_after_pointer_update_recovers_once) ... ok
+test_incomplete_foreign_and_refused_reports_preserve_pointer (__main__.ProcessTests.test_incomplete_foreign_and_refused_reports_preserve_pointer) ... ok
+test_repeated_release_has_one_publication (__main__.ProcessTests.test_repeated_release_has_one_publication) ... ok
+test_restart_cache_and_changed_input (__main__.ProcessTests.test_restart_cache_and_changed_input) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 6.172s
+
+OK

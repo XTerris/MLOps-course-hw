@@ -1,0 +1,19 @@
+$ /Users/shulikovmax/Yandex.Disk.localized/BMSTU/7 семестр/MLOps/.venv/bin/python prefect_flow.py --workspace /Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-8192-golden --manifest manifest-A.json --report report-A.json
+19:13:36.373 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8439
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+/Users/shulikovmax/Documents/Codex/2026-10-30/mlops-8-9-10-2/work/prefect-deps/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'deprecated' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'deprecated' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+19:13:38.024 | INFO    | Flow run 'heavenly-oarfish' - Beginning flow run 'heavenly-oarfish' for flow 'model-release'
+19:13:38.026 | INFO    | Flow run 'heavenly-oarfish' - FLOW_RUN_ID 64301e3d-4efa-4356-a5a4-89c41642f715
+19:13:38.042 | INFO    | Task run 'prepare-input-070' - Finished in state Cached(type=COMPLETED)
+19:13:38.043 | INFO    | Flow run 'heavenly-oarfish' - PREPARE_TASK_STATE Cached
+19:13:38.053 | INFO    | Task run 'obtain-and-verify-artifact-7e5' - ARTIFACT_VERIFIED fixture-A
+19:13:38.055 | INFO    | Task run 'obtain-and-verify-artifact-7e5' - Finished in state Completed()
+19:13:38.064 | INFO    | Task run 'evaluate-release-caa' - GATE_PASS fixture-A
+19:13:38.065 | INFO    | Task run 'evaluate-release-caa' - Finished in state Completed()
+19:13:38.075 | INFO    | Task run 'publish-release-f8e' - PUBLICATION_ALREADY_CURRENT f863d3b2c1e86f6440c7c09bb9b6e8e8ad29fdd10166e5c7b678de4737aa3510
+19:13:38.076 | INFO    | Task run 'publish-release-f8e' - Finished in state Completed()
+19:13:38.084 | INFO    | Flow run 'heavenly-oarfish' - Finished in state Completed()
+19:13:38.092 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8439
+
+exit_code=0

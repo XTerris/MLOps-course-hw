@@ -1,0 +1,31 @@
+{
+  "file": "HW8910-demo.mp4",
+  "duration_seconds": 433.88,
+  "width": 1920,
+  "height": 1080,
+  "fps": 25,
+  "codec": "h264",
+  "audio": false,
+  "bytes": 11385027,
+  "sha256": "83c03a872044bda2e56787c88e9a1ecbed3e0528dc7f398e29b8670b0eeab46b",
+  "full_decode_returncode": 0,
+  "report_sections": 10,
+  "report_section_seconds": 5,
+  "transition_seconds": 0.9,
+  "interactive_mlflow": true,
+  "mlflow_capture_fps_approx": 4,
+  "evidence": "Фрагменты кода и сохранённых журналов; свежие тесты и ответы локального диагностического API",
+  "checks": {
+    "original_contract_tests": 13,
+    "integration_tests": 9,
+    "fresh_run_exit_code": 0,
+    "real_api_statuses": [
+      200,
+      503,
+      200,
+      200,
+      400
+    ],
+    "diagnostic_only": true
+  }
+}
